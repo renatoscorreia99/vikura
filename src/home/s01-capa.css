@@ -1,0 +1,211 @@
+/* s01 — Capa: the editorial front page.
+   7/5 split under the masthead. Left: the lead story, headline first, then a
+   standfirst with a ruled byline box, then the dominant photograph and a short
+   "Leia também" package. Right, behind a vertical rule: three secondary
+   stories in three different treatments (portrait brief, landscape picture
+   story, typographic story). */
+
+.s-capa { position: relative; padding-top: 40px; }
+.s-capa .s-capa__grid { align-items: start; }
+
+/* Category needle hangs in the gutter so labels align flush with headlines. */
+.s-capa .story__cat { position: relative; }
+.s-capa .story__cat .cp {
+  position: absolute;
+  left: -16px;
+  top: calc(50% - 4.5px);
+  margin: 0;
+  transform: translateX(-4px) rotate(-90deg);
+}
+.s-capa .story:hover .story__cat .cp,
+.s-capa .story:focus-within .story__cat .cp { margin: 0; transform: rotate(-90deg); }
+
+/* ---------- Lead story ---------- */
+.s-capa .s-capa__lead {
+  grid-column: 1 / span 7;
+  grid-row: 1;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  column-gap: var(--gap);
+  row-gap: 0;
+  align-content: start;
+}
+.s-capa .s-capa__lead-cat     { grid-column: 1 / -1; grid-row: 1; }
+.s-capa .s-capa__lead-title   { grid-column: 1 / -1; grid-row: 2; margin-top: 18px; letter-spacing: -0.032em; }
+.s-capa .s-capa__lead-dek     { grid-column: 1 / span 4; grid-row: 3; margin-top: 26px; }
+.s-capa .s-capa__byline       { grid-column: 5 / span 3; grid-row: 3; margin-top: 30px; }
+.s-capa .s-capa__lead-media   { grid-column: 1 / -1; grid-row: 4; margin-top: 36px; }
+.s-capa .s-capa__caption      { grid-column: 1 / span 5; grid-row: 5; margin-top: 12px; }
+
+.s-capa .s-capa__lead-dek {
+  max-width: none;
+  font-size: clamp(18px, 1.45vw, 21px);
+  line-height: 1.45;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+/* Byline box: a small, ruled credit block beside the standfirst. */
+.s-capa .s-capa__byline {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  padding-left: 18px;
+  border-left: 1px solid var(--rule-strong);
+}
+.s-capa .s-capa__author { font-size: 13px; line-height: 1.4; color: var(--ink-mute); }
+.s-capa .s-capa__author span { color: var(--ink); font-weight: 600; }
+.s-capa .s-capa__byline .story__meta > .reviewed { margin-left: 0; }
+
+/* The lead photograph: a wide cut that keeps the sky dominant. */
+.s-capa .s-capa__lead-photo { aspect-ratio: 3 / 2; }
+.s-capa .s-capa__lead-photo img { object-position: 50% 62%; }
+
+/* ---------- Leia também: the lead's small package of further reading ---------- */
+.s-capa .s-capa__more {
+  grid-column: 1 / span 7;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  column-gap: var(--gap);
+  margin-top: 36px;
+}
+.s-capa .s-capa__more-label {
+  grid-column: 1 / span 2;
+  position: relative;
+  align-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 13px;
+  border-top: 1.5px solid var(--ink);
+}
+.s-capa .s-capa__more-list { grid-column: 3 / span 5; }
+.s-capa .s-capa__more-list > li:first-child { border-top: 1.5px solid var(--ink); }
+.s-capa .s-capa__more-list a {
+  position: relative;
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr) auto;
+  column-gap: 16px;
+  align-items: baseline;
+  padding-block: 11px;
+}
+.s-capa .s-capa__more-cat {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  transition: color var(--t) var(--ease);
+}
+.s-capa .s-capa__more-hl {
+  font-size: 15.5px;
+  line-height: 1.35;
+  font-weight: 500;
+  color: var(--ink);
+  transition: transform var(--t) var(--ease);
+}
+.s-capa .s-capa__more-time { font-size: 12.5px; color: var(--ink-mute); font-variant-numeric: tabular-nums; }
+.s-capa .s-capa__more-list a:hover .s-capa__more-cat,
+.s-capa .s-capa__more-list a:focus-visible .s-capa__more-cat { color: var(--orange-ink); }
+.s-capa .s-capa__more-list a:hover .s-capa__more-hl,
+.s-capa .s-capa__more-list a:focus-visible .s-capa__more-hl { transform: translateX(2px); }
+
+/* ---------- Side column ---------- */
+.s-capa .s-capa__side {
+  grid-column: 8 / span 5;
+  grid-row: 1 / span 2;
+  align-self: stretch;
+  display: grid;
+  align-content: start;
+}
+.s-capa .s-capa__s { padding-block: 26px; border-top: 1px solid var(--rule); }
+.s-capa .s-capa__s:first-child { padding-top: 0; border-top: 0; }
+.s-capa .s-capa__s:last-child { padding-bottom: 0; }
+.s-capa .s-capa__s .story__dek { font-size: 15.5px; }
+
+/* 1 · portrait brief: text left, small rounded portrait right */
+.s-capa .s-capa__s--retrato {
+  grid-template-columns: minmax(0, 1fr) 132px;
+  column-gap: 22px;
+  row-gap: 10px;
+}
+.s-capa .s-capa__s--retrato > :not(.story__media) { grid-column: 1; }
+.s-capa .s-capa__s--retrato .story__media { grid-column: 2; grid-row: 1 / span 4; align-self: start; }
+
+/* 2 · landscape picture story: the heaviest of the three */
+.s-capa .s-capa__s--paisagem .photo { aspect-ratio: 3 / 2; }
+.s-capa .s-capa__s--paisagem .story__media { margin-bottom: 6px; }
+
+/* 3 · typographic story: no picture, italic voice */
+.s-capa .s-capa__s--texto .story__title { max-width: 16ch; }
+.s-capa .s-capa__s--texto .story__dek { max-width: 44ch; }
+
+/* ---------- ≤1100 ---------- */
+@media (max-width: 1100px) {
+  .s-capa { padding-top: 32px; }
+  /* standfirst takes the full measure; the byline drops below it as a ruled row */
+  .s-capa .s-capa__lead-dek   { grid-column: 1 / -1; grid-row: 3; max-width: 34em; }
+  .s-capa .s-capa__byline {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 20px;
+    margin-top: 18px;
+    padding: 12px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .s-capa .s-capa__lead-media { grid-row: 5; margin-top: 28px; }
+  .s-capa .s-capa__caption    { grid-row: 6; }
+  .s-capa .s-capa__s--retrato { grid-template-columns: minmax(0, 1fr) 104px; column-gap: 16px; }
+  .s-capa .s-capa__more-label { grid-column: 1 / -1; border-top: 1.5px solid var(--ink); padding-bottom: 10px; }
+  .s-capa .s-capa__more-list { grid-column: 1 / -1; }
+  .s-capa .s-capa__more-list > li:first-child { border-top: 1px solid var(--rule); }
+  .s-capa .s-capa__more-list a { grid-template-columns: 92px minmax(0, 1fr) auto; }
+}
+
+/* ---------- ≤720: photo-first lead, then a tight list ---------- */
+@media (max-width: 720px) {
+  .s-capa { padding-top: 0; }
+  .s-capa .s-capa__lead,
+  .s-capa .s-capa__side,
+  .s-capa .s-capa__more { grid-row: auto; }
+  .s-capa .s-capa__side { order: 1; }
+  .s-capa .s-capa__more { order: 2; }
+
+  .s-capa .s-capa__lead { grid-template-columns: minmax(0, 1fr); }
+  .s-capa .s-capa__lead > * { grid-column: 1; }
+  .s-capa .s-capa__lead-media   { grid-row: 1; margin: 0 calc(-1 * var(--m)); }
+  .s-capa .s-capa__caption      { grid-row: 2; margin-top: 8px; font-size: 12.5px; }
+  .s-capa .s-capa__lead-cat     { grid-row: 3; margin-top: 22px; }
+  .s-capa .s-capa__lead-title   { grid-row: 4; margin-top: 12px; }
+  .s-capa .s-capa__lead-dek     { grid-row: 5; margin-top: 14px; font-size: 17px; }
+  .s-capa .s-capa__byline       { grid-row: 6; margin-top: 16px; padding-top: 12px; display: grid; gap: 4px; }
+  .s-capa .s-capa__lead-photo   { aspect-ratio: 4 / 3.4; }
+  .s-capa .s-capa__lead-photo img { object-position: 50% 70%; }
+
+  .s-capa .s-capa__side { margin-top: 36px; border-top: 1.5px solid var(--ink); }
+  .s-capa .s-capa__s,
+  .s-capa .s-capa__s:first-child,
+  .s-capa .s-capa__s:last-child { padding-block: 18px; border-top: 1px solid var(--rule); }
+  .s-capa .s-capa__s:first-child { border-top: 0; }
+  .s-capa .s-capa__s { row-gap: 8px; }
+  .s-capa .s-capa__s .story__title { font-size: 20px; line-height: 1.18; max-width: none; }
+  .s-capa .s-capa__s .story__dek { display: none; }
+  .s-capa .s-capa__opt { display: none; }
+
+  /* both picture stories become text + small portrait thumb */
+  .s-capa .s-capa__s--retrato,
+  .s-capa .s-capa__s--paisagem { grid-template-columns: minmax(0, 1fr) 92px; column-gap: 16px; }
+  .s-capa .s-capa__s--paisagem > :not(.story__media) { grid-column: 1; }
+  .s-capa .s-capa__s--paisagem .story__media { grid-column: 2; grid-row: 1 / span 3; margin: 0; align-self: start; }
+  .s-capa .s-capa__s--paisagem .photo { aspect-ratio: 4 / 5; }
+
+  .s-capa .s-capa__s--texto .story__title { font-size: 25px; line-height: 1.12; }
+  .s-capa .s-capa__s--texto .story__dek { display: block; font-size: 15px; }
+
+  /* On phones the "Em destaque agora" rail follows immediately and does this job. */
+  .s-capa .s-capa__more { display: none; }
+}
