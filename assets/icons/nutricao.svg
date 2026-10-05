@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="Nutrição"><title>Nutrição</title><defs>
+  <radialGradient id="vk-or" cx=".32" cy=".26" r=".95">
+    <stop offset="0" stop-color="#F28A63"/>
+    <stop offset=".42" stop-color="#E26944"/>
+    <stop offset=".78" stop-color="#D2553A"/>
+    <stop offset="1" stop-color="#B4442E"/>
+  </radialGradient>
+  <radialGradient id="vk-or-deep" cx=".35" cy=".3" r=".9">
+    <stop offset="0" stop-color="#E06A47"/>
+    <stop offset=".6" stop-color="#C9503A"/>
+    <stop offset="1" stop-color="#A23E2B"/>
+  </radialGradient>
+  <radialGradient id="vk-cr" cx=".3" cy=".24" r="1">
+    <stop offset="0" stop-color="#FFF9EE"/>
+    <stop offset=".45" stop-color="#F9E9CC"/>
+    <stop offset=".8" stop-color="#EDD3A8"/>
+    <stop offset="1" stop-color="#DDBC8C"/>
+  </radialGradient>
+  <radialGradient id="vk-cr-shade" cx=".4" cy=".2" r="1">
+    <stop offset="0" stop-color="#F3DDB6"/>
+    <stop offset=".7" stop-color="#E2C496"/>
+    <stop offset="1" stop-color="#CFAA78"/>
+  </radialGradient>
+  <radialGradient id="vk-hl" cx=".3" cy=".22" r=".55">
+    <stop offset="0" stop-color="#FFF6E6" stop-opacity=".62"/>
+    <stop offset=".55" stop-color="#FFF6E6" stop-opacity=".16"/>
+    <stop offset="1" stop-color="#FFF6E6" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="vk-bounce" cx=".7" cy=".95" r=".6">
+    <stop offset="0" stop-color="#FFE3B8" stop-opacity=".32"/>
+    <stop offset="1" stop-color="#FFE3B8" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="vk-matte" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="blur"/>
+    <feOffset in="blur" dx="-5" dy="-7" result="lifted"/>
+    <feComposite in="SourceAlpha" in2="lifted" operator="out" result="rim"/>
+    <feFlood flood-color="#400D0E" flood-opacity=".26"/>
+    <feComposite in2="rim" operator="in" result="inner"/>
+    <feTurbulence type="fractalNoise" baseFrequency=".95" numOctaves="2" seed="7" result="noise"/>
+    <feColorMatrix in="noise" type="matrix" values="0 0 0 0 .16  0 0 0 0 .05  0 0 0 0 .04  .34 .34 .34 0 -.47" result="grainDark"/>
+    <feColorMatrix in="noise" type="matrix" values="0 0 0 0 1  0 0 0 0 .97  0 0 0 0 .9  -.34 -.34 -.34 0 .56" result="grainLight"/>
+    <feComposite in="grainDark" in2="SourceAlpha" operator="in" result="gd"/>
+    <feComposite in="grainLight" in2="SourceAlpha" operator="in" result="gl"/>
+    <feMerge>
+      <feMergeNode in="SourceGraphic"/>
+      <feMergeNode in="inner"/>
+      <feMergeNode in="gd"/>
+      <feMergeNode in="gl"/>
+    </feMerge>
+  </filter>
+  <filter id="vk-cast" x="-30%" y="-100%" width="160%" height="300%">
+    <feGaussianBlur stdDeviation="5"/>
+  </filter></defs><ellipse cx="80" cy="142" rx="46" ry="6" fill="#400D0E" opacity="0.16" filter="url(#vk-cast)"/><g class="vk-layer" style="transform:translate(calc(var(--vk-px,0) * 1px),calc(var(--vk-py,0) * 1px))"><g filter="url(#vk-matte)"><path d="M26 80a54 54 0 1 0 108 0a54 54 0 1 0 -108 0Z" fill="url(#vk-or-deep)"/><path d="M26 80a54 54 0 1 0 108 0a54 54 0 1 0 -108 0Z" fill="url(#vk-hl)"/><path d="M26 80a54 54 0 1 0 108 0a54 54 0 1 0 -108 0Z" fill="url(#vk-bounce)"/></g></g><g class="vk-layer" style="transform:translate(calc(var(--vk-px,0) * 1.6px),calc(var(--vk-py,0) * 1.6px))"><g filter="url(#vk-matte)"><path d="M33 80a47 47 0 1 0 94 0a47 47 0 1 0 -94 0Z" fill="url(#vk-cr)"/><path d="M33 80a47 47 0 1 0 94 0a47 47 0 1 0 -94 0Z" fill="url(#vk-hl)"/><path d="M33 80a47 47 0 1 0 94 0a47 47 0 1 0 -94 0Z" fill="url(#vk-bounce)"/></g></g><g class="vk-layer" style="transform:translate(calc(var(--vk-px,0) * 2.4px),calc(var(--vk-py,0) * 2.4px))"><g filter="url(#vk-matte)"><path d="M88.80 81.88L115.85 83.24Q120.41 94.71 109.55 100.57L87.95 84.22ZM85.54 87.10L105.39 105.53Q101.50 117.24 89.41 114.75L83.38 88.34ZM79.68 88.99L83.04 115.87Q72.53 122.35 64.87 112.67L77.22 88.56ZM73.97 86.68L59.27 109.43Q47.06 107.64 47.41 95.30L72.37 84.77ZM71.09 81.25L45.20 89.22Q37.00 80.00 45.20 70.78L71.09 78.75ZM72.37 75.23L47.41 64.70Q47.06 52.36 59.27 50.57L73.97 73.32ZM77.22 71.44L64.87 47.33Q72.53 37.65 83.04 44.13L79.68 71.01ZM83.38 71.66L89.41 45.25Q101.50 42.76 105.39 54.47L85.54 72.90ZM87.95 75.78L109.55 59.43Q120.41 65.29 115.85 76.76L88.80 78.12Z" fill="url(#vk-or)"/><path d="M88.80 81.88L115.85 83.24Q120.41 94.71 109.55 100.57L87.95 84.22ZM85.54 87.10L105.39 105.53Q101.50 117.24 89.41 114.75L83.38 88.34ZM79.68 88.99L83.04 115.87Q72.53 122.35 64.87 112.67L77.22 88.56ZM73.97 86.68L59.27 109.43Q47.06 107.64 47.41 95.30L72.37 84.77ZM71.09 81.25L45.20 89.22Q37.00 80.00 45.20 70.78L71.09 78.75ZM72.37 75.23L47.41 64.70Q47.06 52.36 59.27 50.57L73.97 73.32ZM77.22 71.44L64.87 47.33Q72.53 37.65 83.04 44.13L79.68 71.01ZM83.38 71.66L89.41 45.25Q101.50 42.76 105.39 54.47L85.54 72.90ZM87.95 75.78L109.55 59.43Q120.41 65.29 115.85 76.76L88.80 78.12Z" fill="url(#vk-hl)"/><path d="M88.80 81.88L115.85 83.24Q120.41 94.71 109.55 100.57L87.95 84.22ZM85.54 87.10L105.39 105.53Q101.50 117.24 89.41 114.75L83.38 88.34ZM79.68 88.99L83.04 115.87Q72.53 122.35 64.87 112.67L77.22 88.56ZM73.97 86.68L59.27 109.43Q47.06 107.64 47.41 95.30L72.37 84.77ZM71.09 81.25L45.20 89.22Q37.00 80.00 45.20 70.78L71.09 78.75ZM72.37 75.23L47.41 64.70Q47.06 52.36 59.27 50.57L73.97 73.32ZM77.22 71.44L64.87 47.33Q72.53 37.65 83.04 44.13L79.68 71.01ZM83.38 71.66L89.41 45.25Q101.50 42.76 105.39 54.47L85.54 72.90ZM87.95 75.78L109.55 59.43Q120.41 65.29 115.85 76.76L88.80 78.12Z" fill="url(#vk-bounce)"/></g></g></svg>
