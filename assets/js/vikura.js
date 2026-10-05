@@ -48,6 +48,14 @@
     ['Cannabis medicinal e dor crônica', 'Cannabis medicinal'],
     ['TDAH na vida adulta: sinais que costumam passar despercebidos', 'Neurodiversidade'],
     ['Ultraprocessados: o que os estudos realmente mostram até agora', 'Nutrição'],
+    ['Cinco perguntas para levar à próxima consulta', 'Especial'],
+    ['Burnout não é falta de força de vontade', 'Saúde mental'],
+    ['Quando procurar ajuda em saúde mental', 'Saúde mental'],
+    ['Força depois dos 60: por que o músculo virou assunto de saúde', 'Longevidade'],
+    ['Amizades protegem a memória?', 'Longevidade'],
+    ['Subir escadas conta como exercício?', 'Movimento'],
+    ['Cannabis medicinal: como funciona no Brasil', 'Cannabis medicinal'],
+    ['CBD, THC e espectro completo: o que muda entre os produtos', 'Cannabis medicinal'],
   ];
   const panel = $('.search-panel');
   const toggle = $('.search-toggle');

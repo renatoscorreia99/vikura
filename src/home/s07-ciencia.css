@@ -1,0 +1,127 @@
+/* s07 · Ciência por trás do cuidado — an evidence register.
+   A paper band. Left: the evidence ladder, a short lesson in reading studies with the
+   2.5D evidence icon. Right: five real studies as ruled rows (finding in Fraunces, type and
+   source, certainty as four bars plus words, never bars alone). Each source expands in place. */
+
+.s-ciencia.sec {
+  margin-top: var(--sec);
+  padding-block: 84px 96px;
+  background: var(--paper);
+}
+.s-ciencia .s-ciencia__grid { align-items: start; }
+
+/* certainty bars: four rising ticks, the first --lv lit */
+.s-ciencia .s-ciencia__bars { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; flex: none; }
+.s-ciencia .s-ciencia__bars i {
+  width: 4px;
+  border-radius: 1px;
+  background: color-mix(in srgb, var(--orange) calc(clamp(0, var(--lv) - var(--n) + 1, 1) * 100%), rgba(39, 36, 36, 0.16));
+}
+.s-ciencia .s-ciencia__bars i:nth-child(1) { --n: 1; height: 5px; }
+.s-ciencia .s-ciencia__bars i:nth-child(2) { --n: 2; height: 8px; }
+.s-ciencia .s-ciencia__bars i:nth-child(3) { --n: 3; height: 11px; }
+.s-ciencia .s-ciencia__bars i:nth-child(4) { --n: 4; height: 14px; }
+
+/* ---------- ladder ---------- */
+.s-ciencia .s-ciencia__ladder { grid-column: 1 / span 4; padding-right: 32px; }
+.s-ciencia .s-ciencia__icon { width: 104px; height: 104px; margin: -8px 0 8px -10px; }
+.s-ciencia .s-ciencia__ladder-text { margin-top: 12px; font-size: 15.5px; line-height: 1.5; color: var(--ink-soft); max-width: 34ch; }
+.s-ciencia .s-ciencia__levels { margin-top: 24px; display: grid; }
+.s-ciencia .s-ciencia__levels li {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  column-gap: 12px;
+  row-gap: 2px;
+  padding-block: 14px;
+  border-top: 1px solid var(--rule);
+}
+.s-ciencia .s-ciencia__levels li:last-child { border-bottom: 1px solid var(--rule); }
+.s-ciencia .s-ciencia__levels .s-ciencia__bars { grid-row: 1 / span 2; margin-top: 3px; }
+.s-ciencia .s-ciencia__levels b { font-size: 15px; font-weight: 600; }
+.s-ciencia .s-ciencia__levels li > span:last-child { grid-column: 2; font-size: 14px; line-height: 1.45; color: var(--ink-soft); }
+.s-ciencia .s-ciencia__guide { margin-top: 20px; white-space: normal; }
+
+/* ---------- register ---------- */
+.s-ciencia .s-ciencia__register { grid-column: 5 / span 8; }
+.s-ciencia .s-ciencia__cols,
+.s-ciencia .s-ciencia__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 200px 168px;
+  column-gap: 28px;
+}
+.s-ciencia .s-ciencia__cols {
+  padding-bottom: 10px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.s-ciencia .s-ciencia__rows { border-top: 1.5px solid var(--ink); }
+.s-ciencia .s-ciencia__row {
+  row-gap: 8px;
+  padding-block: 22px 20px;
+  border-bottom: 1px solid var(--rule);
+  transition: background-color var(--t) var(--ease);
+}
+.s-ciencia .s-ciencia__topic { grid-column: 1; grid-row: 1; color: var(--orange-ink); }
+.s-ciencia .s-ciencia__find {
+  grid-column: 1; grid-row: 2 / span 2;
+  font-family: var(--serif);
+  font-variation-settings: "SOFT" 100, "WONK" 0;
+  font-size: clamp(19px, 1.5vw, 22px);
+  line-height: 1.26;
+  font-weight: 390;
+  letter-spacing: -0.008em;
+  text-wrap: pretty;
+}
+.s-ciencia .s-ciencia__src { grid-column: 2; grid-row: 1 / span 3; display: grid; gap: 4px; align-content: start; font-size: 14px; line-height: 1.4; }
+.s-ciencia .s-ciencia__src b { font-weight: 600; }
+.s-ciencia .s-ciencia__src span { color: var(--ink-mute); font-variant-numeric: tabular-nums; }
+.s-ciencia .s-ciencia__cert { grid-column: 3; grid-row: 1 / span 2; display: flex; align-items: center; gap: 10px; align-self: start; font-size: 14px; line-height: 1.3; }
+.s-ciencia .s-ciencia__toggle { grid-column: 3; grid-row: 3; justify-self: start; align-self: end; }
+.s-ciencia .s-ciencia__panel { grid-column: 1 / -1; grid-row: 4; }
+
+.s-ciencia .s-ciencia__detail {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px 28px;
+  margin-top: 14px;
+  padding: 18px 20px 20px;
+  background: var(--cream);
+  border-left: 2px solid var(--orange);
+}
+.s-ciencia .s-ciencia__ref { grid-column: 1 / -1; }
+.s-ciencia .s-ciencia__detail dt { font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); }
+.s-ciencia .s-ciencia__detail dd { margin: 4px 0 0; font-size: 14.5px; line-height: 1.5; }
+.s-ciencia .s-ciencia__detail i { font-style: italic; }
+
+.s-ciencia .s-ciencia__note { display: flex; gap: 10px; align-items: baseline; margin-top: 20px; font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); max-width: 70ch; }
+.s-ciencia .s-ciencia__note .seal { transform: translateY(3px); }
+
+/* ---------- ≤1100 ---------- */
+@media (max-width: 1100px) {
+  .s-ciencia .s-ciencia__ladder { grid-column: 1 / -1; padding-right: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); column-gap: 40px; }
+  .s-ciencia .s-ciencia__ladder > * { grid-column: 1; }
+  .s-ciencia .s-ciencia__levels { grid-column: 2; grid-row: 1 / span 4; margin-top: 0; }
+  .s-ciencia .s-ciencia__register { grid-column: 1 / -1; margin-top: 56px; }
+  .s-ciencia .s-ciencia__cols, .s-ciencia .s-ciencia__row { grid-template-columns: minmax(0, 1fr) 180px 150px; column-gap: 20px; }
+}
+
+/* ---------- ≤720: each row becomes a stacked entry ---------- */
+@media (max-width: 720px) {
+  .s-ciencia.sec { padding-block: 64px 72px; }
+  .s-ciencia .s-ciencia__ladder { display: block; }
+  .s-ciencia .s-ciencia__icon { width: 84px; height: 84px; }
+  .s-ciencia .s-ciencia__levels { margin-top: 20px; }
+  .s-ciencia .s-ciencia__register { margin-top: 48px; }
+  .s-ciencia .s-ciencia__cols { display: none; }
+  .s-ciencia .s-ciencia__row { grid-template-columns: minmax(0, 1fr) auto; row-gap: 10px; padding-block: 20px; }
+  .s-ciencia .s-ciencia__topic { grid-column: 1; grid-row: 1; }
+  .s-ciencia .s-ciencia__find { grid-column: 1 / -1; grid-row: 2; font-size: 20px; }
+  .s-ciencia .s-ciencia__src { grid-column: 1 / -1; grid-row: 3; display: flex; flex-wrap: wrap; gap: 0 8px; font-size: 13.5px; }
+  .s-ciencia .s-ciencia__cert { grid-column: 1; grid-row: 4; align-self: center; font-size: 13.5px; }
+  .s-ciencia .s-ciencia__toggle { grid-column: 2; grid-row: 4; align-self: center; }
+  .s-ciencia .s-ciencia__panel { grid-row: 5; }
+  .s-ciencia .s-ciencia__detail { grid-template-columns: 1fr; padding: 16px; }
+}

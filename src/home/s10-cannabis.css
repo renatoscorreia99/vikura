@@ -1,0 +1,64 @@
+/* s10 · Cannabis medicinal — one restrained botanical vertical.
+   Herbarium still life (no leaf clichés), a text-led lead with a short ruled list, and an
+   orientation rail that explains the Brazilian route step by step, joined by a thin line. */
+
+.s-cannabis .s-cannabis__grid { align-items: start; }
+
+.s-cannabis .s-cannabis__photo { grid-column: 1 / span 3; aspect-ratio: 4 / 5; }
+
+.s-cannabis .s-cannabis__main { grid-column: 4 / span 5; padding-left: 8px; }
+.s-cannabis .s-cannabis__lead { gap: 12px; padding-bottom: 28px; }
+.s-cannabis .s-cannabis__lead .story__dek { font-size: 17px; }
+.s-cannabis .s-cannabis__lead .story__meta > span:first-child { color: var(--ink); font-weight: 600; }
+.s-cannabis .s-cannabis__item { gap: 6px; padding-block: 16px; }
+
+/* ---------- orientation rail ---------- */
+.s-cannabis .s-cannabis__steps { grid-column: 9 / span 4; align-self: stretch; }
+.s-cannabis .s-cannabis__steps-kicker { color: var(--orange-ink); }
+.s-cannabis .s-cannabis__steps-title { margin-top: 10px; }
+.s-cannabis .s-cannabis__flow { position: relative; margin-top: 22px; display: grid; gap: 20px; counter-reset: step; }
+.s-cannabis .s-cannabis__flow::before {
+  content: "";
+  position: absolute;
+  left: 11px; top: 14px; bottom: 14px;
+  width: 1.5px;
+  background: linear-gradient(var(--orange), rgba(221, 94, 63, 0.25));
+}
+.s-cannabis .s-cannabis__flow li { position: relative; display: grid; gap: 3px; padding-left: 40px; counter-increment: step; }
+.s-cannabis .s-cannabis__flow li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0; top: 0;
+  display: grid;
+  place-items: center;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 1.5px solid var(--orange);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--orange-ink);
+  font-variant-numeric: tabular-nums;
+}
+.s-cannabis .s-cannabis__flow b { font-size: 16px; font-weight: 600; line-height: 1.5; }
+.s-cannabis .s-cannabis__flow span { font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); }
+.s-cannabis .s-cannabis__note { margin-top: 24px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 13px; line-height: 1.5; color: var(--ink-mute); }
+
+/* ---------- ≤1100 ---------- */
+@media (max-width: 1100px) {
+  .s-cannabis .s-cannabis__photo { grid-column: 1 / span 4; }
+  .s-cannabis .s-cannabis__main { grid-column: 5 / span 8; padding-left: 0; }
+  .s-cannabis .s-cannabis__steps { grid-column: 1 / -1; margin-top: 48px; padding-top: 32px; border-left: 0; padding-left: 0; border-top: 1px solid var(--rule-strong); }
+  .s-cannabis .s-cannabis__flow { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
+  .s-cannabis .s-cannabis__flow::before { display: none; }
+}
+
+/* ---------- ≤720 ---------- */
+@media (max-width: 720px) {
+  .s-cannabis .s-cannabis__photo { aspect-ratio: 16 / 10; }
+  .s-cannabis .s-cannabis__main { margin-top: 24px; }
+  .s-cannabis .s-cannabis__lead .story__title { font-size: 27px; }
+  .s-cannabis .s-cannabis__lead .story__dek { font-size: 16px; }
+  .s-cannabis .s-cannabis__flow { grid-template-columns: 1fr; }
+  .s-cannabis .s-cannabis__flow::before { display: block; }
+}

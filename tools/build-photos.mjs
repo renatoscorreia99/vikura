@@ -56,6 +56,9 @@ export const frames = [
   ['vida-retrato-2', 'retratoClaro', 600, 750],
   ['vida-retrato-3', 'retrato', 600, 750],
   ['vida-retrato-4', 'retratoClaro', 600, 750],
+  // Added with the remaining homepage sections (kept last so earlier frames render unchanged)
+  ['longevidade-voz', 'retratoClaro', 800, 1000],
+  ['movimento-ativo', 'ativo', 1200, 1500],
 ];
 
 const browser = await chromium.launch();
