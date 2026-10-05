@@ -213,6 +213,143 @@ const scenes = {
     });
     vignette(ctx, w, h, 0.3); grain(ctx, w, h, 22);
   },
+
+  // Cobalt sky, low sun, wind through dune grass. Hair and fabric in motion.
+  vento(ctx, w, h) {
+    vgrad(ctx, w, h, [[0, '#0F3477'], [0.5, '#2A63B0'], [0.86, '#9DBAD6']]);
+    bloom(ctx, w * 0.08, h * 0.12, w * 0.55, 'rgba(255,236,190,A)', 0.85);
+    blurred(ctx, w * 0.006, () => {
+      for (let i = 0; i < 420; i++) {
+        const x = rand() * w, base = h * (0.78 + rand() * 0.3), l = h * (0.12 + rand() * 0.25);
+        ctx.strokeStyle = `rgba(${rand() > .4 ? '232,196,128' : '150,108,52'},${0.35 + rand() * 0.4})`;
+        ctx.lineWidth = 1 + rand() * 3.5;
+        ctx.beginPath(); ctx.moveTo(x, base); ctx.quadraticCurveTo(x + w * 0.03, base - l * 0.6, x + w * (0.05 + rand() * 0.05), base - l); ctx.stroke();
+      }
+    });
+    bloom(ctx, w * 0.12, h * 0.85, w * 0.4, 'rgba(255,214,150,A)', 0.4);
+    vignette(ctx, w, h, 0.2); grain(ctx, w, h, 20);
+  },
+
+  // High-key portrait light: cream wall, soft sun patch, warm skin tones out of focus.
+  retratoClaro(ctx, w, h) {
+    vgrad(ctx, w, h, [[0, '#EBD3B2'], [1, '#C9A684']]);
+    blurred(ctx, w * 0.05, () => {
+      ctx.fillStyle = 'rgba(255,246,228,0.85)';
+      ctx.beginPath(); ctx.moveTo(w * 0.55, -h * 0.1); ctx.lineTo(w * 1.1, -h * 0.1); ctx.lineTo(w * 0.95, h * 0.7); ctx.lineTo(w * 0.42, h * 0.55); ctx.fill();
+    });
+    bloom(ctx, w * 0.3, h * 0.55, w * 0.6, 'rgba(196,128,92,A)', 0.35);
+    vignette(ctx, w, h, 0.22); grain(ctx, w, h, 18);
+  },
+
+  // Late-afternoon vegetable garden: green-gold backlight, soil, low sun.
+  jardim(ctx, w, h) {
+    vgrad(ctx, w, h, [[0, '#B9C08A'], [0.5, '#7F8E4E'], [1, '#4B3A22']]);
+    bloom(ctx, w * 0.82, h * 0.18, w * 0.6, 'rgba(255,228,160,A)', 0.9);
+    blurred(ctx, w * 0.012, () => {
+      for (let i = 0; i < 60; i++) {
+        ctx.fillStyle = `rgba(${rand() > .5 ? '86,104,48' : '168,170,92'},${0.3 + rand() * 0.4})`;
+        ctx.save(); ctx.translate(rand() * w, h * (0.35 + rand() * 0.6)); ctx.rotate(rand() * 3);
+        ctx.beginPath(); ctx.ellipse(0, 0, w * (0.03 + rand() * 0.04), w * (0.01 + rand() * 0.012), 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+      }
+    });
+    vignette(ctx, w, h, 0.28); grain(ctx, w, h, 20);
+  },
+
+  // Bedroom at night: deep blue room, one warm bedside lamp.
+  noite(ctx, w, h) {
+    vgrad(ctx, w, h, [[0, '#1B2236'], [1, '#2B2A35']]);
+    bloom(ctx, w * 0.22, h * 0.48, w * 0.45, 'rgba(255,186,110,A)', 0.75);
+    blurred(ctx, w * 0.03, () => {
+      ctx.fillStyle = 'rgba(120,128,160,0.35)';
+      ctx.beginPath(); ctx.ellipse(w * 0.62, h * 0.86, w * 0.6, h * 0.2, -0.05, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = 'rgba(70,82,120,0.6)';
+      ctx.fillRect(w * 0.7, h * 0.08, w * 0.2, h * 0.42);
+    });
+    vignette(ctx, w, h, 0.35); grain(ctx, w, h, 22);
+  },
+
+  // Morning kitchen: white tiles, steam, warm window from the left.
+  cozinha(ctx, w, h) {
+    vgrad(ctx, w, h, [[0, '#E9DFCF'], [1, '#B7A48B']]);
+    bloom(ctx, w * 0.05, h * 0.3, w * 0.7, 'rgba(255,238,204,A)', 0.8);
+    blurred(ctx, w * 0.02, () => {
+      ctx.fillStyle = 'rgba(214,120,72,0.75)';
+      ctx.beginPath(); ctx.ellipse(w * 0.62, h * 0.72, w * 0.08, w * 0.08, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = 'rgba(96,120,72,0.65)';
+      ctx.beginPath(); ctx.ellipse(w * 0.78, h * 0.68, w * 0.06, w * 0.05, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = 'rgba(250,244,232,0.7)';
+      ctx.fillRect(w * 0.3, h * 0.78, w * 0.6, h * 0.05);
+    });
+    vignette(ctx, w, h, 0.2); grain(ctx, w, h, 18);
+  },
+
+  // City morning: warm concrete, a sliver of deep blue sky between buildings, long shadows.
+  cidade(ctx, w, h) {
+    vgrad(ctx, w, h, [[0, '#2E5FA3'], [0.3, '#5E86BC']], 0, h * 0.3);
+    vgrad(ctx, w, h, [[0, '#C9A27C'], [1, '#7D5E45']], h * 0.3, h);
+    blurred(ctx, w * 0.004, () => {
+      ctx.fillStyle = 'rgba(60,44,36,0.45)';
+      for (let i = 0; i < 6; i++) { ctx.beginPath(); const x = w * (i * 0.2 - 0.1); ctx.moveTo(x, h); ctx.lineTo(x + w * 0.12, h); ctx.lineTo(x + w * 0.42, h * 0.3); ctx.lineTo(x + w * 0.33, h * 0.3); ctx.fill(); }
+    });
+    bloom(ctx, w * 0.9, h * 0.32, w * 0.4, 'rgba(255,214,160,A)', 0.6);
+    vignette(ctx, w, h, 0.22); grain(ctx, w, h, 20);
+  },
+
+  // Swimming water from above: turquoise, caustic light.
+  agua(ctx, w, h) {
+    vgrad(ctx, w, h, [[0, '#2B8C9C'], [1, '#155C74']]);
+    blurred(ctx, 2.5, () => {
+      for (let i = 0; i < 260; i++) {
+        ctx.strokeStyle = `rgba(220,250,245,${0.08 + rand() * 0.22})`; ctx.lineWidth = 1 + rand() * 2.5;
+        const x = rand() * w, y = rand() * h, r = w * (0.02 + rand() * 0.05);
+        ctx.beginPath(); ctx.ellipse(x, y, r, r * 0.6, rand() * 3, 0, Math.PI * 1.3); ctx.stroke();
+      }
+    });
+    bloom(ctx, w * 0.7, h * 0.2, w * 0.5, 'rgba(255,244,214,A)', 0.4);
+    vignette(ctx, w, h, 0.25); grain(ctx, w, h, 18);
+  },
+
+  // Backlit leaves against the sky: amber and olive, very shallow focus.
+  folhas(ctx, w, h) {
+    vgrad(ctx, w, h, [[0, '#E9D6A2'], [1, '#B79B5C']]);
+    blurred(ctx, w * 0.018, () => {
+      for (let i = 0; i < 34; i++) {
+        ctx.fillStyle = `rgba(${rand() > .5 ? '112,118,54' : '176,152,64'},${0.35 + rand() * 0.4})`;
+        ctx.save(); ctx.translate(rand() * w, rand() * h); ctx.rotate(rand() * 3);
+        ctx.beginPath(); ctx.ellipse(0, 0, w * (0.06 + rand() * 0.08), w * (0.02 + rand() * 0.02), 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+      }
+    });
+    bloom(ctx, w * 0.6, h * 0.35, w * 0.5, 'rgba(255,246,214,A)', 0.8);
+    vignette(ctx, w, h, 0.2); grain(ctx, w, h, 16);
+  },
+
+  // Outdoor stairs in hard sun: diagonal light and shadow, a body mid-step.
+  escada(ctx, w, h) {
+    vgrad(ctx, w, h, [[0, '#E2C29A'], [1, '#B98D62']]);
+    blurred(ctx, w * 0.004, () => {
+      for (let i = 0; i < 9; i++) {
+        const y = h * (0.12 + i * 0.1);
+        ctx.fillStyle = 'rgba(92,58,36,0.32)';
+        ctx.beginPath(); ctx.moveTo(-w * 0.1, y + h * 0.18); ctx.lineTo(w * 1.1, y - h * 0.12); ctx.lineTo(w * 1.1, y - h * 0.08); ctx.lineTo(-w * 0.1, y + h * 0.22); ctx.fill();
+      }
+    });
+    bloom(ctx, w * 0.85, h * 0.1, w * 0.6, 'rgba(255,236,196,A)', 0.6);
+    blurred(ctx, w * 0.02, () => { ctx.fillStyle = 'rgba(221,94,63,0.55)'; ctx.beginPath(); ctx.ellipse(w * 0.4, h * 0.55, w * 0.05, h * 0.16, -0.3, 0, Math.PI * 2); ctx.fill(); });
+    vignette(ctx, w, h, 0.2); grain(ctx, w, h, 18);
+  },
+
+  // A city park in the morning: lawn, trees, light through the canopy.
+  parque(ctx, w, h) {
+    vgrad(ctx, w, h, [[0, '#A9C3CF'], [0.45, '#C9C99A'], [0.55, '#8FA35A'], [1, '#55692F']]);
+    blurred(ctx, w * 0.02, () => {
+      for (let i = 0; i < 18; i++) {
+        ctx.fillStyle = `rgba(${rand() > .5 ? '70,92,44' : '104,126,58'},${0.5 + rand() * 0.3})`;
+        ctx.beginPath(); ctx.ellipse(rand() * w, h * (0.2 + rand() * 0.25), w * (0.06 + rand() * 0.08), h * (0.08 + rand() * 0.1), 0, 0, Math.PI * 2); ctx.fill();
+      }
+    });
+    bloom(ctx, w * 0.3, h * 0.3, w * 0.5, 'rgba(255,240,200,A)', 0.6);
+    vignette(ctx, w, h, 0.2); grain(ctx, w, h, 18);
+  },
 };
 
 window.renderScene = (name, w, h) => {

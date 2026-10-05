@@ -223,6 +223,46 @@ export const icons = {
       layer(2, `<path d="M52 64H96M52 78H104M52 92H84" stroke="${C.orange}" stroke-opacity=".3" stroke-width="5" stroke-linecap="round" fill="none"/>`) +
       layer(3, solid(circle(110, 112, 20), 'or') + solid(circle(110, 112, 7), 'cr')),
   },
+
+  // Corpo — a figure reduced to two forms: a lit head above a grounded body, mid-step.
+  corpo: {
+    label: 'Corpo',
+    body:
+      cast(80, 142, 40) +
+      layer(1, solid('M44 136C44 104 58 76 80 76C102 76 116 104 116 136Z', 'cr')) +
+      layer(2.4, solid(circle(86, 50, 18), 'or')),
+  },
+
+  // Neurodiversidade — different shapes side by side, each complete in itself.
+  neurodiversidade: {
+    label: 'Neurodiversidade',
+    body:
+      cast(80, 142, 56) +
+      layer(1, solid('M20 132C20 108 26 98 44 98C62 98 68 108 68 132Z', 'cr')) +
+      layer(1.6, solid('M74 132L74 86C74 78 80 72 88 72L104 72C112 72 118 78 118 86L118 132Z', 'or')) +
+      layer(2.4, solid(circle(132, 110, 20), 'cr')) +
+      layer(3, solid(circle(48, 70, 11), 'or')),
+  },
+
+  // Botânica — a sprout with two rounded leaves: nature as a subject of study.
+  botanica: {
+    label: 'Botânica',
+    body:
+      cast(80, 142, 44) +
+      layer(1, solid('M36 136C36 118 56 110 80 110C104 110 124 118 124 136Z', 'cr')) +
+      layer(1.6, solid('M77 112L77 64C77 60 83 60 83 64L83 112Z', 'cr-shade')) +
+      layer(2.4, solid('M80 70C64 70 44 60 40 38C60 34 78 46 80 70Z', 'or')) +
+      layer(2.8, solid('M80 82C92 70 112 66 126 76C116 92 96 94 80 82Z', 'cr')),
+  },
+
+  // Bem-estar — a sun resting on the horizon: light, rhythm, a day that begins.
+  'bem-estar': {
+    label: 'Bem-estar',
+    body:
+      cast(80, 142, 54) +
+      layer(2, solid(circle(80, 92, 34), 'or')) +
+      layer(1, solid('M22 136C22 112 42 104 80 104C118 104 138 112 138 136Z', 'cr')),
+  },
 };
 
 export const symbol = (name) =>

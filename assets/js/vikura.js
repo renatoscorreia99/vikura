@@ -1,5 +1,15 @@
-/* VIKURA — interações editoriais
-   Calm by design: 200–400ms, soft ease-out, nothing that bounces or loops. */
+/* VIKURA — interações editoriais (núcleo)
+   Calm by design: 200–350ms, soft ease-out, nothing that bounces or loops.
+
+   Public API for page sections (see src/home/*.js):
+     Vikura.lines.register(name, def, opts)
+       def(util) returns an array of points [{x, y, t: [dx, dy], k}] in page
+       coordinates, or { points, stops: [elements] }. Hosts opt in with
+       data-line="name". opts: { cap: 'dot' | 'ring' | null, dashed: bool,
+       start: 0..1 (fraction drawn before scrolling), offset: vh fraction }
+     Vikura.util: { $, $$, box(el), textBox(el), margin(), narrow(), clamp, STATIC, reduced }
+     Vikura.relayout()
+*/
 (() => {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -11,7 +21,7 @@
 
   /* ---------------------------------------------------------------- header */
   const header = $('.site-header');
-  const onScrollHeader = () => header && header.classList.toggle('is-scrolled', scrollY > 8);
+  const onScrollHeader = () => header && header.classList.toggle('is-scrolled', scrollY > 40);
 
   const menuBtn = $('.menu-toggle');
   menuBtn && menuBtn.addEventListener('click', () => {
@@ -19,21 +29,25 @@
     const open = !nav.classList.contains('is-open');
     nav.classList.toggle('is-open', open);
     menuBtn.setAttribute('aria-expanded', open);
+    menuBtn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
   });
 
   /* ---------------------------------------------------------------- search */
   const searchIndex = [
-    ['Ansiedade ou estresse? Entender a diferença pode mudar a forma de cuidar', 'Mente'],
-    ['Por que dormir bem muda mais do que o seu nível de energia?', 'Sono'],
-    ['Insônia e ansiedade: como uma alimenta a outra', 'Sono'],
-    ['Melatonina: quando faz sentido e quando não faz', 'Sono'],
-    ['Caminhar 7 mil passos já faz diferença?', 'Movimento'],
-    ['Exercício e ansiedade: o que os estudos mostram', 'Movimento'],
-    ['Ultraprocessados: o que os estudos realmente mostram até agora', 'Nutrição'],
+    ['Não existe uma única forma de estar bem', 'Bem-estar'],
+    ['Ansiedade ou estresse? Entender a diferença pode mudar a forma de cuidar', 'Saúde mental'],
+    ['Por que descansar também faz parte do cuidado?', 'Saúde mental'],
+    ['Dormir melhor começa antes de deitar', 'Sono'],
+    ['O impacto da luz no sono', 'Sono'],
+    ['O que acontece com seu corpo quando você dorme menos de seis horas?', 'Sono'],
+    ['Saúde mental depois dos 40', 'Saúde mental'],
+    ['Caminhar ainda é um dos melhores exercícios?', 'Movimento'],
+    ['O que sabemos sobre creatina e cognição', 'Ciência'],
+    ['Exercício pode ajudar a memória? O que mostram as evidências', 'Ciência'],
+    ['O que realmente muda quando começamos a envelhecer melhor?', 'Longevidade'],
+    ['Cannabis medicinal e dor crônica', 'Cannabis medicinal'],
     ['TDAH na vida adulta: sinais que costumam passar despercebidos', 'Neurodiversidade'],
-    ['Cannabis medicinal no Brasil: como funciona a prescrição', 'Cannabis medicinal'],
-    ['Força e equilíbrio depois dos 50', 'Longevidade'],
-    ['Respiração lenta: uma ferramenta simples para desacelerar', 'Autocuidado'],
+    ['Ultraprocessados: o que os estudos realmente mostram até agora', 'Nutrição'],
   ];
   const panel = $('.search-panel');
   const toggle = $('.search-toggle');
@@ -63,7 +77,7 @@
       : `<span>Nenhum conteúdo com “${input.value}”. Tente um tema, como sono ou movimento.</span>`;
   });
 
-  /* ---------------------------------------------------------------- icons: 2–3px parallax */
+  /* ---------------------------------------------------------------- icons: 1–3px parallax */
   $$('[data-parallax]').forEach((host) => {
     const icons = $$('.vk-icon', host);
     host.addEventListener('pointermove', (e) => {
@@ -76,41 +90,20 @@
     host.addEventListener('pointerleave', () => icons.forEach((svg) => { svg.style.setProperty('--vk-px', 0); svg.style.setProperty('--vk-py', 0); }));
   });
 
-  /* ---------------------------------------------------------------- topics */
-  const topicData = {
-    sono: ['Sono', [['Por que dormir bem muda mais do que o seu nível de energia?', 'Guia · 8 min'], ['Insônia e ansiedade: como uma alimenta a outra', 'Estudo comentado · 6 min'], ['Melatonina: quando faz sentido e quando não faz', 'Perguntas · 5 min']]],
-    'saude-mental': ['Saúde mental', [['Ansiedade ou estresse? Entender a diferença pode mudar a forma de cuidar', 'Guia · 8 min'], ['Terapia: como escolher uma abordagem que faça sentido para você', 'Guia · 7 min'], ['Esgotamento: sinais que aparecem antes do limite', 'Estudo comentado · 6 min']]],
-    neurodiversidade: ['Neurodiversidade', [['TDAH na vida adulta: sinais que costumam passar despercebidos', 'Guia · 10 min'], ['Autismo em mulheres adultas: por que o diagnóstico chega tarde', 'Histórias · 7 min'], ['Neurodiversidade no trabalho: o que muda com informação', 'Guia · 6 min']]],
-    longevidade: ['Longevidade', [['Força e equilíbrio depois dos 50', 'Guia · 7 min'], ['Sono e memória com o passar dos anos', 'Estudo comentado · 6 min'], ['Vínculos sociais também são saúde', 'Ensaio · 5 min']]],
-    movimento: ['Movimento', [['Caminhar 7 mil passos já faz diferença?', 'Estudo comentado · 5 min'], ['Exercício e ansiedade: o que os estudos mostram', 'Guia · 6 min'], ['Mobilidade para quem passa o dia sentado', 'Prática · 4 min']]],
-    nutricao: ['Nutrição', [['Ultraprocessados: o que os estudos realmente mostram até agora', 'Estudo comentado · 6 min'], ['Intestino e humor: o que já se sabe', 'Guia · 8 min'], ['Proteína depois dos 50: quanto é suficiente?', 'Perguntas · 5 min']]],
-    autocuidado: ['Autocuidado', [['Respiração lenta: uma ferramenta simples para desacelerar', 'Prática · 4 min'], ['Pausas ao longo do dia: por que funcionam', 'Guia · 5 min'], ['Rotina de sono para quem trabalha em turnos', 'Guia · 6 min']]],
-  };
-  const preview = $('.topics__preview');
-  const selectTopic = (btn) => {
-    const key = btn.dataset.topic;
-    const [name, items] = topicData[key];
-    $$('.topic').forEach((b) => { const on = b === btn; b.classList.toggle('is-active', on); b.setAttribute('aria-pressed', on); });
-    if (!preview) return;
-    preview.classList.add('is-swapping');
-    setTimeout(() => {
-      $('.topics__preview-name', preview).textContent = name;
-      $('.topics__preview-all', preview).textContent = `Ver tudo sobre ${name.toLowerCase()}`;
-      $('ol', preview).innerHTML = items.map(([t, m]) => `<li><a href="artigo.html"><span class="meta">${m}</span><span class="serif">${t}</span></a></li>`).join('');
-      preview.classList.remove('is-swapping');
-    }, reduced ? 0 : 180);
-    requestAnimationFrame(layoutLines);
-  };
-  $$('.topic').forEach((btn) => {
-    btn.addEventListener('click', () => selectTopic(btn));
+  /* ---------------------------------------------------------------- disclosure */
+  // <button class="disclose" aria-expanded="false" aria-controls="x"> + <div class="disclose__panel" id="x"><div>…</div></div>
+  $$('.disclose[aria-controls]').forEach((btn) => {
+    const target = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!target) return;
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', open);
+      target.classList.toggle('is-open', open);
+      const label = btn.querySelector('[data-open-label]');
+      if (label) label.textContent = open ? label.dataset.closeLabel : label.dataset.openLabel;
+      setTimeout(relayout, 380);
+    });
   });
-
-  /* ---------------------------------------------------------------- index filters */
-  $$('.filter').forEach((f) => f.addEventListener('click', () => {
-    $$('.filter').forEach((x) => x.setAttribute('aria-pressed', x === f));
-    const kind = f.dataset.kind;
-    $$('.ix[data-kind]').forEach((it) => it.classList.toggle('is-dim', kind !== 'all' && !it.dataset.kind.split(' ').includes(kind)));
-  }));
 
   /* ---------------------------------------------------------------- newsletter */
   $$('.signup').forEach((form) => form.addEventListener('submit', (e) => {
@@ -126,7 +119,9 @@
 
   /* ================================================================ Direction Line */
   const journey = $('#journey');
+  const registry = new Map();
   const lines = [];
+  const ns = 'http://www.w3.org/2000/svg';
 
   // Hermite curve through points with explicit tangents: smooth, never arrow-like.
   const curve = (pts) => {
@@ -141,159 +136,71 @@
     }
     return d;
   };
+  const origin = () => journey.getBoundingClientRect();
   const box = (el) => {
     const r = el.getBoundingClientRect();
-    const o = journey.getBoundingClientRect();
+    const o = origin();
     return { left: r.left - o.left, top: r.top - o.top, right: r.right - o.left, bottom: r.bottom - o.top, width: r.width, height: r.height, cx: r.left - o.left + r.width / 2, cy: r.top - o.top + r.height / 2 };
   };
-  const margin = () => parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--m')) || 64;
-  const narrow = () => innerWidth <= 720;
-
-  const defs = {
-    // Hero: leaves the headline, crosses the photograph, travels down the margin and underlines the topic.
-    hero() {
-      const last = $('.hero__title .line:last-child');
-      const photo = $('.hero__photo');
-      const topic = $('.topic.is-active .topic__name') || $('.topic__name');
-      if (!last || !photo || !topic) return null;
-      const range = document.createRange();
-      range.selectNodeContents(last);
-      const rr = range.getBoundingClientRect(), o = journey.getBoundingClientRect();
-      const t = { right: rr.right - o.left, top: rr.top - o.top, height: rr.height };
-      const p = box(photo), n = box(topic), gx = margin() / 2;
-      const x0 = t.right + 22, y0 = t.top + t.height * 0.58;
-      if (narrow()) {
-        return [
-          { x: gx, y: p.top - 80, t: [0, 1] },
-          { x: gx, y: p.bottom + 80, t: [0, 1] },
-          { x: gx, y: n.bottom - 40, t: [0, 1] },
-          { x: n.left, y: n.bottom + 7, t: [1, 0], k: 0.5 },
-          { x: n.right + 4, y: n.bottom + 7, t: [1, 0] },
-        ];
-      }
-      return [
-        { x: x0, y: y0, t: [1, 0.12] },
-        { x: p.left + p.width * 0.7, y: p.top + p.height * 0.34, t: [0.08, 1], k: 0.5 },
-        { x: p.left + p.width * 0.26, y: p.bottom, t: [-1, 0.42], k: 0.42 },
-        { x: gx, y: p.bottom + 200, t: [-0.12, 1], k: 0.5 },
-        { x: gx, y: n.bottom - 46, t: [0, 1] },
-        { x: n.left, y: n.bottom + 7, t: [1, 0], k: 0.55 },
-        { x: n.right + 6, y: n.bottom + 7, t: [1, 0] },
-      ];
-    },
-
-    // The path of knowledge: one continuous journey through four stages, open at both ends.
-    path() {
-      const nodes = $$('.stage__node');
-      const sec = $('.path__stages');
-      if (nodes.length < 4 || !sec) return null;
-      const s = box(sec);
-      const c = nodes.map((n) => box(n));
-      if (narrow()) {
-        const x = c[0].cx;
-        return [
-          { x, y: s.top - 60, t: [0, 1] },
-          ...c.map((b) => ({ x: b.cx, y: b.cy, t: [0, 1] })),
-          { x, y: s.bottom + 40, t: [0, 1] },
-        ];
-      }
-      const W = journey.getBoundingClientRect().width;
-      return [
-        { x: -20, y: c[0].cy + 150, t: [1, -0.55] },
-        { x: c[0].cx, y: c[0].cy, t: [1, 0], k: 0.42 },
-        { x: c[1].cx, y: c[1].cy, t: [1, 0], k: 0.42 },
-        { x: c[2].cx, y: c[2].cy, t: [1, 0], k: 0.42 },
-        { x: c[3].cx, y: c[3].cy, t: [1, 0], k: 0.42 },
-        { x: W + 20, y: c[3].cy - 150, t: [1, -0.55] },
-      ];
-    },
-
-    // Human stories: from the headline down across the active photograph.
-    stories() {
-      const title = $('.stories__title');
-      const photo = $('.stories__active .photo');
-      if (!title || !photo || narrow()) return null;
-      const range = document.createRange();
-      range.selectNodeContents($('.stories__title .line:last-child') || title);
-      const rr = range.getBoundingClientRect(), o = journey.getBoundingClientRect();
-      const p = box(photo);
-      return [
-        { x: rr.right - o.left + 22, y: rr.top - o.top + rr.height * 0.6, t: [1, 0.2] },
-        { x: p.left + p.width * 0.82, y: p.top + p.height * 0.2, t: [0, 1], k: 0.5 },
-        { x: p.left + p.width * 0.62, y: p.bottom - p.height * 0.08, t: [-1, 0.5], k: 0.45 },
-      ];
-    },
-
-    // Index: links a quote to the study it comes from.
-    index() {
-      const q = $('.ix--quote figcaption');
-      const ref = $('.ix--ref .ref');
-      if (!q || !ref || narrow()) return null;
-      const a = box(q), b = box(ref);
-      return [
-        { x: a.left, y: a.bottom + 26, t: [1, 0] },
-        { x: b.left - 1, y: b.top, t: [0.2, -1], k: 0.6 },
-      ];
-    },
-
-    // Footer: underlines the last promise and leaves the page, still open.
-    footer() {
-      const last = $('.footer__statement .line:last-child');
-      if (!last) return null;
-      const range = document.createRange();
-      range.selectNodeContents(last);
-      const rr = range.getBoundingClientRect(), o = journey.getBoundingClientRect();
-      const W = o.width;
-      const y = rr.bottom - o.top + 6;
-      return [
-        { x: rr.left - o.left, y, t: [1, 0] },
-        { x: rr.right - o.left + 40, y, t: [1, 0] },
-        { x: W + 20, y: y - 140, t: [1, -0.8], k: 0.5 },
-      ];
-    },
+  // Box of the rendered text itself (last line of a headline, for example).
+  const textBox = (el) => {
+    const range = document.createRange();
+    range.selectNodeContents(el);
+    const rects = [...range.getClientRects()];
+    const r = rects.length ? rects[rects.length - 1] : el.getBoundingClientRect();
+    const o = origin();
+    return { left: r.left - o.left, top: r.top - o.top, right: r.right - o.left, bottom: r.bottom - o.top, width: r.width, height: r.height, cx: r.left - o.left + r.width / 2, cy: r.top - o.top + r.height / 2 };
   };
+  const margin = () => parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--m')) || 48;
+  const narrow = () => innerWidth <= 720;
+  const util = { $, $$, box, textBox, margin, narrow, clamp, STATIC, reduced, width: () => origin().width };
 
-  const ns = 'http://www.w3.org/2000/svg';
   function layoutLines() {
     if (!journey) return;
-    journey.setAttribute('height', document.documentElement.scrollHeight);
-    journey.style.height = document.documentElement.scrollHeight + 'px';
+    const H = document.documentElement.scrollHeight;
+    journey.setAttribute('height', H);
+    journey.style.height = H + 'px';
     lines.length = 0;
     journey.innerHTML = '';
     $$('[data-line]').forEach((host) => {
       const name = host.dataset.line;
-      const pts = defs[name] && defs[name]();
-      if (!pts) return;
+      const entry = registry.get(name);
+      if (!entry) return;
+      let out;
+      try { out = entry.def(util, host); } catch (err) { console.warn('Direction Line', name, err); return; }
+      if (!out) return;
+      const pts = Array.isArray(out) ? out : out.points;
+      if (!pts || pts.length < 2) return;
+      const opts = entry.opts || {};
       const path = document.createElementNS(ns, 'path');
-      path.setAttribute('class', 'dline-path');
+      path.setAttribute('class', 'dline-path' + (opts.dashed ? ' dline-path--dashed' : ''));
       path.setAttribute('d', curve(pts));
       path.dataset.name = name;
       journey.appendChild(path);
-      const end = pts[pts.length - 1];
       let cap = null;
-      if (name === 'hero' || name === 'stories' || name === 'index') {
+      if (opts.cap) {
+        const end = pts[pts.length - 1];
         cap = document.createElementNS(ns, 'circle');
         cap.setAttribute('cx', end.x); cap.setAttribute('cy', end.y);
-        cap.setAttribute('r', name === 'index' ? 3 : 4);
-        cap.setAttribute('class', name === 'hero' || name === 'index' ? 'dline-dot' : 'dline-end');
+        cap.setAttribute('r', opts.cap === 'dot' ? 3.5 : 4.5);
+        cap.setAttribute('class', opts.cap === 'dot' ? 'dline-dot' : 'dline-end');
         journey.appendChild(cap);
       }
       const L = path.getTotalLength();
-      path.style.strokeDasharray = `${L} ${L}`;
+      if (!opts.dashed) path.style.strokeDasharray = `${L} ${L}`;
       const ys = pts.map((p) => p.y);
-      const line = { name, path, cap, L, top: Math.min(...ys), bottom: Math.max(...ys), pts };
-      if (name === 'path') {
-        // where along the line each stage sits
-        const nodes = $$('.stage');
-        line.stops = nodes.map((st) => {
-          const b = box($('.stage__node', st));
+      const line = { name, path, cap, L, opts, top: Math.min(...ys), bottom: Math.max(...ys) };
+      const stops = !Array.isArray(out) && out.stops ? out.stops : null;
+      if (stops) {
+        line.stops = stops.map((el) => {
+          const b = box(el);
           let best = 0, bd = Infinity;
           for (let i = 0; i <= 240; i++) {
             const l = (L * i) / 240, q = path.getPointAtLength(l);
             const dd = (q.x - b.cx) ** 2 + (q.y - b.cy) ** 2;
             if (dd < bd) { bd = dd; best = l; }
           }
-          return { el: st, at: best / L };
+          return { el, at: best / L };
         });
       }
       lines.push(line);
@@ -302,33 +209,56 @@
   }
 
   function drawLines() {
+    if (!journey) return;
     const vh = innerHeight;
-    const top = journey ? journey.getBoundingClientRect().top + scrollY : 0;
+    const top = journey.getBoundingClientRect().top + scrollY;
     lines.forEach((ln) => {
       let p;
       if (STATIC || reduced) p = 1;
       else {
-        const start = top + ln.top - vh * 0.82;
+        const start = top + ln.top - vh * (ln.opts.offset ?? 0.82);
         const span = Math.max(1, ln.bottom - ln.top + vh * 0.12);
         p = clamp((scrollY - start) / span);
-        if (ln.name === 'hero') p = Math.max(p, heroIntro);
+        if (ln.opts.start) p = Math.max(p, ln.opts.start * intro);
       }
-      ln.path.style.strokeDashoffset = (ln.L * (1 - p)).toFixed(1);
+      if (ln.opts.dashed) {
+        // dashed lines reveal through a mask-less trick: fade in with progress
+        ln.path.style.opacity = clamp(p * 1.4).toFixed(3);
+      } else {
+        ln.path.style.strokeDashoffset = (ln.L * (1 - p)).toFixed(1);
+      }
       if (ln.cap) ln.cap.style.opacity = p > 0.985 ? 1 : 0;
       if (ln.stops) ln.stops.forEach((s) => s.el.classList.toggle('is-reached', p >= s.at - 0.01));
     });
   }
 
-  // The hero line draws its first stretch on load, then follows the scroll.
-  let heroIntro = STATIC || reduced ? 1 : 0;
+  // Lines that start inside the first view draw their first stretch on load.
+  let intro = STATIC || reduced ? 1 : 0;
   let introStart = 0;
-  const intro = (now) => {
+  const introStep = (now) => {
     if (!introStart) introStart = now;
     const t = clamp((now - introStart) / 1400);
-    heroIntro = 0.32 * (1 - Math.pow(1 - t, 3));
+    intro = 1 - Math.pow(1 - t, 3);
     drawLines();
-    if (t < 1) requestAnimationFrame(intro);
+    if (t < 1) requestAnimationFrame(introStep);
   };
+
+  // Footer: the last line underlines the promise and leaves the page, still open.
+  registry.set('footer', {
+    opts: {},
+    def: ({ textBox, $, width }) => {
+      const last = $('.footer__statement .line:last-child');
+      if (!last) return null;
+      const t = textBox(last);
+      const W = width();
+      const y = t.bottom + 4;
+      return [
+        { x: t.left, y, t: [1, 0] },
+        { x: t.right + 48, y, t: [1, 0] },
+        { x: W + 20, y: y - 120, t: [1, -0.8], k: 0.5 },
+      ];
+    },
+  });
 
   /* ================================================================ Article */
   const prose = $('.prose');
@@ -340,18 +270,18 @@
     5: ['Stonerock et al., 2015', 'Exercise as treatment for anxiety: systematic review and analysis', 'Annals of Behavioral Medicine', '2015', 'Revisão sistemática'],
     6: ['Hofmann et al., 2012', 'The efficacy of cognitive behavioral therapy: a review of meta-analyses', 'Cognitive Therapy and Research', '2012', 'Revisão de meta-análises'],
   };
-  const noteMarkup = (n, inline) => {
+  const noteMarkup = (n) => {
     const [short, title, pub, year, type] = sources[n];
     return `<div class="note__head"><span class="note__n">${n}</span><span>${short}</span></div>
       <div class="note__more"><div>
         <span class="note__title">${title}</span>
         <span><span class="note__pub">${pub}</span> · ${year}</span>
         <span>${type}</span>
-        <a class="note__link" href="#fonte-${n}">Ver na lista de fontes <span class="cp cp--sm cp--e" aria-hidden="true"></span></a>
+        <a class="note__link" href="#fonte-${n}">Ver na lista de fontes <span class="cp cp--sm" aria-hidden="true"></span></a>
       </div></div>`;
   };
 
-  let notes = [];
+  const notes = [];
   function layoutNotes() {
     const aside = $('.notes');
     if (!aside || !prose || getComputedStyle(aside).display === 'none') return;
@@ -407,20 +337,20 @@
         }
         // Small screens: the source unfolds right under the paragraph.
         const para = cite.closest('p, li');
-        let box = para.nextElementSibling;
-        if (!box || !box.classList.contains('cite-inline') || box.dataset.n !== n) {
+        let inline = para.nextElementSibling;
+        if (!inline || !inline.classList.contains('cite-inline') || inline.dataset.n !== n) {
           $$('.cite-inline', prose).forEach((b) => b.remove());
-          box = document.createElement('div');
-          box.className = 'cite-inline note';
-          box.dataset.n = n;
-          box.innerHTML = noteMarkup(n);
-          box.style.position = 'relative';
-          box.style.margin = '12px 0 4px';
-          para.after(box);
-          requestAnimationFrame(() => box.classList.add('is-open'));
+          inline = document.createElement('div');
+          inline.className = 'cite-inline note';
+          inline.dataset.n = n;
+          inline.innerHTML = noteMarkup(n);
+          inline.style.position = 'relative';
+          inline.style.margin = '12px 0 4px';
+          para.after(inline);
+          requestAnimationFrame(() => inline.classList.add('is-open'));
           cite.classList.add('is-open');
         } else {
-          box.remove();
+          inline.remove();
           cite.classList.remove('is-open');
         }
       });
@@ -453,20 +383,32 @@
   }
 
   /* ---------------------------------------------------------------- boot */
+  let booted = false;
   const relayout = () => { layoutLines(); layoutNotes(); };
+  window.Vikura = {
+    util,
+    relayout,
+    lines: {
+      register(name, def, opts = {}) {
+        registry.set(name, { def, opts });
+        if (booted) relayout();
+      },
+    },
+  };
   addEventListener('scroll', () => { onScrollHeader(); drawLines(); }, { passive: true });
   let rz;
   addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(relayout, 120); });
   const boot = () => {
+    booted = true;
     onScrollHeader();
     relayout();
+    document.dispatchEvent(new CustomEvent('vikura:ready'));
     if (STATIC) {
-      const kc = $('[data-demo="hover"]');
-      kc && kc.classList.add('is-preview');
+      $$('[data-demo-open]').forEach((el) => el.click());
       if (notes.length) openNote('3', true, true);
       setTimeout(relayout, 60);
-    } else if (!reduced) requestAnimationFrame(intro);
+    } else if (!reduced) requestAnimationFrame(introStep);
   };
-  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(boot);
+  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(() => setTimeout(boot, 0));
   addEventListener('load', relayout);
 })();

@@ -1,20 +1,22 @@
 # VIKURA: website mockup
 
-High-fidelity, working mockups for **Vikura**, a Brazilian health, wellbeing and knowledge platform. The brand idea behind them is *orientation for personal protagonism*.
+High-fidelity, working mockups for **Vikura**, a Brazilian health, wellbeing and knowledge platform. Core idea: *Conhecimento para você encontrar o seu caminho.*
+
+Version 2 turns the homepage into a **news and knowledge portal**. It reads like the front page of an independent editorial publication, not a marketing landing page.
 
 | | Page | File | Render |
 |---|---|---|---|
-| 01 | Homepage | `index.html` | `mockups/01-vikura-home-desktop.png` · `mockups/01-vikura-home-mobile.png` |
+| 01 | Homepage (portal) | `index.html` | `mockups/01-vikura-home-desktop.png` · `mockups/01-vikura-home-mobile.png` |
 | 02 | Article / knowledge page | `artigo.html` | `mockups/02-vikura-artigo-desktop.png` · `mockups/02-vikura-artigo-mobile.png` |
 | 03 | Identity system board | `sistema.html` | `mockups/03-vikura-sistema.png` |
 
-`mockups/estados/` holds interaction-state renders: open search, selected topic, card hover, open citation, the knowledge path mid-reveal, and the mobile menu.
+`mockups/estados/` holds interaction-state renders.
 
 All visible copy is in Brazilian Portuguese.
 
 ## View it
 
-The pages are static HTML, CSS and JS with self-hosted fonts and no build step.
+The pages are static HTML, CSS and JS with self-hosted fonts and no runtime dependencies.
 
 ```sh
 npx http-server -p 8765 .
@@ -23,60 +25,65 @@ npx http-server -p 8765 .
 
 Append `?static` to any page to draw every Direction Line and switch the demo states on. The full-page renders use this mode.
 
+## Homepage structure
+
+1. **Masthead.** A dateline (date and what Vikura is), the logo, seven sections (Saúde, Mente, Bem-estar, Longevidade, Movimento, Ciência, Cannabis medicinal), Buscar and Sobre, and a thin rule. The search panel unfolds under the bar.
+2. **Front page** (`s01-capa`). One dominant story with three secondary stories, each given a different weight.
+3. **Em destaque agora** (`s02-destaque`). A slim numbered strip that scrolls horizontally on mobile.
+4. **Explore sua saúde** (`s03-explore`). Topic navigation with the 2.5D icons and live story links. All 11 portal topics are reachable from it.
+5. **Mais recentes** (`s04-recentes`). Lead story, two smaller stories, a dated list and a "Mais lidas" column.
+6. **Editorial feature** (`s05-especial`). A burgundy interruption: "Cuidar da saúde também é aprender a fazer melhores perguntas."
+7. **Saúde mental** (`s06-mente`). One feature, three secondary stories and a text-only guide.
+8. **Ciência por trás do cuidado** (`s07-ciencia`). An evidence register showing study, source, year and reviewer, with expandable source details.
+9. **Longevidade** (`s08-longevidade`) and **Movimento** (`s09-movimento`), the most orange-forward section.
+10. **Cannabis medicinal** (`s10-cannabis`). One restrained botanical vertical.
+11. **O caminho do conhecimento** (`s11-jornada`). The Direction Line underlines Descobrir, Entender, Escolher and Agir.
+12. **Saúde na vida real** (`s12-vida-real`). Editorial portraits and quotes, with no testimonials.
+13. **Newsletter** ("Uma pausa para entender melhor.") and **footer** ("Conhecimento para você encontrar o seu caminho.").
+
 ## Identity system
 
-- **Type.** Fraunces with the `SOFT` axis at 100 ("Fraunces Soft") carries headlines, statements, quotes and important questions. Instrument Sans carries navigation, body, metadata, labels and UI. The split is roughly 25 / 75.
-- **Colour.** Cream `#FAECD1`, charcoal `#272424` and burgundy `#400D0E` carry the page. Orange `#DD5E3F` marks direction, selection and active state. Yellow `#F3D34A` appears only as a point of light, in the longevity headline. For small orange text on cream, `--orange-ink` (`#AE4029`) is used, which reaches 5.0:1 contrast.
-- **Direction Line.** A continuous path drawn by `assets/js/vikura.js` from the real positions of elements on the page, so it connects them precisely at any width. It leaves the hero headline, crosses the photograph, travels down the margin and underlines the selected topic. It also runs through the four stages of the knowledge path, crosses the human-stories photograph, links a quote to its study, and leaves the page in the footer. It reveals with scroll, never ends in an arrowhead and never crosses running text. Inside the article it is solid for what is known and dashed for what is still open.
-- **Compass point.** A two-tone needle (`.cp`) used as the dot of the ı in the logo, as category marker, bullet, active indicator and CTA marker.
-- **2.5D icons.** Nine icons generated as SVG by `tools/icons.mjs`: sono, saúde mental, longevidade, movimento, nutrição, autocuidado, conhecimento, autonomia and evidência. Each is a front-facing silhouette with airbrushed radial light, a soft inner shadow, a warm bounce light and fine analog grain, with no outlines. Their layers shift 1–3 px with the pointer. Standalone files are in `assets/icons/`.
-- **Grid.** 1440 px frame, 12 columns, 64 px margins, 24 px gutter, 8 px spacing system. On mobile: 4 columns, 20 px margins, and horizontal paths turn vertical.
-- **Motion.** 200–400 ms with a soft ease-out and no springs. All of it is disabled under `prefers-reduced-motion`.
+- **Logo.** The supplied master file (`assets/brand/vikura-logo.svg`), inlined so the wordmark can turn cream on dark grounds. The symbol is in `assets/brand/vikura-simbolo.svg`. Note that the logo file uses `#FC5E3B` while the interface palette uses `#DD5E3F`. The logo is applied exactly as delivered.
+- **Compass point.** The supplied needle (`assets/brand/vikura-agulha.svg`), used as a CSS mask (`.cp`): category marker on hover, bullets, CTA markers, the review seal and active indicators.
+- **Type.** Fraunces with the `SOFT` axis at 100 carries headlines, statements, quotes and human moments. Instrument Sans carries navigation, body copy, metadata, categories, sources and UI, at roughly 25–30 % / 70–75 %.
+- **Colour.** Cream `#FAECD1`, off-white paper `#FDF6EA`, charcoal `#272424` and burgundy `#400D0E` carry the page. Orange `#DD5E3F` is the accent; small orange text uses `#AE4029` (5.0:1 on cream). Yellow `#F3D34A` appears only as rare light.
+- **Story system.** Category, headline, dek, metadata and review seal sit directly on the page, separated by rules rather than boxed in cards. Rounded corners appear only on a few photo modules. On hover the headline shifts 2 px, the category turns orange and the needle appears, and the photo crop moves 1.5 %. List dividers warm to orange.
+- **2.5D icons.** Thirteen SVG icons generated by `tools/icons.mjs`. Each is a front-facing silhouette with airbrushed light, a soft inner shadow and analog grain, with no outlines. Their layers move 1–3 px with the pointer.
+- **Direction Line.** Drawn by `assets/js/vikura.js` from real element positions. It reveals with scroll, never ends in an arrowhead, and leaves the page open. Sections register lines declaratively with `Vikura.lines.register(name, def, opts)`.
+- **Grid and motion.** 1440 px frame, 12 columns, 48 px margins, 24 px gutter, 8 px rhythm; 4 columns and 20 px margins on mobile. Transitions run 200–350 ms with a soft ease-out, and all of them are disabled under `prefers-reduced-motion`.
 
 ## Photography: action needed
 
-This build environment could not reach stock-photo hosts, so **every photograph is an art-direction frame**. Each one is a light-and-colour study rendered by `tools/photo-frames.html`, carrying crop marks and a written shot brief: subject, age, light, crop and what to avoid. The frames hold the composition, palette and negative space of each shot. They do not stand in for real people.
+This build environment cannot reach stock-photo hosts, so **every photograph is an art-direction frame**. Each frame is a light-and-colour study rendered by `tools/photo-frames.html`, with crop marks and a written shot brief: subject, age, light, crop and what to avoid. The frames hold composition, palette and negative space only; they never depict people.
 
 To place the commissioned or licensed photography:
 
-1. Replace the file in `assets/photos/` with one of the same name and aspect ratio.
-2. Remove the `data-direction` attribute from its `<figure>` or `.photo` element. The crop marks and shot note then disappear.
-
-| File | Shot |
-|---|---|
-| `hero.jpg` | Woman, early 40s, walking into the wind at late afternoon; deep blue sky, cropped at the shoulder |
-| `sono-feature.jpg` | Morning light through blinds across linen sheets |
-| `nutricao.jpg` | Overhead terracotta table, citrus, hands of different ages |
-| `retrato-rafael.jpg` | Intimate portrait, man, 37, window light, real skin |
-| `joana-pedalando.jpg` | Woman, 29, cycling the coast road, wind, low camera |
-| `longevidade-cecilia.jpg` | Woman, 61, silver hair, in the sea at sunrise |
-| `botanica.jpg` | Leaf shadows on limewash, a single stem in a glass (no buds, no smoke) |
-| `leitura.jpg` | Reading at the kitchen table, late afternoon |
-| `caminhada.jpg` | Two friends, 50 and 70, walking at dusk |
-| `artigo-janela.jpg` | Woman, 35, eyes closed by an open window, first light |
-| `relacionado-sono.jpg` | Bedroom at dawn, light through blinds |
+1. Replace the file in `assets/photos/` with one of the same name and a similar ratio.
+2. Remove `data-direction` from its `.photo` element. The crop marks and shot note then disappear.
 
 ## Content notes
 
-People, reviewers and quotes are fictional placeholders. The bibliographic references in the article are real publications (McEwen 1998, DSM-5-TR, WHO 2017, the *Lancet* 2021 COVID-19 Mental Disorders Collaborators study, Stonerock et al. 2015, Hofmann et al. 2012, and Ding et al. 2025 in *The Lancet Public Health*). They should still go through the editorial team's own source check before anything is published. Brazilian resources mentioned (CVV 188, UBS, CAPS, Anvisa RDC 327/2019) are real.
+People, reviewers and quotes are fictional placeholders. Where a study is named, it is a real publication. Elsewhere only journal, year and study type are shown, and the Nature Medicine 2026 example comes from the brief. All sources should go through the editorial team's own check before publication. Brazilian resources (CVV 188, SUS, UBS, CAPS, Anvisa RDC 327/2019) are real.
 
-## Scripts
+## Working on it
 
 ```sh
-node tools/build.mjs                 # inject the icon sprite into the pages, export assets/icons/*.svg
-node tools/build-photos.mjs          # regenerate the art-direction frames (needs Playwright)
-node tools/render-mockups.mjs        # full-page and state renders into mockups/ (needs the local server)
+node tools/build.mjs                       # assemble index.html from src/, inject partials + icon sprite
+node tools/preview-section.mjs s04-recentes  # one section in isolation, screenshots + overflow check
+node tools/build-photos.mjs                # regenerate the art-direction frames
+node tools/render-mockups.mjs              # full-page and state renders into mockups/ (needs the local server)
 ```
 
-## Structure
-
 ```
-index.html  artigo.html  sistema.html
-assets/css/fonts.css     self-hosted Fraunces + Instrument Sans (OFL)
-assets/css/vikura.css    tokens, grid, components, responsive
-assets/js/vikura.js      Direction Line, topics, search, citations, reading progress
-assets/icons/            2.5D icon SVGs
-assets/photos/           art-direction frames (to be replaced)
-tools/                   icon generator, sprite build, frame and mockup renderers
-mockups/                 PNG renders
+src/index.template.html   homepage shell
+src/home/sNN-*.html|css|js  homepage sections → index.html, assets/css/home.css, assets/js/home.js
+src/partials/             header, newsletter, footer, inline logo (shared by every page)
+assets/css/vikura.css     tokens, type, needle, story system, header, footer
+assets/css/article.css    article page
+assets/js/vikura.js       search, menu, disclosure, Direction Line engine, article citations
+assets/brand/             logo master, symbol, needle
+assets/icons/             2.5D icon SVGs
+assets/photos/            art-direction frames (to be replaced)
+tools/                    builders and renderers
+mockups/                  PNG renders
 ```
