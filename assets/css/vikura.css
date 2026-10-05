@@ -152,6 +152,38 @@ button { background: none; border: 0; padding: 0; cursor: pointer; }
 .cp--sm { --cp: 7px; }
 .cp--ink { background: currentColor; }
 
+/* The needle at poster scale, as on the brand board's cards. Decorative only. */
+.needle-xl {
+  --size: 220px;
+  display: block;
+  width: var(--size);
+  height: var(--size);
+  background: var(--orange);
+  -webkit-mask: var(--needle) center / contain no-repeat;
+  mask: var(--needle) center / contain no-repeat;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+.needle-xl--down { transform: none; }
+
+/* Word stack from the brand board: one word lit by the needle, the others at rest. */
+.wordstack { display: grid; gap: 2px; font-family: var(--sans); font-size: clamp(20px, 1.7vw, 25px); line-height: 1.3; letter-spacing: -0.005em; }
+.wordstack__w { position: relative; display: flex; align-items: center; color: color-mix(in srgb, currentColor 30%, transparent); transition: color var(--t-slow) var(--ease); }
+.wordstack__w::before {
+  content: "";
+  position: absolute;
+  left: -1.4em;
+  width: 0.72em; height: 0.72em;
+  background: var(--orange);
+  -webkit-mask: var(--needle) center / contain no-repeat;
+  mask: var(--needle) center / contain no-repeat;
+  transform: rotate(-90deg) translateY(-6px);
+  opacity: 0;
+  transition: opacity var(--t-slow) var(--ease), transform var(--t-slow) var(--ease);
+}
+.wordstack__w.is-on { color: currentColor; }
+.wordstack__w.is-on::before { opacity: 1; transform: rotate(-90deg); }
+
 /* --------------------------------------------------------------------------
    Direction Line — continuous path that connects, underlines and moves on.
    Drawn by assets/js/vikura.js from live anchor positions; never an arrow.
@@ -311,7 +343,9 @@ a:hover .vk-icon, button:hover .vk-icon, .vk-icon:hover { filter: brightness(1.0
   color: var(--ink);
   transition: color var(--t) var(--ease);
 }
-.story__cat .cp { opacity: 0; margin-right: -4px; transform: rotate(-90deg) translateX(3px); transition: opacity var(--t) var(--ease), transform var(--t) var(--ease), margin var(--t) var(--ease); }
+.story__cat { position: relative; }
+/* The needle hangs in the gutter, so labels stay flush with headlines. */
+.story__cat .cp { position: absolute; left: -16px; top: calc(50% - 4.5px); opacity: 0; transform: translateX(-4px) rotate(-90deg); transition: opacity var(--t) var(--ease), transform var(--t) var(--ease); }
 .story__title { color: var(--ink); transition: transform var(--t) var(--ease), color var(--t) var(--ease); }
 .story__title a::after { content: ""; position: absolute; inset: 0; z-index: 3; }   /* whole story is clickable */
 .story__dek { font-size: 16px; line-height: 1.5; color: var(--ink-soft); max-width: 62ch; }
@@ -329,7 +363,7 @@ a:hover .vk-icon, button:hover .vk-icon, .vk-icon:hover { filter: brightness(1.0
 .story__meta .reviewed::before { content: none; }
 .story__meta > .reviewed { margin-left: 14px; }
 .story:hover .story__cat, .story:focus-within .story__cat { color: var(--orange-ink); }
-.story:hover .story__cat .cp, .story:focus-within .story__cat .cp { opacity: 1; margin-right: 0; transform: rotate(-90deg); }
+.story:hover .story__cat .cp, .story:focus-within .story__cat .cp { opacity: 1; transform: rotate(-90deg); }
 .story:hover .story__title, .story:focus-within .story__title { transform: translateX(2px); }
 .on-dark .story__title, .on-dark .story__cat { color: var(--on-dark); }
 .on-dark .story__dek, .on-dark .story__meta { color: var(--on-dark-soft); }
@@ -383,6 +417,9 @@ a:hover .vk-icon, button:hover .vk-icon, .vk-icon:hover { filter: brightness(1.0
 .sec-head__more { grid-column: 10 / span 3; justify-self: end; align-self: start; }
 .sec-head__intro { grid-column: 4 / span 5; margin-top: 16px; color: var(--ink-soft); font-size: 16px; }
 .on-dark .sec-head { border-top-color: var(--on-dark); }
+/* Editoria heads carry their 2.5D icon beside the title. */
+.sec-head__title--icon { display: flex; align-items: center; gap: 0.3em; }
+.sec-head__title--icon .vk-icon { flex: none; width: 1.3em; height: 1.3em; margin-block: -0.25em; margin-left: -0.12em; }
 
 /* Generic disclosure — sources and metadata expand smoothly when selected. */
 .disclose {

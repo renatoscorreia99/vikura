@@ -1,0 +1,95 @@
+/* s06 · Saúde mental — the first editoria page.
+   5 / 4 / 3: a tall portrait lead, a middle rail with three stories in three treatments
+   (picture on top, picture beside, text only in italic), and a text-only guide set on a
+   paper panel: when to look for help and where, with real Brazilian services. */
+
+.s-mente .s-mente__grid { align-items: start; }
+
+/* ---------- lead ---------- */
+.s-mente .s-mente__lead { grid-column: 1 / span 5; gap: 0; }
+.s-mente .s-mente__lead-photo { aspect-ratio: 4 / 5; }
+.s-mente .s-mente__lead-photo img { object-position: 30% 50%; }
+.s-mente .s-mente__lead .story__media { margin-bottom: 22px; }
+.s-mente .s-mente__lead .story__title { margin-top: 12px; }
+.s-mente .s-mente__lead .story__dek { margin-top: 14px; font-size: 17px; }
+.s-mente .s-mente__lead .story__meta { margin-top: 16px; }
+.s-mente .s-mente__lead .story__meta > span:first-child { color: var(--ink); font-weight: 600; }
+
+/* ---------- middle rail ---------- */
+.s-mente .s-mente__mid { grid-column: 6 / span 4; align-self: stretch; display: grid; align-content: start; }
+.s-mente .s-mente__s { gap: 10px; }
+.s-mente .s-mente__s + .s-mente__s { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--rule); }
+.s-mente .s-mente__s--top .photo { aspect-ratio: 3 / 2; }
+.s-mente .s-mente__s--top .story__media { margin-bottom: 8px; }
+
+.s-mente .s-mente__s--beside { grid-template-columns: minmax(0, 1fr) 104px; column-gap: 18px; row-gap: 8px; }
+.s-mente .s-mente__s--beside .story__media { grid-column: 2; grid-row: 1 / span 3; }
+.s-mente .s-mente__s--beside .photo { aspect-ratio: 4 / 5; }
+.s-mente .s-mente__s--beside > :not(.story__media) { grid-column: 1; }
+
+.s-mente .s-mente__s--text .story__title { max-width: 13em; }
+.s-mente .s-mente__s--text .story__dek { font-size: 15.5px; }
+
+/* ---------- the guide ---------- */
+.s-mente .s-mente__guide {
+  grid-column: 10 / span 3;
+  padding: 26px 24px 28px;
+  background: var(--paper);
+  border-top: 2px solid var(--orange);
+}
+.s-mente .s-mente__guide-kicker { color: var(--orange-ink); }
+.s-mente .s-mente__guide-title { margin-top: 10px; }
+.s-mente .s-mente__guide-intro { margin-top: 12px; font-size: 15px; line-height: 1.5; color: var(--ink-soft); }
+.s-mente .s-mente__signs { margin-top: 14px; display: grid; }
+.s-mente .s-mente__signs li {
+  position: relative;
+  padding: 10px 0 10px 20px;
+  border-top: 1px solid var(--rule);
+  font-size: 15px;
+  line-height: 1.4;
+}
+.s-mente .s-mente__signs li::before {
+  content: "";
+  position: absolute;
+  left: 2px; top: 17px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+.s-mente .s-mente__where-label { margin-top: 24px; color: var(--ink-mute); }
+.s-mente .s-mente__where { margin-top: 10px; display: grid; gap: 12px; }
+.s-mente .s-mente__where dt { font-size: 15px; font-weight: 600; }
+.s-mente .s-mente__where dd { margin: 2px 0 0; font-size: 14px; line-height: 1.45; color: var(--ink-soft); }
+.s-mente .s-mente__urgent {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule-strong);
+  font-size: 14px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+/* ---------- ≤1100 ---------- */
+@media (max-width: 1100px) {
+  .s-mente .s-mente__lead { grid-column: 1 / span 7; }
+  .s-mente .s-mente__mid { grid-column: 8 / span 5; }
+  .s-mente .s-mente__guide { grid-column: 1 / -1; margin-top: 56px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
+  .s-mente .s-mente__guide > * { grid-column: 1; }
+  .s-mente .s-mente__signs { grid-row: 4; }
+  .s-mente .s-mente__where-label { grid-column: 2; grid-row: 1; margin-top: 0; }
+  .s-mente .s-mente__where { grid-column: 2; grid-row: 2 / span 3; }
+  .s-mente .s-mente__urgent { grid-column: 1 / -1; }
+}
+
+/* ---------- ≤720 ---------- */
+@media (max-width: 720px) {
+  .s-mente .s-mente__lead-photo { aspect-ratio: 4 / 4.4; }
+  .s-mente .s-mente__lead .story__title { font-size: 28px; }
+  .s-mente .s-mente__lead .story__dek { font-size: 16px; }
+  .s-mente .s-mente__mid { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--rule); }
+  .s-mente .s-mente__guide { display: block; margin-top: 40px; padding: 24px 20px; }
+  .s-mente .s-mente__where-label { margin-top: 24px; }
+}

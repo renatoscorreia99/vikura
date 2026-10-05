@@ -1,0 +1,107 @@
+/* s09 · Movimento — the portal's moment of light.
+   The only yellow band, taken from the brand board's yellow card: a Fraunces statement,
+   the needle at poster scale pointing onward and the signature line beneath. Beside it a
+   photo-first lead and a narrow rail. Below, three starting points instead of a plan.
+   On yellow, small accent text uses burgundy (orange-ink drops under 4.5:1 here). */
+
+.s-mov.sec {
+  --orange-ink: var(--burgundy);
+  --ink-mute: #574E4A;
+  margin-top: var(--sec);
+  padding-block: 84px 96px;
+  background: var(--yellow);
+}
+.s-mov .s-mov__grid { align-items: start; }
+
+/* ---------- the card ---------- */
+.s-mov .s-mov__card {
+  grid-column: 1 / span 4;
+  align-self: stretch;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100%;
+  padding-right: 24px;
+}
+.s-mov .s-mov__statement {
+  font-family: var(--serif);
+  font-variation-settings: "SOFT" 100, "WONK" 0;
+  font-size: clamp(36px, 3.7vw, 54px);
+  line-height: 1.02;
+  font-weight: 360;
+  letter-spacing: -0.026em;
+  color: var(--burgundy);
+  text-wrap: balance;
+}
+.s-mov .s-mov__needle { --size: clamp(110px, 10vw, 150px); align-self: center; justify-self: end; margin-right: -12px; }
+.s-mov .s-mov__sign { max-width: 16em; font-size: 15px; line-height: 1.35; color: var(--burgundy); }
+
+/* ---------- lead ---------- */
+.s-mov .s-mov__lead { grid-column: 5 / span 5; gap: 0; }
+.s-mov .s-mov__lead-photo { aspect-ratio: 4 / 3; }
+.s-mov .s-mov__lead-photo img { object-position: 50% 62%; }
+.s-mov .s-mov__lead .story__media { margin-bottom: 20px; }
+.s-mov .s-mov__lead .story__title { margin-top: 12px; }
+.s-mov .s-mov__lead .story__dek { margin-top: 14px; }
+.s-mov .s-mov__lead .story__meta { margin-top: 16px; }
+
+/* ---------- rail ---------- */
+.s-mov .s-mov__side { grid-column: 10 / span 3; align-self: stretch; display: grid; align-content: start; border-left-color: rgba(39, 36, 36, 0.2); }
+.s-mov .s-mov__s { gap: 10px; }
+.s-mov .s-mov__s .story__media { margin-bottom: 4px; }
+.s-mov .s-mov__s + .s-mov__s { margin-top: 24px; padding-top: 22px; border-top: 1px solid rgba(39, 36, 36, 0.2); }
+.s-mov .s-mov__s--beside { grid-template-columns: 88px minmax(0, 1fr); column-gap: 16px; row-gap: 6px; }
+.s-mov .s-mov__s--beside .story__media { grid-row: 1 / span 3; margin: 0; }
+.s-mov .s-mov__s--beside > :not(.story__media) { grid-column: 2; }
+
+/* ---------- where to start ---------- */
+.s-mov .s-mov__start { margin-top: 72px; }
+.s-mov .s-mov__start-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px 24px;
+  padding-top: 14px;
+  border-top: 1.5px solid var(--ink);
+}
+.s-mov .s-mov__start-note { font-size: 14px; color: var(--ink-soft); }
+.s-mov .s-mov__paths { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--gap); margin-top: 24px; }
+.s-mov .s-mov__path {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 10px;
+  padding: 22px 24px 18px;
+  background: rgba(253, 246, 234, 0.42);
+  border-radius: 6px;
+  transition: background-color var(--t) var(--ease);
+}
+.s-mov .s-mov__path:hover { background: rgba(253, 246, 234, 0.72); }
+.s-mov .s-mov__n { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; color: var(--burgundy); font-variant-numeric: tabular-nums; }
+.s-mov .s-mov__path-x { font-size: 15.5px; line-height: 1.5; color: var(--ink-soft); }
+.s-mov .s-mov__path .more { justify-self: start; margin-top: 4px; }
+
+/* ---------- ≤1100 ---------- */
+@media (max-width: 1100px) {
+  .s-mov .s-mov__card { grid-column: 1 / -1; grid-template-rows: auto; grid-template-columns: minmax(0, 1fr) auto; column-gap: 24px; margin-bottom: 40px; padding-right: 0; }
+  .s-mov .s-mov__statement { grid-column: 1; }
+  .s-mov .s-mov__sign { grid-column: 1; margin-top: 16px; }
+  .s-mov .s-mov__needle { grid-column: 2; grid-row: 1 / span 2; margin-right: 0; }
+  .s-mov .s-mov__lead { grid-column: 1 / span 7; }
+  .s-mov .s-mov__side { grid-column: 8 / span 5; }
+  .s-mov .s-mov__paths { grid-template-columns: 1fr; row-gap: 12px; }
+}
+
+/* ---------- ≤720 ---------- */
+@media (max-width: 720px) {
+  .s-mov.sec { padding-block: 64px 72px; }
+  .s-mov .s-mov__statement { font-size: 34px; }
+  .s-mov .s-mov__needle { --size: 80px; }
+  .s-mov .s-mov__lead .story__title { font-size: 28px; }
+  .s-mov .s-mov__side { margin-top: 28px; padding-top: 4px; border-top: 1px solid rgba(39, 36, 36, 0.2); }
+  .s-mov .s-mov__s:not(.s-mov__s--beside) { grid-template-columns: 88px minmax(0, 1fr); column-gap: 16px; row-gap: 6px; padding-top: 20px; }
+  .s-mov .s-mov__s:not(.s-mov__s--beside) .story__media { grid-row: 1 / span 3; margin: 0; }
+  .s-mov .s-mov__s:not(.s-mov__s--beside) .photo { aspect-ratio: 4 / 5; }
+  .s-mov .s-mov__s:not(.s-mov__s--beside) > :not(.story__media) { grid-column: 2; }
+  .s-mov .s-mov__start { margin-top: 56px; }
+  .s-mov .s-mov__path { padding: 20px; }
+}

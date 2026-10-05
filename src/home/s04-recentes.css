@@ -203,6 +203,34 @@
 .s-recentes .s-recentes__selo-x { font-size: 14px; line-height: 1.5; color: var(--ink-soft); max-width: 34ch; }
 .s-recentes .s-recentes__selo-a { font-size: 14px; font-weight: 500; }
 
+/* Orientation card, after the brand board's cream card: rides along the feed. */
+.s-recentes .s-recentes__guia {
+  position: sticky;
+  top: calc(var(--header-h) + 32px);
+  overflow: hidden;
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+  margin-top: 48px;
+  padding: 28px 26px 26px;
+  background: var(--cream-deep);
+  border-radius: 6px;
+}
+.s-recentes .s-recentes__guia-k { color: var(--orange-ink); }
+.s-recentes .s-recentes__guia-t {
+  max-width: 9.5em;
+  font-family: var(--serif);
+  font-variation-settings: "SOFT" 100, "WONK" 0;
+  font-size: clamp(28px, 2.4vw, 36px);
+  line-height: 1.02;
+  font-weight: 360;
+  letter-spacing: -0.022em;
+  color: var(--orange-ink);
+}
+.s-recentes .s-recentes__guia-x { max-width: 26ch; font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); }
+.s-recentes .s-recentes__guia-a { margin-top: 4px; }
+.s-recentes .s-recentes__guia-n { --size: 64px; position: absolute; right: 20px; bottom: 18px; }
+
 /* ---------- ≤1100 ---------- */
 @media (max-width: 1100px) {
   .s-recentes .s-recentes__flag { grid-column: 1 / span 9; grid-row: 2; margin-top: 16px; }
@@ -289,4 +317,6 @@
   .s-recentes .s-recentes__n { font-size: 30px; }
   .s-recentes .s-recentes__selo { margin-top: 28px; }
   .s-recentes .s-recentes__selo-x { max-width: none; }
+  .s-recentes .s-recentes__guia { position: static; margin-top: 36px; }
+  .s-recentes .s-recentes__guia-n { --size: 52px; }
 }

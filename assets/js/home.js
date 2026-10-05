@@ -16,6 +16,39 @@ addEventListener('resize', update);
 update();
 })();
 
+/* ===== s05-especial ===== */
+;(() => {
+// Especial: the brand board's word stack passes the needle from word to word, slowly.
+// The big needle settles once when the band comes into view. Both stay still under
+// reduced motion and in ?static renders.
+const band = document.querySelector('.s-especial');
+if (!band) return;
+const U = window.Vikura && window.Vikura.util;
+const still = !U || U.STATIC || U.reduced;
+
+if (still) { band.classList.add('is-in'); return; }
+new IntersectionObserver((entries, io) => {
+  if (entries.some((e) => e.isIntersecting)) { band.classList.add('is-in'); io.disconnect(); }
+}, { threshold: 0.35 }).observe(band);
+
+const words = [...band.querySelectorAll('[data-wordstack] .wordstack__w')];
+let i = words.findIndex((w) => w.classList.contains('is-on'));
+setInterval(() => {
+  if (document.hidden) return;
+  words[i].classList.remove('is-on');
+  i = (i + 1) % words.length;
+  words[i].classList.add('is-on');
+}, 2800);
+})();
+
+/* ===== s07-ciencia ===== */
+;(() => {
+// Evidence register: in ?static renders the first source is shown open, as a demo state.
+const U = window.Vikura && window.Vikura.util;
+const first = document.querySelector('.s-ciencia [data-static-open]');
+if (U && U.STATIC && first) first.click();
+})();
+
 /* ===== s11-jornada ===== */
 ;(() => {
 // Direction Line for the knowledge journey: enters from the page edge, underlines each verb
@@ -49,4 +82,23 @@ window.Vikura.lines.register('jornada', (u) => {
     stops: dots,
   };
 }, { offset: 0.78 });
+})();
+
+/* ===== s12-vida-real ===== */
+;(() => {
+// Direction Line for "Saúde na vida real": underlines the last line of Juliana's quote,
+// then rises and leaves the page open. Wide screens only; on phones the quote stands alone.
+if (!document.querySelector('.s-vida') || !window.Vikura) return;
+
+window.Vikura.lines.register('vida', (u) => {
+  const q = u.$('.s-vida__quote-text');
+  if (!q || u.narrow()) return null;
+  const b = u.textBox(q);
+  const y = b.bottom + 12;
+  return [
+    { x: b.left + 6, y, t: [1, 0] },
+    { x: b.right + 20, y, t: [1, 0], k: 0.4 },
+    { x: u.width() + 20, y: y - 150, t: [1, -0.9], k: 0.5 },
+  ];
+}, { offset: 0.7, cap: null });
 })();
