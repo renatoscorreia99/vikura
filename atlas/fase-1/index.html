@@ -1,0 +1,1977 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Direção Criativa do Atlas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+/* Layout: caderno de direção de arte. Coluna de leitura estreita, mockups em largura total,
+   cada conceito mostrado dentro da sua própria "tela" com paleta fixa. */
+:root {
+  --bg: #ECEEE8; --surface: #F5F6F1; --ink: #16201D; --ink2: #44514C; --ink3: #66726C; --rule: #C6CCC4;
+  --accent: #7F540D; --rub: #A3352F; --mat: #D5D9CF;
+  --c-poder: #A63A3A; --c-arte: #946612; --c-saber: #1D6E8A; --c-fe: #6A4EA0; --c-troca: #2E7B4F; --c-vida: #6C6358;
+  --serif: 'Newsreader', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --sans: 'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1716; --surface: #152120; --ink: #E9EDE4; --ink2: #B7C0B8; --ink3: #8B968F; --rule: #2A3936;
+    --accent: #D9A541; --rub: #E8846F; --mat: #22302D;
+    --c-poder: #E27D72; --c-arte: #DDB04F; --c-saber: #62B6D2; --c-fe: #AC96E4; --c-troca: #6FC592; --c-vida: #B9AE9F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1716; --surface: #152120; --ink: #E9EDE4; --ink2: #B7C0B8; --ink3: #8B968F; --rule: #2A3936;
+  --accent: #D9A541; --rub: #E8846F; --mat: #22302D;
+  --c-poder: #E27D72; --c-arte: #DDB04F; --c-saber: #62B6D2; --c-fe: #AC96E4; --c-troca: #6FC592; --c-vida: #B9AE9F;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font: 400 16px/1.55 var(--sans);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 1240px; margin-inline: auto; }
+.read { max-width: 68ch; }
+.mono { font-family: var(--mono); }
+
+/* cabeçalho */
+.mast { padding-block: 56px 36px; display: grid; gap: 22px; }
+.eyebrow { font: 500 11.5px/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+h1 { font: 400 clamp(38px, 6.2vw, 68px)/1.02 var(--serif); letter-spacing: -.02em; text-wrap: balance; max-width: 16ch; }
+h1 em { font-style: italic; font-weight: 300; }
+.lede { font: 400 clamp(18px, 2vw, 21px)/1.45 var(--serif); color: var(--ink2); max-width: 58ch; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 28px; font: 400 12.5px/1.4 var(--mono); color: var(--ink3); border-top: 1px solid var(--rule); padding-top: 14px; }
+.facts b { font-weight: 500; color: var(--ink); }
+
+.toc { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-block: 1px solid var(--rule); margin-inline: -4px; }
+.toc__in { display: flex; gap: 4px; overflow-x: auto; padding: 6px 4px; scrollbar-width: none; }
+.toc button { flex: none; background: none; border: 0; padding: 6px 10px; font: 500 13px/1.2 var(--sans); color: var(--ink2); cursor: pointer; white-space: nowrap; }
+.toc button:hover { color: var(--ink); }
+.toc button[aria-current="true"] { color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); }
+
+/* seções */
+section.sec { padding-block: 64px 8px; scroll-margin-top: 56px; }
+.sec__head { display: grid; gap: 12px; margin-bottom: 30px; }
+.sec__k { font: 500 11.5px/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink3); }
+h2 { font: 400 clamp(28px, 3.6vw, 42px)/1.08 var(--serif); letter-spacing: -.015em; text-wrap: balance; max-width: 24ch; }
+.sec__head p { color: var(--ink2); max-width: 66ch; }
+h3 { font: 400 26px/1.15 var(--serif); letter-spacing: -.01em; text-wrap: balance; }
+h4 { font: 500 11px/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink3); }
+p + p { margin-top: .8em; }
+.note { font-size: 13px; color: var(--ink3); max-width: 78ch; margin-top: 10px; }
+
+.principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0; border-top: 1px solid var(--ink); }
+.principles li { padding: 18px 22px 22px 0; border-bottom: 1px solid var(--rule); display: grid; gap: 8px; align-content: start; min-width: 0; }
+.principles b { font: 400 21px/1.2 var(--serif); font-style: italic; }
+.principles span { font-size: 14.5px; color: var(--ink2); }
+
+/* telas de mockup: tamanho fixo, escaladas para caber */
+.screen { overflow-x: auto; overflow-y: hidden; border: 1px solid var(--rule); background: var(--surface); }
+.screen__fit { position: relative; overflow: hidden; }
+.screen__in { position: absolute; top: 0; left: 0; transform-origin: 0 0; overflow: hidden; }
+.cap { font-size: 12.5px; color: var(--ink3); margin-top: 8px; max-width: 86ch; }
+
+/* fichas dos conceitos */
+.concept { padding-block: 34px 44px; border-top: 1px solid var(--ink); display: grid; gap: 22px; }
+.concept__head { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 8px 40px; align-items: end; }
+.concept__k { grid-column: 1 / -1; font: 500 11.5px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+.concept__head h3 { font-size: clamp(30px, 3.4vw, 40px); }
+.concept__thesis { font: 400 19px/1.35 var(--serif); color: var(--ink2); max-width: 44ch; }
+.sheet { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1.25fr); gap: 28px 40px; margin-top: 6px; }
+.sheet > * { min-width: 0; display: grid; gap: 20px; align-content: start; }
+.sheet > div > div { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.sw { display: grid; gap: 6px; }
+.sw li { display: grid; grid-template-columns: 34px 1fr auto; gap: 10px; align-items: center; font-size: 13px; }
+.sw i { height: 22px; border: 1px solid var(--rule); }
+.sw code { font: 400 11.5px var(--mono); color: var(--ink3); }
+.spec { border-top: 1px solid var(--rule); padding-top: 12px; display: grid; gap: 4px; }
+.spec b { font-weight: 400; font-size: 40px; line-height: 1; }
+.spec span { font-size: 13px; color: var(--ink2); }
+.spec small { font: 400 11.5px var(--mono); color: var(--ink3); }
+.sheet dl { gap: 14px; }
+.sheet dt { font: 500 11px/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 3px; }
+.sheet dd { font-size: 14.5px; color: var(--ink2); }
+.pc { display: grid; gap: 7px; }
+.pc li { font-size: 14.5px; color: var(--ink2); padding-left: 18px; position: relative; }
+.pc li::before { content: "+"; position: absolute; left: 0; font-family: var(--mono); color: var(--c-troca); }
+.pc--con li::before { content: "−"; color: var(--c-poder); }
+
+/* recomendação */
+.rec { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 36px 56px; align-items: start; }
+.rec > * { min-width: 0; }
+.rec__idea { font: 400 clamp(22px, 2.5vw, 29px)/1.28 var(--serif); text-wrap: pretty; }
+.rec__idea em { color: var(--rub); }
+.diagram { width: 100%; height: auto; display: block; border: 1px solid var(--rule); background: var(--surface); }
+.diagram text { font: 400 11px var(--mono); fill: var(--ink3); }
+.diagram .dl { font: 500 12px var(--sans); fill: var(--ink); }
+.diagram .dm { font: 500 11px var(--mono); fill: var(--rub); }
+.inherit { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0 32px; border-top: 1px solid var(--rule); margin-top: 36px; }
+.inherit li { padding-block: 16px; display: grid; gap: 6px; align-content: start; }
+.inherit b { font: 400 19px var(--serif); font-style: italic; }
+.inherit span { font-size: 14.5px; color: var(--ink2); }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px 48px; margin-top: 30px; }
+.cols > * { min-width: 0; display: grid; gap: 12px; align-content: start; }
+.cols h4 { border-bottom: 1px solid var(--rule); padding-bottom: 8px; }
+.plain { display: grid; gap: 9px; }
+.plain li { font-size: 15px; color: var(--ink2); padding-left: 16px; position: relative; }
+.plain li::before { content: ""; position: absolute; left: 0; top: .68em; width: 7px; height: 1px; background: var(--ink3); }
+.plain b { color: var(--ink); font-weight: 600; }
+
+/* controles do storyboard */
+.sb-tabs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border: 1px solid var(--ink); border-bottom: 0; }
+.sb-tabs button { background: none; border: 0; border-right: 1px solid var(--rule); padding: 10px 12px 11px; text-align: left; cursor: pointer; display: grid; gap: 2px; min-width: 0; }
+.sb-tabs button:last-child { border-right: 0; }
+.sb-tabs b { font: 500 10.5px var(--mono); letter-spacing: .08em; color: var(--ink3); }
+.sb-tabs span { font: 400 16px/1.15 var(--serif); }
+.sb-tabs button[aria-selected="true"] { background: var(--ink); color: var(--bg); }
+.sb-tabs button[aria-selected="true"] b { color: inherit; opacity: .7; }
+.sb-bar { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; justify-content: space-between; padding: 10px 0 0; }
+.sb-bar .hint { font-size: 12.5px; color: var(--ink3); max-width: 74ch; }
+.tog { display: inline-flex; border: 1px solid var(--ink3); }
+.tog button { background: none; border: 0; padding: 5px 11px; font: 500 12.5px var(--sans); cursor: pointer; color: var(--ink2); }
+.tog button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.sb-ctl { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+.sb-notes { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 20px 44px; padding-top: 26px; align-items: start; }
+.sb-notes__h { display: grid; gap: 10px; }
+.sb-notes__h .k { font: 500 11.5px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+.sb-nav { display: flex; gap: 8px; margin-top: 6px; }
+.sb-nav button { background: none; border: 1px solid var(--ink); padding: 7px 14px; font: 600 13px var(--sans); cursor: pointer; }
+.sb-nav button:disabled { opacity: .35; cursor: default; }
+.sb-nav button:not(:disabled):hover { background: var(--ink); color: var(--bg); }
+.sb-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 36px; border-top: 1px solid var(--rule); }
+.sb-fields div { padding-block: 14px; border-bottom: 1px solid var(--rule); display: grid; gap: 5px; align-content: start; }
+.sb-fields dt { font: 500 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink3); }
+.sb-fields dd { font-size: 14.5px; color: var(--ink2); }
+
+/* tabelas e legendas */
+.tbl-wrap { overflow-x: auto; border-top: 1px solid var(--ink); }
+table { border-collapse: collapse; width: 100%; min-width: 720px; font-size: 14.5px; }
+th, td { text-align: left; vertical-align: top; padding: 12px 18px 13px 0; border-bottom: 1px solid var(--rule); }
+thead th { font: 400 20px var(--serif); font-style: italic; }
+thead th small { display: block; font: 400 11.5px var(--mono); font-style: normal; color: var(--ink3); margin-top: 2px; }
+tbody th { font: 500 11px/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink3); width: 150px; padding-top: 15px; }
+td { color: var(--ink2); }
+.dates { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 0 44px; border-top: 1px solid var(--rule); }
+.dates li { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 14px; align-items: center; padding-block: 11px; border-bottom: 1px solid var(--rule); font-size: 14px; }
+.dates svg { color: var(--c-saber); display: block; }
+.dates b { font-weight: 600; display: block; }
+.dates span { color: var(--ink3); font-size: 13px; }
+.dates .bgf { fill: var(--bg); }
+
+/* organização da interface */
+.ui { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 30px 48px; align-items: start; }
+.ui > * { min-width: 0; }
+.wire { display: grid; grid-template-columns: 1fr 31%; grid-template-rows: 9% 7% 1fr 11% 8%; aspect-ratio: 16 / 10; max-width: 100%; border: 1px solid var(--ink); background: var(--surface); font: 500 12px var(--sans); }
+.wire div { border: 0 solid var(--rule); padding: 8px 10px; display: flex; gap: 8px; align-items: flex-start; min-width: 0; color: var(--ink2); }
+.wire i { font: 500 11px var(--mono); font-style: normal; color: var(--accent); }
+.wire .w1 { grid-column: 1 / -1; border-bottom-width: 1px; }
+.wire .w2 { border-bottom-width: 1px; }
+.wire .w3 { background: repeating-linear-gradient(to bottom, transparent 0 13.6%, var(--rule) 13.6% calc(13.6% + 1px), transparent calc(13.6% + 1px) 14.2857%); }
+.wire .w4 { border-top-width: 1px; }
+.wire .w5 { grid-column: 2; grid-row: 2 / 6; border-left-width: 1px; background: var(--bg); }
+.wire .w6 { border-top-width: 1px; }
+.keylist { display: grid; gap: 0; border-top: 1px solid var(--rule); }
+.keylist li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 4px 8px; padding-block: 11px; border-bottom: 1px solid var(--rule); font-size: 14.5px; color: var(--ink2); }
+.keylist i { font: 500 11.5px var(--mono); font-style: normal; color: var(--accent); padding-top: 2px; }
+.keylist b { color: var(--ink); font-weight: 600; }
+.phones { display: flex; flex-wrap: wrap; gap: 28px 36px; margin-top: 8px; }
+.phone { width: 252px; max-width: 100%; display: grid; gap: 10px; }
+.phone__f { height: 548px; border: 1.5px solid var(--ink); border-radius: 28px; overflow: hidden; background: var(--bg); position: relative; font-size: 12px; display: flex; flex-direction: column; }
+.phone figcaption { font-size: 13px; color: var(--ink2); }
+.phone figcaption b { display: block; font: 400 17px var(--serif); font-style: italic; color: var(--ink); }
+.ph-top { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 16px 8px; border-bottom: 1px solid var(--rule); }
+.ph-top i { font: italic 400 19px var(--serif); }
+.ph-top span { font: 400 10px var(--mono); color: var(--ink3); }
+.ph-yr { padding: 10px 16px 8px; display: grid; gap: 8px; border-bottom: 1px solid var(--rule); }
+.ph-yr b { font: 400 30px/1 var(--serif); }
+.ph-yr b small { font: 400 10px var(--mono); color: var(--ink3); margin-left: 6px; }
+.ph-chips { display: flex; gap: 5px; overflow: hidden; white-space: nowrap; }
+.ph-chips span { border: 1px solid var(--rule); padding: 2px 7px; font-size: 10.5px; color: var(--ink2); flex: none; }
+.ph-chips span.on { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.ph-list { flex: 1; position: relative; padding: 6px 22px 0 0; overflow: hidden; }
+.ph-list::before { content: ""; position: absolute; left: 49px; top: 0; bottom: 0; width: 1px; background: var(--rule); }
+.ph-list::after { content: ""; position: absolute; right: 7px; top: 0; bottom: 0; width: 6px; background: repeating-linear-gradient(to bottom, var(--ink3) 0 1px, transparent 1px 3px); opacity: .55; }
+.ph-it { display: grid; grid-template-columns: 44px 11px minmax(0, 1fr) auto; gap: 0 6px; align-items: start; padding-block: 7px; }
+.ph-it .y { font: 400 10px/1.5 var(--mono); color: var(--ink3); text-align: right; }
+.ph-it .d { width: 7px; height: 7px; border-radius: 50%; margin: 4px 0 0 2px; position: relative; z-index: 1; }
+.ph-it .t { display: grid; gap: 1px; min-width: 0; }
+.ph-it .t small { font: 500 8.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink3); }
+.ph-it .t b { font-weight: 600; font-size: 12px; line-height: 1.25; }
+.ph-plate { width: 38px; height: 46px; background: var(--mat); color: var(--ink2); --cut: var(--mat); display: grid; place-items: center; }
+.ph-plate svg { width: 28px; height: 34px; }
+.ph-tabs { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule); text-align: center; font-size: 10.5px; color: var(--ink3); padding: 9px 0 14px; background: var(--bg); }
+.ph-tabs b { color: var(--ink); font-weight: 600; }
+.ph-dim { opacity: .3; }
+.ph-sheet { position: absolute; inset: 86px 0 0; background: var(--surface); border-top: 1.5px solid var(--ink); border-radius: 16px 16px 0 0; padding: 8px 16px 0; display: grid; gap: 8px; align-content: start; }
+.ph-sheet::before { content: ""; width: 34px; height: 3px; background: var(--ink3); border-radius: 2px; justify-self: center; }
+.ph-sheet .ph-plate { width: 100%; height: 132px; }
+.ph-sheet .ph-plate svg { width: 92px; height: 110px; }
+.ph-sheet small { font: 500 8.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink3); }
+.ph-sheet h5 { margin: 0; font: 400 21px/1.1 var(--serif); }
+.ph-sheet p { font: 400 10.5px/1.45 var(--mono); color: var(--ink2); }
+.ph-btn { border: 1px solid var(--ink); padding: 7px 9px; font-weight: 600; font-size: 11.5px; display: flex; justify-content: space-between; }
+.ph-link { display: grid; grid-template-columns: 40px 1fr; font-size: 11.5px; border-top: 1px solid var(--rule); padding-top: 6px; }
+.ph-link span { font: 400 10px/1.6 var(--mono); color: var(--ink3); }
+.ph-map { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--rule); }
+.ph-map .sph { fill: var(--surface); } .ph-map .land { fill: var(--ink); fill-opacity: .2; }
+.ph-cut { flex: 1; overflow: hidden; }
+.ph-cut li { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 8px; padding: 6px 14px; border-bottom: 1px solid var(--rule); font-size: 11px; line-height: 1.3; }
+.ph-cut b { font-weight: 600; font-size: 10.5px; }
+.ph-cut em { color: var(--ink3); }
+.ph-cut span span { font: 400 9.5px var(--mono); color: var(--ink3); margin-right: 4px; }
+
+/* conteúdo */
+.code { overflow-x: auto; border: 1px solid var(--rule); background: var(--surface); }
+.code pre { margin: 0; padding: 16px 18px; font: 400 12.5px/1.6 var(--mono); color: var(--ink2); min-width: max-content; }
+.code pre b { color: var(--ink); font-weight: 500; }
+.code pre i { color: var(--ink3); font-style: normal; }
+.steps { display: grid; gap: 0; border-top: 1px solid var(--rule); counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 8px; padding-block: 11px; border-bottom: 1px solid var(--rule); font-size: 14.5px; color: var(--ink2); }
+.steps li::before { content: counter(s); font: 500 11.5px var(--mono); color: var(--accent); padding-top: 2px; }
+.steps b { color: var(--ink); font-weight: 600; }
+
+.decide { display: grid; gap: 0; border-top: 1px solid var(--ink); }
+.decide li { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 6px 44px; padding-block: 18px; border-bottom: 1px solid var(--rule); }
+.decide b { font: 400 21px/1.2 var(--serif); }
+.decide span { font-size: 15px; color: var(--ink2); }
+.decide span strong { color: var(--ink); font-weight: 600; }
+footer { padding-block: 48px 72px; font-size: 13px; color: var(--ink3); }
+
+@media (max-width: 900px) {
+  .concept__head, .rec, .ui, .sb-notes, .decide li { grid-template-columns: minmax(0, 1fr); }
+  .sheet { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .sheet > :first-child { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 28px; }
+  .sb-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .sb-tabs button:nth-child(3) { border-right: 0; }
+  .sb-tabs button:nth-child(-n+3) { border-bottom: 1px solid var(--rule); }
+}
+@media (max-width: 600px) {
+  .sheet, .sb-fields { grid-template-columns: minmax(0, 1fr); }
+  .sheet > :first-child { grid-template-columns: minmax(0, 1fr); }
+  .sb-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sb-tabs button { border-bottom: 1px solid var(--rule); }
+  .sb-tabs button:nth-child(odd) { border-right: 1px solid var(--rule); }
+  .sb-tabs button:nth-child(even) { border-right: 0; }
+  section.sec { padding-top: 48px; }
+  .wire { font-size: 10.5px; }
+}
+
+/* ================= Conceito A · Arquivo Vivo ================= */
+#mock-a { width: 1200px; height: 720px; background: #F7F7F4; color: #121314; font-family: var(--sans); --cut: #DCDCD7; }
+#mock-a .ca-top { position: absolute; inset: 0 0 auto; height: 62px; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; }
+#mock-a .ca-wm { font: italic 400 31px 'Cormorant Garamond', Georgia, serif; }
+#mock-a nav { display: flex; gap: 30px; font-size: 12.5px; color: #6B6E70; }
+#mock-a nav b { color: #121314; font-weight: 500; box-shadow: 0 5px 0 -3.5px #24409A; }
+#mock-a .ca-s { font-size: 12.5px; color: #6B6E70; border-bottom: 1px solid #6B6E70; padding: 0 28px 3px 0; }
+#mock-a .ca-intro { position: absolute; left: 48px; top: 112px; width: 390px; display: grid; gap: 24px; }
+#mock-a .ca-eye { font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: #6B6E70; }
+#mock-a h3 { font: 300 96px/.9 'Cormorant Garamond', Georgia, serif; letter-spacing: -.02em; text-wrap: initial; }
+#mock-a h3 em { font-style: italic; color: #24409A; }
+#mock-a .ca-p { font-size: 14.5px; line-height: 1.5; color: #6B6E70; max-width: 290px; margin: 0; }
+#mock-a .ca-arrows { display: flex; gap: 8px; margin: 0; }
+#mock-a .ca-arrows span { width: 40px; height: 40px; border: 1px solid #121314; display: grid; place-items: center; font-size: 16px; }
+#mock-a .ca-arrows span:last-child { background: #121314; color: #F7F7F4; }
+#mock-a figure { position: absolute; }
+#mock-a .ca-plate { background: #DCDCD7; color: #3B3D3F; display: grid; place-items: center; }
+#mock-a .ca-hero { left: 458px; top: 84px; width: 300px; }
+#mock-a .ca-hero .ca-plate { height: 396px; }
+#mock-a .ca-hero svg { height: 300px; width: 250px; }
+#mock-a figcaption { display: grid; gap: 3px; padding-top: 12px; font-size: 12px; color: #6B6E70; }
+#mock-a figcaption .k { font: 400 10.5px var(--mono); }
+#mock-a figcaption em { font: italic 400 25px/1.08 'Cormorant Garamond', Georgia, serif; color: #121314; }
+#mock-a .ca-next { position: absolute; left: 796px; top: 84px; }
+#mock-a .ca-next figure { width: 164px; }
+#mock-a .ca-next .n0 { left: 0; top: 56px; } #mock-a .ca-next .n1 { left: 186px; top: 0; } #mock-a .ca-next .n2 { left: 372px; top: 96px; }
+#mock-a .ca-next .ca-plate { height: 214px; }
+#mock-a .ca-next svg { height: 150px; width: 125px; }
+#mock-a .ca-next figcaption em { font-size: 17px; }
+#mock-a .ca-ruler { position: absolute; left: 24px; bottom: 16px; }
+#mock-a .ca-ruler .b { stroke: #121314; } #mock-a .ca-ruler .t { stroke: #121314; stroke-width: .7; }
+#mock-a .ca-ruler .n { font: 400 18px 'Cormorant Garamond', Georgia, serif; fill: #121314; text-anchor: middle; }
+#mock-a .ca-ruler .e { stroke: #6B6E70; stroke-width: .8; opacity: .7; } #mock-a .ca-ruler .o { stroke: #121314; stroke-width: 1.5; }
+#mock-a .ca-ruler .w { fill: #24409A; fill-opacity: .1; } #mock-a .ca-ruler .h { stroke: #24409A; stroke-width: 1.5; }
+#mock-a .ca-ruler .hl { font: 500 10.5px var(--sans); fill: #24409A; }
+
+/* ================= Conceito B · Observatório do Tempo ================= */
+#mock-b { width: 1200px; height: 720px; --b-poder: #F0776B; --b-arte: #F2C66B; --b-saber: #5FC7E8; --b-fe: #B49BF0; --b-troca: #6FD69B; --b-vida: #A9B0C4; }
+#mock-b svg { display: block; }
+#mock-b .bg { fill: #0B0F1E; } #mock-b .ln, #mock-b .gr { stroke: #fff; stroke-opacity: .055; }
+#mock-b text { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; }
+#mock-b .lb, #mock-b .ax { font-size: 9.5px; fill: #8E97B5; letter-spacing: .06em; } #mock-b .ax.hi { fill: #F2C66B; }
+#mock-b .wm { font-size: 12px; font-weight: 500; fill: #E9ECF5; letter-spacing: .16em; }
+#mock-b .arc { fill: none; stroke: #C9D2F0; stroke-opacity: .13; stroke-width: .8; } #mock-b .arc.on { stroke: #F2C66B; stroke-opacity: .95; stroke-width: 1.3; }
+#mock-b .pt.on { stroke: #fff; stroke-width: 1.2; } #mock-b .iv { stroke-width: 1.2; opacity: .55; }
+#mock-b .tl { font-size: 9px; fill: #AEB6D2; opacity: .8; } #mock-b .tl.on { fill: #F6DFA5; opacity: 1; }
+#mock-b .cross { stroke: #F2C66B; stroke-opacity: .4; stroke-dasharray: 2 4; } #mock-b .ring { fill: none; stroke: #F2C66B; stroke-width: 1.4; }
+#mock-b .hb { fill: #5E6890; fill-opacity: .6; } #mock-b .hb.in { fill: #C9D2F0; fill-opacity: 1; } #mock-b .br { fill: none; stroke: #F2C66B; }
+#mock-b .ro { fill: #121831; stroke: #2B3558; } #mock-b .rt { font: 500 15px 'IBM Plex Sans', Arial, sans-serif; fill: #E9ECF5; }
+
+/* ================= Conceito C · Atlas da Humanidade ================= */
+#mock-c { width: 1200px; height: 720px; }
+#mock-c svg { display: block; }
+#mock-c .paper { fill: #F2EDDF; } #mock-c .sea { fill: #CFDDD8; } #mock-c .land { fill: #F2EDDF; stroke: #2B2520; stroke-width: .6; stroke-linejoin: round; }
+#mock-c .grat { fill: none; stroke: #6F8E88; stroke-opacity: .4; stroke-width: .5; } #mock-c .neat { fill: none; stroke: #2B2520; stroke-width: 1.2; }
+#mock-c .ocean { font: italic 400 13px 'Spectral', Georgia, serif; fill: #5A7A75; letter-spacing: .14em; }
+#mock-c .route { fill: none; stroke-width: 1.5; stroke-dasharray: 5 3; } #mock-c .r1 { stroke: #A3303A; } #mock-c .r2 { stroke: #2F5D7C; }
+#mock-c .pin { fill: #2B2520; } #mock-c .num { fill: #A3303A; stroke: #F2EDDF; stroke-width: 1.2; } #mock-c .lead { stroke: #2B2520; stroke-width: .7; }
+#mock-c .numt { font: 600 10px 'Archivo Narrow', Arial, sans-serif; fill: #fff; }
+#mock-c .rub { font: 600 11px 'Archivo Narrow', Arial, sans-serif; letter-spacing: .16em; fill: #A3303A; }
+#mock-c .ttl { font: 500 31px 'Spectral', Georgia, serif; fill: #2B2520; letter-spacing: -.01em; }
+#mock-c .meta, #mock-c .ax { font: 400 12px 'Archivo Narrow', Arial, sans-serif; fill: #6E655A; }
+#mock-c .lg { font: 400 13.5px 'Archivo Narrow', Arial, sans-serif; fill: #2B2520; } #mock-c .yr { font-weight: 600; } #mock-c .yr.it { font-style: italic; }
+#mock-c .rule { stroke: #2B2520; stroke-width: .8; } #mock-c .rr { stroke: #2B2520; stroke-opacity: .16; }
+#mock-c .win { fill: #A3303A; fill-opacity: .08; stroke: #A3303A; } #mock-c .hand { stroke: #A3303A; stroke-width: 2.5; fill: none; }
+#mock-c .rg { font: 500 12px 'Archivo Narrow', Arial, sans-serif; fill: #2B2520; }
+#mock-c .tk { stroke: #2B2520; stroke-opacity: .7; } #mock-c .tk.k { stroke: #A3303A; stroke-opacity: 1; stroke-width: 1.8; }
+#mock-c .iv { fill: #2B2520; fill-opacity: .5; } #mock-c .iv.est { fill-opacity: .22; }
+
+/* ================= Storyboard · direção Meridiano ================= */
+#stage[data-skin="day"] {
+  --s-bg: #ECEEE8; --s-lane: #E5E8E0; --s-ink: #16201D; --s-ink2: #44514C; --s-ink3: #66726C; --s-rule: #C2C9C0;
+  --s-accent: #7F540D; --s-mer: #A3352F; --s-mer-ink: #FFF8F0; --s-panel: #F6F7F2; --s-mat: #D3D8CD;
+  --c-poder: #A63A3A; --c-arte: #946612; --c-saber: #1D6E8A; --c-fe: #6A4EA0; --c-troca: #2E7B4F; --c-vida: #6C6358;
+}
+#stage[data-skin="night"] {
+  --s-bg: #0E1716; --s-lane: #121E1C; --s-ink: #E9EDE4; --s-ink2: #B7C0B8; --s-ink3: #88948D; --s-rule: #263532;
+  --s-accent: #D9A541; --s-mer: #EE8A72; --s-mer-ink: #1A0F0C; --s-panel: #142120; --s-mat: #24322F;
+  --c-poder: #E27D72; --c-arte: #DDB04F; --c-saber: #62B6D2; --c-fe: #AC96E4; --c-troca: #6FC592; --c-vida: #B9AE9F;
+}
+#stage .screen { border-color: var(--ink); }
+.st-screen { width: 1200px; height: 772px; background: var(--s-bg); color: var(--s-ink); font-family: var(--sans); --cut: var(--s-mat); }
+.st-top { position: absolute; inset: 0 0 auto; height: 48px; padding: 0 18px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; border-bottom: 1px solid var(--s-rule); z-index: 3; background: var(--s-bg); }
+.st-wm { display: flex; align-items: baseline; gap: 9px; }
+.st-wm i { font: italic 400 25px/1 var(--serif); }
+.st-wm span { font: 500 9.5px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--s-ink3); }
+.st-win { font: 400 12px var(--mono); color: var(--s-ink3); display: flex; gap: 12px; }
+.st-win b { font-weight: 500; color: var(--s-ink); }
+.st-nav { justify-self: end; display: flex; gap: 22px; font-size: 12.5px; color: var(--s-ink2); align-items: center; }
+.st-search { border: 1px solid var(--s-rule); padding: 3px 8px 3px 10px; display: inline-flex; gap: 26px; align-items: center; }
+.st-search kbd { font: 400 10px var(--mono); color: var(--s-ink3); border: 1px solid var(--s-rule); padding: 0 4px; }
+.st-chips { position: absolute; inset: 48px 0 auto; height: 40px; padding: 0 18px; display: flex; align-items: center; gap: 12px; z-index: 2; }
+.st-chips__l { font: 500 9.5px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--s-ink3); }
+.st-chips__c { display: flex; gap: 5px; flex: 1; }
+.st-chip { white-space: nowrap; flex: none; background: none; border: 1px solid var(--s-rule); padding: 3px 9px 3px 7px; font: 500 11.5px var(--sans); color: var(--s-ink); cursor: pointer; display: inline-flex; gap: 6px; align-items: center; }
+.st-chip i { width: 7px; height: 7px; border-radius: 50%; }
+.st-chip[aria-pressed="false"] { color: var(--s-ink3); border-style: dashed; }
+.st-chip[aria-pressed="false"] i { opacity: .25; }
+.st-count { font: 400 10.5px var(--mono); color: var(--s-ink3); white-space: nowrap; }
+.has-panel .st-count, .has-panel .st-legend { display: none; }
+.st-count b { font-weight: 500; color: var(--s-ink); }
+.st-canvas, .st-svg { position: absolute; top: 0; left: 0; width: 1200px; height: 772px; }
+.st-canvas { z-index: 1; pointer-events: none; }
+.st-svg { z-index: 1; touch-action: pan-y; cursor: default; user-select: none; -webkit-user-select: none; }
+.st-svg.dragging { cursor: grabbing; }
+.st-svg .L-lanes, .st-svg .L-grid, .st-svg .L-strip, .st-svg .L-pols, .st-svg .L-mer, .st-svg .L-axis, .st-svg .L-labels { pointer-events: none; }
+.st-svg rect.lane { fill: var(--s-bg); } .st-svg rect.lane.alt { fill: var(--s-lane); }
+.st-svg .lane-r, .st-svg .gut, .st-svg line.st { stroke: var(--s-rule); }
+.st-svg .lab-n { font: 600 12.5px var(--sans); fill: var(--s-ink); } .st-svg .lab.on .lab-n { fill: var(--s-accent); }
+.st-svg .lab-c { font: 400 10px var(--mono); fill: var(--s-ink3); }
+.st-svg .lab-k { fill: none; stroke: var(--s-ink3); stroke-width: 1.3; }
+.st-hatchline { stroke: var(--s-ink); stroke-opacity: .22; stroke-width: 1; }
+.st-svg rect.cov { fill: var(--s-bg); } .st-svg rect.cov.alt { fill: var(--s-lane); }
+.st-svg .pol rect { fill: var(--s-ink); } .st-svg .pol text { font: 500 10.5px var(--sans); fill: var(--s-ink2); }
+.st-svg .pol.deep path { fill: var(--s-accent); } .st-svg .pol.deep text { font: italic 400 12px var(--serif); fill: var(--s-accent); }
+.st-svg .clu { cursor: zoom-in; } .st-svg .clu circle { fill-opacity: .2; stroke-width: 1.1; }
+.st-svg .clu text { font: 500 9.5px var(--mono); fill: var(--s-ink); text-anchor: middle; }
+.st-svg .key { cursor: pointer; } .st-svg .key text { font: 600 11px var(--sans); fill: var(--s-ink); } .st-svg .key line { stroke: var(--s-ink); stroke-opacity: .2; }
+.st-svg .fic { cursor: pointer; } .st-svg .fic .stem { stroke-opacity: .75; } .st-svg .fic .hit { fill: transparent; }
+.st-svg .fic .plate { fill: var(--s-mat); } .st-svg .fic .gly { color: var(--s-ink2); }
+.st-svg .f-date { font: 400 9.5px var(--mono); fill: var(--s-ink3); } .st-svg .f-ttl { font: 600 11px var(--sans); fill: var(--s-ink); }
+.st-svg .fic-c .f-ttl { font-weight: 500; font-size: 10.5px; }
+.st-svg .f-serif { font: 400 15.5px var(--serif); fill: var(--s-ink); } .st-svg .f-serif.it { font-style: italic; font-size: 14.5px; }
+.st-svg .f-place { font: 400 10px var(--sans); fill: var(--s-ink3); }
+.st-svg .f-eye { font: 500 8.5px var(--mono); letter-spacing: .09em; text-transform: uppercase; fill: var(--s-ink3); } .st-svg .f-rule { stroke: var(--s-ink); }
+.st-svg .fic.sel .plate { stroke: var(--s-mer); stroke-width: 2; } .st-svg .fic.sel .f-serif, .st-svg .fic.sel .f-ttl { fill: var(--s-mer); }
+.st-svg .fic:hover .f-serif, .st-svg .fic:hover .f-ttl { fill: var(--s-accent); }
+.st-svg .mk { cursor: pointer; } .st-svg .mk circle { fill: currentColor; } .st-svg .mk.p-c circle { fill: var(--s-bg); stroke: currentColor; stroke-width: 1.3; }
+.st-svg .mk line { stroke: currentColor; stroke-dasharray: 1.5 2; }
+.st-svg .mk rect { fill: currentColor; } .st-svg .mk.p-ci rect { fill-opacity: .3; stroke: currentColor; stroke-width: .9; stroke-dasharray: 3 2; }
+.st-svg .mk.p-s rect { fill-opacity: .14; stroke: currentColor; stroke-width: .9; stroke-dasharray: 1 2.5; } .st-svg .mk.p-d rect { fill: none; stroke: currentColor; stroke-dasharray: 1 3; }
+.st-svg .mk.sel circle, .st-svg .mk.sel rect { stroke: var(--s-ink); stroke-width: 1.8; stroke-dasharray: none; }
+.st-svg .L-grid line { stroke: var(--s-ink); stroke-opacity: .07; }
+.st-svg .tk line { stroke: var(--s-ink3); } .st-svg .tk text { font: 400 10.5px var(--mono); fill: var(--s-ink2); } .st-svg .mn { stroke: var(--s-ink3); stroke-opacity: .55; }
+.st-svg .note text { font: italic 400 12.5px var(--serif); fill: var(--s-accent); } .st-svg .note path { fill: none; stroke: var(--s-accent); stroke-width: 1.2; } .st-svg .n-brk path { stroke: var(--s-ink2); }
+.st-svg .mm-l { font: 400 10px var(--mono); fill: var(--s-ink3); } .st-svg .mm-cov { fill: var(--s-ink); } .st-svg .mm-t line { stroke: var(--s-ink3); }
+.st-svg .mm-w { fill: var(--s-accent); fill-opacity: .16; stroke: var(--s-accent); stroke-width: 1.5; } .st-svg .mm-hit { fill: transparent; cursor: pointer; }
+.st-svg .mer line { stroke: var(--s-mer); stroke-opacity: .65; } .st-svg .mer.pin line { stroke-opacity: 1; stroke-width: 1.4; }
+.st-svg .mer .chip { fill: var(--s-mer); } .st-svg .mer text { font: 500 10.5px var(--mono); fill: var(--s-mer-ink); } .st-svg .mer .band { fill: var(--s-mer); fill-opacity: .08; }
+.st-status { position: absolute; inset: auto 0 0; height: 44px; padding: 0 18px; display: flex; align-items: center; gap: 18px; border-top: 1px solid var(--s-rule); background: var(--s-bg); z-index: 2; }
+.st-zoom { display: inline-flex; gap: 4px; order: -1; }
+.st-zoom button { width: 28px; height: 28px; background: none; border: 1px solid var(--s-ink3); color: var(--s-ink); font: 500 16px/1 var(--mono); cursor: pointer; }
+.st-zoom button:hover { background: var(--s-ink); color: var(--s-bg); }
+.st-level { display: flex; gap: 10px; align-items: baseline; font-size: 11.5px; color: var(--s-ink3); flex: 1; }
+.st-level b { font: 600 12.5px var(--sans); color: var(--s-ink); }
+.st-legend { display: flex; gap: 16px; font-size: 11px; color: var(--s-ink2); }
+.st-legend span { display: inline-flex; gap: 6px; align-items: center; }
+.st-legend .lg-fill { fill: var(--s-ink2); } .st-legend .lg-open { fill: var(--s-bg); stroke: var(--s-ink2); stroke-width: 1.3; }
+.st-legend .lg-dash { stroke: var(--s-ink2); stroke-dasharray: 1.5 2; } .st-legend .lg-est { fill: var(--s-ink2); fill-opacity: .25; stroke: var(--s-ink2); stroke-dasharray: 3 2; }
+.st-panel { position: absolute; top: 48px; right: 0; bottom: 0; width: 372px; background: var(--s-panel); border-left: 1px solid var(--s-ink); z-index: 4; overflow-y: auto; padding: 14px 20px 22px; font-size: 13px; }
+.st-panel > * + * { margin-top: 12px; }
+.pn-head { display: flex; justify-content: space-between; align-items: center; }
+.pn-kind, .st-panel h4 { font: 500 9.5px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--s-ink3); }
+.pn-x { background: none; border: 1px solid var(--s-rule); width: 26px; height: 26px; font-size: 16px; line-height: 1; cursor: pointer; color: var(--s-ink); }
+.pn-plate { height: 186px; background: var(--s-mat); color: var(--s-ink2); display: grid; place-items: center; }
+.pn-plate svg { height: 156px; width: 130px; }
+.pn-credit, .pn-none, .pn-sub { font-size: 11.5px; line-height: 1.4; color: var(--s-ink3); }
+.st-panel > .pn-credit, .st-panel > .pn-sub { margin-top: 6px; }
+.pn-title { font: 400 28px/1.08 var(--serif); letter-spacing: -.01em; color: var(--s-ink); } .pn-title.it { font-style: italic; }
+.pn-meta { display: grid; gap: 0; border-top: 1px solid var(--s-rule); }
+.pn-meta div { display: grid; grid-template-columns: 76px 1fr; gap: 8px; padding-block: 6px; border-bottom: 1px solid var(--s-rule); }
+.pn-meta dt { font: 500 9.5px/1.9 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--s-ink3); }
+.pn-meta dd { font-size: 12.5px; color: var(--s-ink); } .pn-meta dd span { display: block; font: 400 10px var(--mono); color: var(--s-ink3); }
+.pn-meta dd i { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 6px; }
+.pn-body p { font-size: 13px; line-height: 1.5; color: var(--s-ink2); margin: 0; } .pn-body p + p { margin-top: 8px; }
+.pn-btn { width: 100%; background: none; border: 1px solid var(--s-ink); padding: 8px 10px; font: 600 12.5px var(--sans); text-align: left; cursor: pointer; display: flex; justify-content: space-between; color: var(--s-ink); }
+.pn-btn::after { content: "→"; } .pn-btn:hover { background: var(--s-ink); color: var(--s-bg); }
+.st-panel > h4 { border-top: 1px solid var(--s-ink); padding-top: 10px; margin-top: 18px; }
+.pn-links button { width: 100%; background: none; border: 0; border-bottom: 1px solid var(--s-rule); padding: 7px 0; text-align: left; cursor: pointer; display: grid; grid-template-columns: 76px 1fr; gap: 0 8px; color: var(--s-ink); }
+.pn-links .yr, .pn-cut .yr { font: 400 10.5px/1.7 var(--mono); color: var(--s-ink3); }
+.pn-links .tt { font-weight: 600; font-size: 12.5px; } .pn-links .why { grid-column: 2; font-size: 11px; color: var(--s-ink3); }
+.pn-links button:hover .tt, .pn-cut button:hover { color: var(--s-accent); }
+.pn-status { display: flex; gap: 6px; }
+.pn-status span { font: 500 9.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--s-ink3); padding: 2px 6px; color: var(--s-ink2); } .pn-status .dash { border-style: dashed; }
+.pn-map { width: 100%; height: auto; display: block; } .pn-map .sph { fill: var(--s-lane); stroke: var(--s-rule); } .pn-map .land { fill: var(--s-ink); fill-opacity: .2; } .pn-map circle { stroke: var(--s-panel); stroke-width: 1; }
+.pn-cut li { display: grid; grid-template-columns: 100px 1fr; gap: 8px; padding-block: 6px; border-top: 1px solid var(--s-rule); }
+.pn-cut .rg { font-weight: 600; font-size: 11.5px; line-height: 1.3; color: var(--s-ink); }
+.pn-cut button { display: block; background: none; border: 0; padding: 0 0 2px; text-align: left; font-size: 12px; line-height: 1.3; cursor: pointer; color: var(--s-ink); } .pn-cut .yr { margin-right: 6px; }
+.pn-cut em { font-size: 11.5px; color: var(--s-ink3); }
+.pn-margin { display: flex; gap: 5px; align-items: center; font-size: 11.5px; color: var(--s-ink3); }
+.pn-margin button { background: none; border: 1px solid var(--s-rule); padding: 3px 8px; font: 500 11px var(--mono); cursor: pointer; color: var(--s-ink2); }
+.pn-margin button[aria-pressed="true"] { background: var(--s-ink); color: var(--s-bg); border-color: var(--s-ink); }
+.pn-cov { width: 100%; height: auto; display: block; } .pn-cov text { font: 400 10px var(--sans); fill: var(--s-ink2); } .pn-cov .c { fill: var(--s-ink); } .pn-cov .w { fill: none; stroke: var(--s-mer); stroke-width: 1.5; }
+.pn-nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.pn-nums dt { font: 400 30px/1 var(--serif); color: var(--s-ink); } .pn-nums dd { font-size: 11px; line-height: 1.3; color: var(--s-ink3); }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Atlas Interativo da História da Humanidade · Fase 1</p>
+  <h1>Como deve ser <em>explorar</em> a história</h1>
+  <p class="lede">Três direções de arte, uma recomendação e seis cenas navegáveis para decidir a aparência e o comportamento do atlas antes de construir o produto.</p>
+  <p class="facts"><span><b>Recorte de referência</b> 1400–1600</span><span><b>Dados</b> de demonstração, sem validação de fontes</span><span><b>Depois desta etapa</b> escolher a direção e seguir para o protótipo</span></p>
+</header>
+
+<nav class="toc" aria-label="Seções"><div class="toc__in">
+  <button type="button" data-to="premissas">Premissas</button>
+  <button type="button" data-to="direcoes">Três direções</button>
+  <button type="button" data-to="recomendacao">Recomendação</button>
+  <button type="button" data-to="storyboard">Storyboard</button>
+  <button type="button" data-to="zoom">Zoom e datas</button>
+  <button type="button" data-to="interface">Interface</button>
+  <button type="button" data-to="conteudo">Conteúdo</button>
+  <button type="button" data-to="decisoes">Decisões</button>
+</div></nav>
+
+<section class="sec" id="premissas">
+  <div class="sec__head">
+    <span class="sec__k">Premissas</span>
+    <h2>Quatro regras que valem para qualquer direção</h2>
+    <p>Elas saem do briefing e orientam as escolhas das próximas seções.</p>
+  </div>
+  <ul class="principles">
+    <li><b>O tempo é o território.</b><span>A linha do tempo é a tela principal. Mapa, busca e fichas respondem a ela.</span></li>
+    <li><b>Aproximar muda o que se vê.</b><span>Cada nível de zoom troca o tipo de informação: sociedades, depois séculos, depois objetos.</span></li>
+    <li><b>Nenhuma região é a régua das outras.</b><span>O mundo aparece em faixas regionais lado a lado. “Idade Média” e “Renascimento” são fenômenos locais, mostrados na faixa a que pertencem.</span></li>
+    <li><b>O vazio faz parte do acervo.</b><span>O atlas mostra onde a pesquisa já chegou e onde ainda não chegou. Um trecho sem registros aparece como trecho sem registros.</span></li>
+  </ul>
+</section>
+
+<section class="sec" id="direcoes">
+  <div class="sec__head">
+    <span class="sec__k">Exploração visual</span>
+    <h2>Três direções de arte</h2>
+    <p>As três telas usam o mesmo conjunto de demonstração: 110 registros nomeados entre 1400 e 1600 e 2.900 pontos simulados. Assim a comparação é de linguagem visual, com o conteúdo constante.</p>
+  </div>
+
+  <article class="concept">
+    <header class="concept__head">
+      <span class="concept__k">Conceito A</span>
+      <h3>Arquivo Vivo</h3>
+      <p class="concept__thesis">O objeto vem primeiro. A linha do tempo é a régua discreta de uma galeria.</p>
+    </header>
+    <div class="screen" data-w="1200" data-h="720"><div class="screen__fit"><div class="screen__in" id="mock-a"></div></div></div>
+    <div class="sheet">
+      <div>
+        <div><h4>Paleta</h4><ul class="sw">
+          <li><i style="background:#F7F7F4"></i>Parede<code>#F7F7F4</code></li>
+          <li><i style="background:#121314"></i>Tinta<code>#121314</code></li>
+          <li><i style="background:#6B6E70"></i>Grafite<code>#6B6E70</code></li>
+          <li><i style="background:#DCDCD7"></i>Passe-partout<code>#DCDCD7</code></li>
+          <li><i style="background:#24409A"></i>Lápis-lazúli<code>#24409A</code></li>
+        </ul></div>
+        <div><h4>Tipografia</h4><div class="spec"><b style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300">Marfim, <i>1500</i></b><span>Legenda de museu em Hanken Grotesk</span><small>Cormorant Garamond + Hanken Grotesk</small></div></div>
+      </div>
+      <dl>
+        <div><dt>Identidade</dt><dd>Parede branca de galeria, serifa grande e leve, objeto fotografado sobre fundo neutro, legendas de museu. A cor vem dos próprios objetos.</dd></div>
+        <div><dt>Composição</dt><dd>Um objeto em destaque ocupa o centro. Os vizinhos no tempo esperam em fila à direita. A régua do período fica no rodapé.</dd></div>
+        <div><dt>Navegação</dt><dd>A rolagem horizontal passa de objeto em objeto, em ordem cronológica. A régua permite saltar. O zoom troca de sala, isto é, de período.</dd></div>
+        <div><dt>Interação</dt><dd>Abrir um objeto amplia a prancha em tela cheia, com a legenda ao lado. As setas levam ao anterior e ao seguinte no tempo.</dd></div>
+      </dl>
+      <div>
+        <div><h4>Vantagens</h4><ul class="pc">
+          <li>É a mais bonita com pouco conteúdo. Dez bons objetos já sustentam a experiência.</li>
+          <li>Cada prancha vira uma imagem pronta para publicar no X.</li>
+          <li>Leitura calma, familiar a quem visita museus.</li>
+        </ul></div>
+        <div><h4>Limitações</h4><ul class="pc pc--con">
+          <li>Depende de boas fotografias com licença clara.</li>
+          <li>Acontecimentos sem imagem ficam em segundo plano.</li>
+          <li>Simultaneidade e densidade quase não aparecem.</li>
+          <li>Com milhares de registros, tende a virar catálogo paginado.</li>
+        </ul></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <header class="concept__head">
+      <span class="concept__k">Conceito B</span>
+      <h3>Observatório do Tempo</h3>
+      <p class="concept__thesis">A história como campo de pontos. A densidade é a paisagem.</p>
+    </header>
+    <div class="screen" data-w="1200" data-h="720"><div class="screen__fit"><div class="screen__in" id="mock-b"></div></div></div>
+    <div class="sheet">
+      <div>
+        <div><h4>Paleta</h4><ul class="sw">
+          <li><i style="background:#0B0F1E"></i>Noite<code>#0B0F1E</code></li>
+          <li><i style="background:#121831"></i>Bruma<code>#121831</code></li>
+          <li><i style="background:#E9ECF5"></i>Estrela<code>#E9ECF5</code></li>
+          <li><i style="background:#F2C66B"></i>Seleção<code>#F2C66B</code></li>
+          <li><i style="background:linear-gradient(90deg,#F0776B 0 20%,#F2C66B 20% 40%,#5FC7E8 40% 60%,#B49BF0 60% 80%,#6FD69B 80%)"></i>Categorias<code>5 matizes</code></li>
+        </ul></div>
+        <div><h4>Tipografia</h4><div class="spec"><b style="font-family:'IBM Plex Mono',monospace;font-size:28px;letter-spacing:.04em">N = 3.010</b><span style="font-family:'IBM Plex Sans',sans-serif">Texto corrido em IBM Plex Sans</span><small>IBM Plex Mono + IBM Plex Sans</small></div></div>
+      </div>
+      <dl>
+        <div><dt>Identidade</dt><dd>Fundo noturno azul-índigo, pontos luminosos, tipografia monoespaçada, leituras numéricas. Nenhum ornamento.</dd></div>
+        <div><dt>Composição</dt><dd>Campo de pontos em tela cheia, com o tempo na horizontal e as regiões na vertical. Histograma de densidade no rodapé e um painel de leitura flutuante.</dd></div>
+        <div><dt>Navegação</dt><dd>Zoom contínuo com roda ou pinça e arrasto. A janela de tempo é selecionada no histograma.</dd></div>
+        <div><dt>Interação</dt><dd>Selecionar um ponto acende seus vínculos como arcos. Os filtros recolorem o campo na hora.</dd></div>
+      </dl>
+      <div>
+        <div><h4>Vantagens</h4><ul class="pc">
+          <li>Escala muito bem para milhares de registros.</li>
+          <li>Padrões, lacunas e simultaneidade aparecem de imediato.</li>
+          <li>Rende bons vídeos curtos de desenvolvimento.</li>
+        </ul></div>
+        <div><h4>Limitações</h4><ul class="pc pc--con">
+          <li>Fria e abstrata. Sobra pouco lugar para a imagem do objeto.</li>
+          <li>Com pouco conteúdo, parece um céu vazio.</li>
+          <li>Pede familiaridade com visualização de dados.</li>
+          <li>Pode lembrar um painel analítico, o oposto de um museu.</li>
+        </ul></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <header class="concept__head">
+      <span class="concept__k">Conceito C</span>
+      <h3>Atlas da Humanidade</h3>
+      <p class="concept__thesis">Onde e quando ao mesmo tempo. O mapa conduz e a linha do tempo recorta.</p>
+    </header>
+    <div class="screen" data-w="1200" data-h="720"><div class="screen__fit"><div class="screen__in" id="mock-c"></div></div></div>
+    <div class="sheet">
+      <div>
+        <div><h4>Paleta</h4><ul class="sw">
+          <li><i style="background:#CFDDD8"></i>Mar<code>#CFDDD8</code></li>
+          <li><i style="background:#F2EDDF"></i>Terra<code>#F2EDDF</code></li>
+          <li><i style="background:#2B2520"></i>Sépia<code>#2B2520</code></li>
+          <li><i style="background:#A3303A"></i>Carmim<code>#A3303A</code></li>
+          <li><i style="background:#2F5D7C"></i>Azul de rota<code>#2F5D7C</code></li>
+        </ul></div>
+        <div><h4>Tipografia</h4><div class="spec"><b style="font-family:'Spectral',Georgia,serif;font-style:italic;font-size:32px;letter-spacing:.06em">Oceano Índico</b><span style="font-family:'Archivo Narrow',sans-serif;font-size:14px">Rótulos e dados em Archivo Narrow</span><small>Spectral + Archivo Narrow</small></div></div>
+      </div>
+      <dl>
+        <div><dt>Identidade</dt><dd>Carta náutica e atlas impresso: mar verde-acinzentado, terra em cor de papel, rubricas em carmim, mares em itálico espaçado.</dd></div>
+        <div><dt>Composição</dt><dd>Planisfério em dois terços da tela, legenda numerada à direita e uma faixa temporal por região no rodapé.</dd></div>
+        <div><dt>Navegação</dt><dd>A janela de tempo desliza no rodapé e o mapa se atualiza. Zoom geográfico e zoom temporal são independentes.</dd></div>
+        <div><dt>Interação</dt><dd>As rotas se desenham conforme a janela avança. Clicar num alfinete abre a ficha ancorada ao lugar.</dd></div>
+      </dl>
+      <div>
+        <div><h4>Vantagens</h4><ul class="pc">
+          <li>A melhor para simultaneidade e para relações entre territórios.</li>
+          <li>A geografia orienta quem não domina a cronologia.</li>
+          <li>Base natural para rotas, impérios e trocas.</li>
+        </ul></div>
+        <div><h4>Limitações</h4><ul class="pc pc--con">
+          <li>O mapa disputa o papel principal com a linha do tempo.</li>
+          <li>Objetos sem lugar preciso, ou que mudaram de lugar, ficam mal resolvidos.</li>
+          <li>Fronteiras históricas pedem dados que ainda não existem no projeto.</li>
+          <li>Em telas pequenas o mapa perde quase tudo.</li>
+        </ul></div>
+      </div>
+    </div>
+  </article>
+  <p class="note">Nos mockups, as silhuetas ocupam o lugar das fotografias de acervo. Rotas e posições no mapa são esquemáticas.</p>
+</section>
+
+<section class="sec" id="recomendacao">
+  <div class="sec__head">
+    <span class="sec__k">Recomendação · Conceito D</span>
+    <h2>Meridiano: uma quarta direção, feita das três</h2>
+  </div>
+  <div class="rec">
+    <div>
+      <p class="rec__idea">Um mapa em que a longitude foi trocada pelo tempo. As regiões do mundo são paralelos, faixas horizontais lado a lado. Cada instante é um <em>meridiano</em>: uma linha vertical que cruza todas as regiões no mesmo ano.</p>
+      <div class="cols" style="margin-top:26px">
+        <div><h4>Paleta Dia</h4><ul class="sw">
+          <li><i style="background:#ECEEE8"></i>Gesso<code>#ECEEE8</code></li>
+          <li><i style="background:#16201D"></i>Tinta verde<code>#16201D</code></li>
+          <li><i style="background:#7F540D"></i>Latão<code>#7F540D</code></li>
+          <li><i style="background:#A3352F"></i>Rubrica<code>#A3352F</code></li>
+        </ul></div>
+        <div><h4>Paleta Noite</h4><ul class="sw">
+          <li><i style="background:#0E1716"></i>Verde-garrafa<code>#0E1716</code></li>
+          <li><i style="background:#E9EDE4"></i>Marfim<code>#E9EDE4</code></li>
+          <li><i style="background:#D9A541"></i>Latão claro<code>#D9A541</code></li>
+          <li><i style="background:#EE8A72"></i>Rubrica clara<code>#EE8A72</code></li>
+        </ul></div>
+      </div>
+      <div class="spec" style="margin-top:22px"><b style="font-family:var(--serif)">Mapa de <i>Piri Reis</i></b><span>Interface em Hanken Grotesk, datas em <span class="mono">IBM Plex Mono · 1513 · 40,41° N</span></span><small>Newsreader + Hanken Grotesk + IBM Plex Mono</small></div>
+    </div>
+    <figure>
+      <svg class="diagram" id="diagram-d" viewBox="0 0 520 318" role="img" aria-label="Esquema: sete faixas regionais horizontais cortadas por uma linha vertical, o meridiano de 1513"></svg>
+      <p class="cap">O princípio em uma imagem. Ler na horizontal acompanha uma região ao longo do tempo. Ler na vertical mostra o mundo num mesmo ano.</p>
+    </figure>
+  </div>
+  <ul class="inherit">
+    <li><b>Do Arquivo Vivo</b><span>As pranchas de objeto, a legenda de museu, a serifa editorial e a calma da página.</span></li>
+    <li><b>Do Observatório</b><span>O sedimento de densidade, os grupos contados e as conexões entre registros.</span></li>
+    <li><b>Do Atlas</b><span>As regiões como estrutura, o vocabulário cartográfico (escala, legenda, terra incógnita) e o planisfério como vista ligada.</span></li>
+  </ul>
+  <div class="cols">
+    <div><h4>Por que esta</h4><ul class="plain">
+      <li><b>A linha do tempo fica no centro,</b> como o briefing pede, e ocupa quase toda a tela.</li>
+      <li><b>A simultaneidade é estrutural.</b> Basta olhar na vertical, sem trocar de modo.</li>
+      <li><b>A periodização europeia deixa de ser moldura.</b> Cada região tem a sua faixa e as suas próprias durações.</li>
+      <li><b>Funciona com 30 ou com 30 mil registros,</b> porque marcas de datação e fichas são camadas separadas.</li>
+      <li><b>O vazio vira desenho.</b> A hachura de trecho sem pesquisa é parte da linguagem.</li>
+    </ul></div>
+    <div><h4>Riscos assumidos</h4><ul class="plain">
+      <li>Sete faixas pedem altura. Em telas baixas, as faixas ficam compactas e uma se abre por vez.</li>
+      <li>Dividir o mundo em regiões é uma decisão editorial. Ela precisa estar explicada na página Sobre e poder mudar.</li>
+      <li>É mais trabalhosa de implementar do que o Arquivo Vivo.</li>
+      <li>A simulação repete o viés das fontes mais acessíveis, com a Europa super-representada. O desenho deixa isso visível, e cabe à pesquisa compensar.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="sec" id="storyboard">
+  <div class="sec__head">
+    <span class="sec__k">Storyboard navegável</span>
+    <h2>Seis cenas, da história inteira a um trecho em branco</h2>
+    <p>As cenas estão desenhadas na direção Meridiano e rodam sobre os dados de demonstração. Se a escolha for A, B ou C, o roteiro continua valendo e a composição muda.</p>
+  </div>
+  <div id="stage" data-skin="day">
+    <div class="sb-tabs" role="tablist" aria-label="Cenas" id="sb-tabs"></div>
+    <div class="screen" data-w="1200" data-h="772" data-min="900"><div class="screen__fit"><div class="screen__in st-screen"></div></div></div>
+    <div class="sb-bar">
+      <p class="hint">Dentro da tela: arraste para percorrer o tempo, use − e + para mudar de nível, clique numa faixa para abri-la e numa ficha ou marca para ver o registro.</p>
+      <div class="sb-ctl">
+        <div class="tog" role="group" aria-label="Volume de dados"><button type="button" id="sim-on" aria-pressed="true">Acervo cheio (simulado)</button><button type="button" id="sim-off" aria-pressed="false">Só os 118 nomeados</button></div>
+        <div class="tog" role="group" aria-label="Modo de cor"><button type="button" id="skin-day" aria-pressed="true">Dia</button><button type="button" id="skin-night" aria-pressed="false">Noite</button></div>
+      </div>
+    </div>
+    <div class="sb-notes">
+      <div class="sb-notes__h"><span class="k" id="sb-k"></span><h3 id="sb-title"></h3>
+        <div class="sb-nav"><button type="button" id="sb-prev">← Anterior</button><button type="button" id="sb-next">Próxima →</button></div>
+      </div>
+      <dl class="sb-fields" id="sb-fields"></dl>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="zoom">
+  <div class="sec__head">
+    <span class="sec__k">Componente principal</span>
+    <h2>Zoom semântico e notação de datas</h2>
+    <p>Aproximar troca a unidade de informação. Os três níveis se sucedem em transição contínua, e nada desaparece: o que não cabe como ficha permanece como marca.</p>
+  </div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th></th><th>Panorama<small>janela acima de 1.500 anos</small></th><th>Era<small>de 170 a 700 anos</small></th><th>Vitrine<small>abaixo de 90 anos</small></th></tr></thead>
+    <tbody>
+      <tr><th>Unidade</th><td>Sociedades e Estados de longa duração</td><td>Grupos de registros e acontecimentos estruturantes</td><td>O registro individual: acontecimento, objeto, obra, documento</td></tr>
+      <tr><th>Eixo</th><td>Milênios e séculos. Pré-história em escala comprimida, sinalizada</td><td>Séculos e décadas</td><td>Décadas e anos</td></tr>
+      <tr><th>Na faixa</th><td>Barras com nome. Marcos do tempo profundo</td><td>Estados viram linhas de contexto no topo. Círculos com contagem e cor da categoria dominante</td><td>Pranchas com imagem e fichas de texto. A faixa aberta ganha altura</td></tr>
+      <tr><th>Rótulos</th><td>Só o que tem largura para o nome</td><td>Só registros de peso máximo</td><td>Por prioridade: peso, depois imagem, depois espaço</td></tr>
+      <tr><th>Tira do acervo</th><td>Bloco de sedimento onde há registros, hachura no resto</td><td>Sedimento em código de barras, intervalos como traços</td><td>Uma marca por registro, com a forma da sua datação</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 style="margin-top:44px;margin-bottom:16px">Como cada tipo de data é desenhado</h3>
+  <ul class="dates">
+    <li><svg width="74" height="18"><circle cx="37" cy="9" r="4.2" fill="currentColor"/></svg><div><b>Data exata</b><span>1513 · um ponto cheio</span></div></li>
+    <li><svg width="74" height="18"><line x1="14" y1="9" x2="60" y2="9" stroke="currentColor" stroke-dasharray="2 2.5"/><circle class="bgf" cx="37" cy="9" r="4" stroke="currentColor" stroke-width="1.5"/></svg><div><b>Data aproximada</b><span>c. 1450 · ponto vazado com margem pontilhada</span></div></li>
+    <li><svg width="74" height="18"><rect x="8" y="6.5" width="58" height="5" fill="currentColor"/></svg><div><b>Intervalo documentado</b><span>1405–1433 · barra cheia</span></div></li>
+    <li><svg width="74" height="18"><rect x="8" y="6.5" width="58" height="5" fill="currentColor" fill-opacity=".3" stroke="currentColor" stroke-dasharray="3 2"/></svg><div><b>Intervalo estimado</b><span>c. 1502–1521 · barra clara, contorno tracejado</span></div></li>
+    <li><svg width="74" height="18"><rect x="2" y="6.5" width="70" height="5" fill="currentColor" fill-opacity=".14" stroke="currentColor" stroke-dasharray="1 2.5"/></svg><div><b>Datação por século</b><span>sécs. XV–XVI · barra larga e tênue</span></div></li>
+    <li><svg width="74" height="18"><rect x="2" y="6.5" width="70" height="5" fill="none" stroke="currentColor" stroke-dasharray="1 3"/></svg><div><b>Data debatida</b><span>entre 1142 e 1451 · só o contorno pontilhado</span></div></li>
+    <li><svg width="74" height="18"><rect x="0" y="6.5" width="74" height="5" fill="currentColor" fill-opacity=".3"/><path d="M4 4l-3 5 3 5M70 4l3 5-3 5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><div><b>Longa duração</b><span>a barra atravessa a janela e o rótulo acompanha a borda</span></div></li>
+  </ul>
+  <div class="cols">
+    <div><h4>Antes da era comum</h4><ul class="plain">
+      <li>No arquivo, os anos são números inteiros. Anos antes da era comum são negativos, em numeração astronômica (ISO 8601), e o cálculo de durações atravessa a virada sem erro.</li>
+      <li>Na tela, a proposta é “AEC” e “EC”, com opção de “a.C.” e “d.C.”. O ano zero nunca aparece.</li>
+      <li>A data no calendário de origem é preservada como nota. Exemplo: 919 AH no Mapa de Piri Reis.</li>
+    </ul></div>
+    <div><h4>Densidade e agrupamento</h4><ul class="plain">
+      <li>A tira do acervo, na base de cada faixa, mostra todos os registros em qualquer nível. É a camada exata.</li>
+      <li>As fichas são a camada editorial. Entram por prioridade e nunca se sobrepõem.</li>
+      <li>Os grupos contados se recalculam com o zoom e com os filtros. Clicar num grupo aproxima até ele se desfazer.</li>
+      <li>Abrir uma faixa dá a ela três vezes mais altura, com pranchas grandes. As outras encolhem e continuam na tela.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="sec" id="interface">
+  <div class="sec__head">
+    <span class="sec__k">Organização da interface</span>
+    <h2>Uma tela principal e um painel que nunca a esconde</h2>
+    <p>A exploração acontece numa única tela. O que seria outra página, como detalhe, corte no tempo e estado do acervo, entra pelo painel lateral, e a linha do tempo continua visível.</p>
+  </div>
+  <div class="ui">
+    <div class="wire" role="img" aria-label="Esquema da tela principal em seis zonas">
+      <div class="w1"><i>1</i>Marca · janela atual · busca · Acervo · Sobre</div>
+      <div class="w2"><i>2</i>Filtros por categoria</div>
+      <div class="w3"><i>3</i>Faixas regionais</div>
+      <div class="w4"><i>4</i>Eixo e minimapa</div>
+      <div class="w5"><i>5</i>Painel</div>
+      <div class="w6"><i>6</i>Nível e legenda</div>
+    </div>
+    <ul class="keylist">
+      <li><i>1</i><span><b>Barra superior.</b> A janela de tempo atual fica sempre legível. A busca abre com a tecla / e aceita nome, lugar ou ano.</span></li>
+      <li><i>2</i><span><b>Filtros.</b> Categorias ligam e desligam na hora. Região e tipo de registro entram no mesmo lugar na Fase 2.</span></li>
+      <li><i>3</i><span><b>Faixas regionais.</b> O centro da experiência. A ordem proposta vai de oeste para leste, como um planisfério desenrolado, e pode ser reordenada.</span></li>
+      <li><i>4</i><span><b>Eixo e minimapa.</b> O minimapa mostra a história inteira, a janela atual e onde o acervo tem registros.</span></li>
+      <li><i>5</i><span><b>Painel.</b> Registro aberto, corte no tempo ou estado do acervo. A linha do tempo se comprime para caber ao lado.</span></li>
+      <li><i>6</i><span><b>Barra de nível.</b> Diz em que nível de zoom a pessoa está e o que cada marca significa.</span></li>
+    </ul>
+  </div>
+
+  <h3 style="margin-top:48px;margin-bottom:8px">No celular, o tempo corre na vertical</h3>
+  <p class="read" style="color:var(--ink2);margin-bottom:22px">Rolar a página já é o gesto de avançar no tempo. As faixas viram filtros de região, a tira do acervo desce pela borda direita e o painel vira uma folha que sobe da base.</p>
+  <div class="phones">
+    <figure class="phone"><div class="phone__f">
+      <div class="ph-top"><i>Atlas</i><span>buscar</span></div>
+      <div class="ph-yr"><b>1513<small>séc. XVI · vitrine</small></b><div class="ph-chips"><span class="on">Todas</span><span>Américas</span><span>África</span><span>Europa</span><span>Ásia Oc.</span></div></div>
+      <div class="ph-list">
+        <div class="ph-it"><span class="y">1508–12</span><span class="d" style="background:var(--c-arte)"></span><span class="t"><small>Europa</small><b>Teto da Capela Sistina</b></span><span class="ph-plate" data-glyph="pintura"></span></div>
+        <div class="ph-it"><span class="y">1510</span><span class="d" style="background:var(--c-poder)"></span><span class="t"><small>Sul da Ásia</small><b>Portugueses tomam Goa</b></span></div>
+        <div class="ph-it"><span class="y">1511</span><span class="d" style="background:var(--c-poder)"></span><span class="t"><small>Leste e Sudeste Asiático</small><b>Portugueses tomam Malaca</b></span></div>
+        <div class="ph-it"><span class="y">1513</span><span class="d" style="background:var(--c-saber)"></span><span class="t"><small>Ásia Ocidental e Central</small><b>Mapa de Piri Reis</b></span><span class="ph-plate" data-glyph="mapa"></span></div>
+        <div class="ph-it"><span class="y">1514</span><span class="d" style="background:var(--c-poder)"></span><span class="t"><small>Ásia Ocidental e Central</small><b>Batalha de Chaldiran</b></span></div>
+        <div class="ph-it"><span class="y">1517</span><span class="d" style="background:var(--c-poder)"></span><span class="t"><small>África</small><b>Otomanos conquistam o Cairo mameluco</b></span></div>
+        <div class="ph-it"><span class="y">1517</span><span class="d" style="background:var(--c-fe)"></span><span class="t"><small>Europa</small><b>Lutero divulga as 95 teses</b></span></div>
+        <div class="ph-it"><span class="y">c. 1502–21</span><span class="d" style="background:var(--c-arte)"></span><span class="t"><small>Américas</small><b>Pedra do Sol</b></span><span class="ph-plate" data-glyph="disco"></span></div>
+      </div>
+      <div class="ph-tabs"><b>Explorar</b><span>Buscar</span><span>Acervo</span></div>
+    </div><figcaption><b>Explorar</b>O ano no topo acompanha a rolagem. Pinçar muda de nível.</figcaption></figure>
+
+    <figure class="phone"><div class="phone__f">
+      <div class="ph-top ph-dim"><i>Atlas</i><span>buscar</span></div>
+      <div class="ph-yr ph-dim"><b>1513</b></div>
+      <div class="ph-sheet">
+        <span class="ph-plate" data-glyph="mapa"></span>
+        <small>Documento · carta náutica</small>
+        <h5>Mapa de Piri Reis</h5>
+        <p>1513 · data exata (919 AH)<br>Galípoli · 40,41° N, 26,67° L</p>
+        <div class="ph-btn"><span>Ver o mundo em 1513</span><span>→</span></div>
+        <small>Conexões</small>
+        <div class="ph-link"><span>1492</span><b>Colombo chega às Antilhas</b></div>
+        <div class="ph-link"><span>1517</span><b>Otomanos conquistam o Cairo</b></div>
+      </div>
+    </div><figcaption><b>Registro aberto</b>Folha que sobe da base. Arrastar para baixo devolve à linha do tempo.</figcaption></figure>
+
+    <figure class="phone"><div class="phone__f">
+      <div class="ph-top"><i>Atlas</i><span>fechar corte</span></div>
+      <div class="ph-yr"><b>1513<small>± 5 anos · enquanto isso</small></b></div>
+      <svg class="ph-map" data-cutmap viewBox="0 0 250 126"></svg>
+      <ul class="ph-cut" data-cutlist></ul>
+      <div class="ph-tabs"><b>Explorar</b><span>Buscar</span><span>Acervo</span></div>
+    </div><figcaption><b>Enquanto isso</b>O meridiano vira uma lista por região, com o planisfério no topo.</figcaption></figure>
+  </div>
+
+  <div class="cols" style="margin-top:44px">
+    <div><h4>Telas do produto</h4><ul class="plain">
+      <li><b>Explorar.</b> A linha do tempo. É a página inicial.</li>
+      <li><b>Registro.</b> Painel sobre a linha do tempo, com endereço próprio para compartilhar.</li>
+      <li><b>Busca e filtros.</b> Uma caixa só. Os resultados aparecem como lista e acendem na linha do tempo.</li>
+      <li><b>Acervo.</b> O que existe, o que está em pesquisa e o que entrou por último.</li>
+      <li><b>Sobre.</b> O projeto autoral, o método, os critérios de datação e a divisão em regiões.</li>
+    </ul></div>
+    <div><h4>Para quem nunca usou uma linha do tempo</h4><ul class="plain">
+      <li>A primeira visita abre na sala mais preenchida, e não no panorama vazio.</li>
+      <li>Três convites na tela, sem tutorial: arrastar, aproximar, abrir uma faixa.</li>
+      <li>Tudo o que é clicável muda de cor ao passar o cursor e tem foco de teclado.</li>
+      <li>O minimapa e a janela atual respondem sempre à pergunta “onde estou?”.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="sec" id="conteudo">
+  <div class="sec__head">
+    <span class="sec__k">Sistema de conteúdo · prévia da Fase 3</span>
+    <h2>Um registro é uma pasta com um arquivo Markdown</h2>
+    <p>Pesquisar um objeto, criar a pasta, colar as imagens e as referências, compilar. O registro aparece na linha do tempo sem passar por um painel administrativo.</p>
+  </div>
+  <div class="ui">
+    <div class="code"><pre><i>content/registros/1513-mapa-de-piri-reis/index.md</i>
+
+---
+<b>titulo</b>: Mapa de Piri Reis
+<b>tipo</b>: documento          <i># acontecimento | processo | objeto | construcao | documento</i>
+<b>categoria</b>: ciencia-e-tecnica
+<b>regiao</b>: asia-ocidental-e-central
+<b>data</b>:
+  inicio: 1513
+  fim: null
+  precisao: exata        <i># exata | aproximada | intervalo | intervalo-estimado | seculo | debatida</i>
+  nota: "919 AH, registrado no próprio mapa"
+<b>lugar</b>:
+  nome: Galípoli
+  lat: 40.41
+  lon: 26.67
+<b>imagens</b>:
+  - arquivo: mapa.jpg
+    credito: ""          <i># instituição e autoria da fotografia</i>
+    licenca: ""          <i># domínio público, CC0, CC BY 4.0…</i>
+<b>fontes</b>: []               <i># sem fonte, o registro não sai de rascunho</i>
+<b>conexoes</b>:
+  - id: 1492-colombo-chega-as-antilhas
+    relacao: fonte citada nas anotações
+<b>peso</b>: 3                  <i># 1 a 3, decide o que ganha rótulo primeiro</i>
+<b>status</b>: rascunho         <i># rascunho | em-revisao | publicado</i>
+---
+
+Texto do registro em Markdown.</pre></div>
+    <div style="display:grid;gap:22px">
+      <ol class="steps">
+        <li><span><b>Escrever.</b> Uma pasta por registro, com o texto e as imagens juntos.</span></li>
+        <li><span><b>Validar.</b> Na compilação, um esquema confere datas, região, licença e fontes. Registro publicado sem fonte ou imagem sem licença interrompe a compilação.</span></li>
+        <li><span><b>Indexar.</b> Os metadados viram um índice único que a linha do tempo carrega. O texto de cada registro só é lido quando o painel abre.</span></li>
+        <li><span><b>Publicar.</b> Só entram no site os registros com status publicado. Rascunhos aparecem apenas em desenvolvimento.</span></li>
+      </ol>
+      <ul class="plain">
+        <li><b>MDX depois.</b> O mesmo arquivo pode virar .mdx quando um registro pedir comparação de imagens, mapa embutido ou linha do tempo interna.</li>
+        <li><b>Banco de dados depois.</b> O índice tem o formato de uma tabela. Migrar para Supabase/PostgreSQL troca a origem dos dados e mantém a interface.</li>
+        <li><b>Acervos abertos depois.</b> Museus com programas de acesso aberto, como Met, Rijksmuseum, Smithsonian e Art Institute of Chicago, podem alimentar imagens e metadados, sempre com crédito e licença gravados no registro.</li>
+      </ul>
+    </div>
+  </div>
+  <h3 style="margin-top:44px;margin-bottom:14px">O que é real e o que é simulado nesta página</h3>
+  <ul class="plain read">
+    <li><b>118 registros nomeados.</b> São fatos históricos conhecidos, escritos de memória como material de demonstração. Datas e descrições não foram conferidas em fontes e nenhuma fonte é citada.</li>
+    <li><b>2.900 pontos simulados.</b> São anônimos e gerados por semente. Servem só para testar densidade entre 1400 e 1600.</li>
+    <li><b>Imagens.</b> Silhuetas ilustrativas. Fotografias reais entram na Fase 2, com crédito e licença.</li>
+    <li><b>No produto,</b> todo registro traz o seu status. Demonstração e rascunho nunca se confundem com conteúdo publicado.</li>
+  </ul>
+</section>
+
+<section class="sec" id="decisoes">
+  <div class="sec__head">
+    <span class="sec__k">Antes da Fase 2</span>
+    <h2>Cinco decisões que são suas</h2>
+  </div>
+  <ul class="decide">
+    <li><b>Direção visual</b><span>A, B, C ou D. <strong>Recomendo D, Meridiano.</strong> Também é possível seguir com D e trazer de A as pranchas em tela cheia.</span></li>
+    <li><b>Notação de era</b><span>“AEC / EC” ou “a.C. / d.C.”. <strong>Recomendo AEC / EC como padrão,</strong> com a outra disponível nas preferências.</span></li>
+    <li><b>Regiões e ordem das faixas</b><span>Proponho sete faixas, de oeste para leste. Vale conferir se a divisão combina com a forma como você pretende estudar. O sistema aceita mudar depois.</span></li>
+    <li><b>Primeira sala</b><span>O protótipo usa 1400–1600 como referência visual. A primeira época que você vai pesquisar de verdade pode ser outra.</span></li>
+    <li><b>Nome do produto</b><span>Os mockups usam “Atlas” como marca provisória.</span></li>
+  </ul>
+</section>
+
+<footer>Fase 1 do Atlas Interativo da História da Humanidade. Protótipo funcional e sistema de conteúdo ficam para as Fases 2 e 3, depois da escolha da direção.</footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+/* Atlas — dados de demonstração da Fase 1.
+   Registros nomeados: fatos históricos conhecidos, com datas indicativas e SEM revisão de fontes.
+   Registros simulados: pontos anônimos gerados por semente, só para testar densidade. */
+window.ATLAS = (function () {
+  const LANES = [
+    { id: 'am', name: 'Américas', lines: ['Américas'] },
+    { id: 'af', name: 'África', lines: ['África'] },
+    { id: 'eu', name: 'Europa', lines: ['Europa'] },
+    { id: 'ao', name: 'Ásia Ocidental e Central', lines: ['Ásia Ocidental', 'e Central'] },
+    { id: 'as', name: 'Sul da Ásia', lines: ['Sul da Ásia'] },
+    { id: 'al', name: 'Leste e Sudeste Asiático', lines: ['Leste e Sudeste', 'Asiático'] },
+    { id: 'oc', name: 'Oceania e Pacífico', lines: ['Oceania', 'e Pacífico'] }
+  ];
+  const CATS = [
+    { id: 'poder', name: 'Poder e conflito' },
+    { id: 'arte', name: 'Arte e arquitetura' },
+    { id: 'saber', name: 'Ciência e técnica' },
+    { id: 'fe', name: 'Religião e pensamento' },
+    { id: 'troca', name: 'Rotas e trocas' },
+    { id: 'vida', name: 'Sociedade e cotidiano' }
+  ];
+  const KINDS = { ev: 'Acontecimento', pr: 'Processo', ob: 'Objeto', co: 'Construção', do: 'Documento' };
+  const PREC = {
+    e: 'data exata', c: 'data aproximada', i: 'intervalo documentado',
+    ci: 'intervalo estimado', s: 'datação por século', d: 'data debatida'
+  };
+
+  // [id, faixa, início, fim, precisão, categoria, tipo, peso, título, lugar, lon, lat, silhueta, rótulo de data]
+  const RAW = [
+    // Américas
+    ['haud', 'am', 1142, 1451, 'd', 'poder', 'pr', 1, 'Formação da Confederação Haudenosaunee', 'Grandes Lagos', -76.1, 42.9, null, 'entre 1142 e 1451'],
+    ['quipu', 'am', 1400, 1532, 's', 'saber', 'ob', 2, 'Quipu inca', 'Andes centrais', -72.0, -13.5, 'quipu', 'sécs. XV–XVI'],
+    ['triplice', 'am', 1428, null, 'e', 'poder', 'ev', 2, 'Formação da Tríplice Aliança', 'Tenochtitlan', -99.13, 19.43],
+    ['pachacuti', 'am', 1438, null, 'c', 'poder', 'ev', 2, 'Pachacuti inicia a expansão inca', 'Cusco', -71.97, -13.52],
+    ['machu', 'am', 1450, null, 'c', 'arte', 'co', 3, 'Machu Picchu', 'Vale do Urubamba', -72.55, -13.16, 'edificio'],
+    ['chanchan', 'am', 1470, null, 'c', 'poder', 'ev', 1, 'Incas tomam Chan Chan, capital chimu', 'Costa norte dos Andes', -79.07, -8.1],
+    ['coyol', 'am', 1473, null, 'c', 'arte', 'ob', 2, 'Pedra de Coyolxauhqui', 'Tenochtitlan', -99.13, 19.43, 'disco'],
+    ['templo', 'am', 1487, null, 'e', 'fe', 'ev', 2, 'Reconsagração do Templo Mayor', 'Tenochtitlan', -99.13, 19.43],
+    ['colombo', 'am', 1492, null, 'e', 'troca', 'ev', 3, 'Colombo chega às Antilhas', 'Guanahani', -74.5, 24.0],
+    ['cabral', 'am', 1500, null, 'e', 'troca', 'ev', 2, 'Frota de Cabral chega à costa do atual Brasil', 'Porto Seguro', -39.06, -16.45],
+    ['pedrasol', 'am', 1502, 1521, 'ci', 'arte', 'ob', 3, 'Pedra do Sol', 'Tenochtitlan', -99.13, 19.43, 'disco'],
+    ['tenoch', 'am', 1519, 1521, 'i', 'poder', 'pr', 3, 'Guerra e queda de Tenochtitlan', 'Vale do México', -99.13, 19.43],
+    ['cajamarca', 'am', 1532, null, 'e', 'poder', 'ev', 3, 'Captura de Atahualpa em Cajamarca', 'Cajamarca', -78.5, -7.16],
+    ['mendoza', 'am', 1541, null, 'c', 'saber', 'do', 2, 'Códice Mendoza', 'Cidade do México', -99.13, 19.43, 'manuscrito'],
+    ['potosi', 'am', 1545, null, 'e', 'troca', 'ev', 2, 'Começa a mineração de prata em Potosí', 'Potosí', -65.75, -19.58],
+    ['florentino', 'am', 1545, 1577, 'ci', 'saber', 'do', 2, 'Códice Florentino', 'Nova Espanha', -99.13, 19.43, 'manuscrito'],
+    ['salvador', 'am', 1549, null, 'e', 'poder', 'ev', 1, 'Fundação de Salvador', 'Baía de Todos os Santos', -38.5, -12.97],
+    ['univ', 'am', 1551, null, 'e', 'saber', 'ev', 1, 'Fundadas as universidades de Lima e do México', 'Lima', -77.04, -12.05],
+    // África
+    ['sankore', 'af', 1400, 1600, 's', 'saber', 'do', 2, 'Manuscritos de Tombuctu', 'Tombuctu', -3.0, 16.77, 'manuscrito', 'sécs. XV–XVI'],
+    ['ceuta', 'af', 1415, null, 'e', 'poder', 'ev', 2, 'Portugal toma Ceuta', 'Ceuta', -5.31, 35.89],
+    ['zimbabue', 'af', 1450, null, 'c', 'vida', 'ev', 2, 'Declínio do Grande Zimbábue', 'Planalto do Zimbábue', 30.93, -20.27],
+    ['sunniali', 'af', 1464, 1492, 'i', 'poder', 'pr', 2, 'Reinado de Sunni Ali, expansão do Songhai', 'Gao', -0.04, 16.27],
+    ['tombuctu', 'af', 1468, null, 'e', 'poder', 'ev', 2, 'Songhai toma Tombuctu', 'Tombuctu', -3.0, 16.77],
+    ['mina', 'af', 1482, null, 'e', 'troca', 'co', 2, 'Feitoria de São Jorge da Mina', 'Costa do Ouro', -1.35, 5.08, 'edificio'],
+    ['dias', 'af', 1488, null, 'e', 'troca', 'ev', 2, 'Bartolomeu Dias contorna o cabo da Boa Esperança', 'Cabo da Boa Esperança', 18.47, -34.36],
+    ['saleiro', 'af', 1490, 1530, 'ci', 'arte', 'ob', 2, 'Saleiro de marfim sapi-português', 'Serra Leoa', -12.5, 8.5, 'vaso'],
+    ['kongo', 'af', 1491, null, 'e', 'fe', 'ev', 2, 'Batismo de Nzinga a Nkuwu, rei do Kongo', 'Mbanza Kongo', 14.25, -6.27],
+    ['askia', 'af', 1493, 1528, 'i', 'poder', 'pr', 2, 'Reinado de Askia Muhammad', 'Gao', -0.04, 16.27],
+    ['melinde', 'af', 1498, null, 'e', 'troca', 'ev', 1, 'Vasco da Gama em Melinde', 'Melinde', 40.12, -3.22],
+    ['idia', 'af', 1500, 1550, 's', 'arte', 'ob', 3, 'Máscara pendente da rainha-mãe Idia', 'Reino do Benin', 5.62, 6.34, 'mascara', 'início do séc. XVI'],
+    ['quiloa', 'af', 1505, null, 'e', 'poder', 'ev', 1, 'Portugueses saqueiam Quíloa', 'Quíloa', 39.5, -8.96],
+    ['cairo', 'af', 1517, null, 'e', 'poder', 'ev', 3, 'Otomanos conquistam o Cairo mameluco', 'Cairo', 31.24, 30.04],
+    ['adal', 'af', 1529, 1543, 'i', 'poder', 'pr', 1, 'Guerra entre Adal e Etiópia', 'Planalto etíope', 39.0, 11.0],
+    ['placas', 'af', 1550, 1650, 's', 'arte', 'ob', 3, 'Placas de bronze do Benin', 'Cidade do Benin', 5.62, 6.34, 'placa', 'sécs. XVI–XVII'],
+    ['alcacer', 'af', 1578, null, 'e', 'poder', 'ev', 2, 'Batalha de Alcácer-Quibir', 'Norte do Marrocos', -5.9, 35.0],
+    ['tondibi', 'af', 1591, null, 'e', 'poder', 'ev', 3, 'Batalha de Tondibi, fim do Império Songhai', 'Curva do Níger', -0.2, 16.6],
+    // Europa
+    ['renasc', 'eu', 1400, 1600, 'ci', 'arte', 'pr', 1, 'Renascimento italiano', 'Península Itálica', 11.26, 43.77],
+    ['duomo', 'eu', 1420, 1436, 'i', 'arte', 'co', 3, 'Cúpula de Santa Maria del Fiore', 'Florença', 11.26, 43.77, 'cupula'],
+    ['eyck', 'eu', 1434, null, 'e', 'arte', 'ob', 2, 'O Casal Arnolfini, de Jan van Eyck', 'Bruges', 3.22, 51.21, 'pintura'],
+    ['gutenberg', 'eu', 1455, null, 'c', 'saber', 'do', 3, 'Bíblia de Gutenberg', 'Mainz', 8.27, 50.0, 'manuscrito'],
+    ['venus', 'eu', 1485, null, 'c', 'arte', 'ob', 2, 'O Nascimento de Vênus, de Botticelli', 'Florença', 11.26, 43.77, 'pintura'],
+    ['vitruv', 'eu', 1490, null, 'c', 'saber', 'ob', 2, 'Homem Vitruviano, de Leonardo', 'Milão', 9.19, 45.46, 'pintura'],
+    ['granada', 'eu', 1492, null, 'e', 'poder', 'ev', 2, 'Rendição de Granada', 'Granada', -3.6, 37.18],
+    ['tordesilhas', 'eu', 1494, null, 'e', 'poder', 'do', 2, 'Tratado de Tordesilhas', 'Tordesilhas', -5.0, 41.5],
+    ['ceia', 'eu', 1495, 1498, 'ci', 'arte', 'ob', 2, 'A Última Ceia, de Leonardo', 'Milão', 9.19, 45.46, 'pintura'],
+    ['davi', 'eu', 1501, 1504, 'i', 'arte', 'ob', 2, 'Davi, de Michelangelo', 'Florença', 11.26, 43.77, 'escultura'],
+    ['monalisa', 'eu', 1503, 1519, 'ci', 'arte', 'ob', 3, 'Mona Lisa', 'Florença', 11.26, 43.77, 'pintura'],
+    ['sistina', 'eu', 1508, 1512, 'i', 'arte', 'ob', 3, 'Teto da Capela Sistina', 'Roma', 12.45, 41.9, 'pintura'],
+    ['melencolia', 'eu', 1514, null, 'e', 'arte', 'ob', 1, 'Melencolia I, de Dürer', 'Nuremberg', 11.08, 49.45, 'pintura'],
+    ['lutero', 'eu', 1517, null, 'e', 'fe', 'ev', 3, 'Lutero divulga as 95 teses', 'Wittenberg', 12.65, 51.87],
+    ['magalhaes', 'eu', 1519, 1522, 'i', 'troca', 'pr', 3, 'Circum-navegação de Magalhães e Elcano', 'Sanlúcar de Barrameda', -6.35, 36.78],
+    ['viena', 'eu', 1529, null, 'e', 'poder', 'ev', 1, 'Primeiro cerco otomano de Viena', 'Viena', 16.37, 48.21],
+    ['copernico', 'eu', 1543, null, 'e', 'saber', 'do', 3, 'De revolutionibus, de Copérnico', 'Nuremberg', 11.08, 49.45, 'manuscrito'],
+    ['vesalio', 'eu', 1543, null, 'e', 'saber', 'do', 2, 'De humani corporis fabrica, de Vesálio', 'Basileia', 7.59, 47.56, 'manuscrito'],
+    ['trento', 'eu', 1545, 1563, 'i', 'fe', 'pr', 2, 'Concílio de Trento', 'Trento', 11.12, 46.07],
+    ['mercator', 'eu', 1569, null, 'e', 'saber', 'do', 2, 'Mapa-múndi de Mercator', 'Duisburgo', 6.76, 51.43, 'mapa'],
+    ['lepanto', 'eu', 1571, null, 'e', 'poder', 'ev', 1, 'Batalha de Lepanto', 'Golfo de Patras', 21.3, 38.2],
+    ['lusiadas', 'eu', 1572, null, 'e', 'arte', 'do', 2, 'Os Lusíadas, de Camões', 'Lisboa', -9.14, 38.72, 'manuscrito'],
+    ['gregoriano', 'eu', 1582, null, 'e', 'saber', 'ev', 2, 'Adoção do calendário gregoriano', 'Roma', 12.45, 41.9],
+    ['armada', 'eu', 1588, null, 'e', 'poder', 'ev', 2, 'Derrota da Invencível Armada', 'Canal da Mancha', -1.0, 50.2],
+    // Ásia Ocidental e Central
+    ['ancara', 'ao', 1402, null, 'e', 'poder', 'ev', 2, 'Batalha de Ancara', 'Ancara', 32.85, 39.93],
+    ['ulugh', 'ao', 1420, 1429, 'ci', 'saber', 'co', 3, 'Observatório de Ulugh Beg', 'Samarcanda', 66.97, 39.67, 'astrolabio'],
+    ['zij', 'ao', 1437, null, 'e', 'saber', 'do', 2, 'Zij-i Sultani, catálogo de estrelas', 'Samarcanda', 66.97, 39.67, 'manuscrito'],
+    ['constant', 'ao', 1453, null, 'e', 'poder', 'ev', 3, 'Otomanos conquistam Constantinopla', 'Constantinopla', 28.98, 41.01],
+    ['topkapi', 'ao', 1459, 1478, 'ci', 'arte', 'co', 1, 'Palácio de Topkapı', 'Istambul', 28.98, 41.01, 'edificio'],
+    ['safavida', 'ao', 1501, null, 'e', 'poder', 'ev', 2, 'Ismail I funda a dinastia safávida', 'Tabriz', 46.29, 38.08],
+    ['piri', 'ao', 1513, null, 'e', 'saber', 'do', 3, 'Mapa de Piri Reis', 'Galípoli', 26.67, 40.41, 'mapa'],
+    ['chaldiran', 'ao', 1514, null, 'e', 'poder', 'ev', 2, 'Batalha de Chaldiran', 'Chaldiran', 44.4, 39.1],
+    ['solimao', 'ao', 1520, 1566, 'i', 'poder', 'pr', 2, 'Reinado de Solimão, o Magnífico', 'Istambul', 28.98, 41.01],
+    ['shahnameh', 'ao', 1524, 1535, 'ci', 'arte', 'do', 2, 'Shahnameh de Shah Tahmasp', 'Tabriz', 46.29, 38.08, 'manuscrito'],
+    ['ardabil', 'ao', 1539, 1540, 'i', 'arte', 'ob', 3, 'Tapete de Ardabil', 'Ardabil', 48.29, 38.25, 'tapete'],
+    ['suleymaniye', 'ao', 1550, 1557, 'i', 'arte', 'co', 2, 'Mesquita Süleymaniye, de Sinan', 'Istambul', 28.98, 41.01, 'cupula'],
+    ['iznik', 'ao', 1575, null, 'c', 'arte', 'ob', 2, 'Prato de cerâmica de İznik', 'İznik', 29.72, 40.43, 'disco'],
+    ['isfahan', 'ao', 1598, null, 'e', 'poder', 'ev', 2, 'Isfahan torna-se capital safávida', 'Isfahan', 51.67, 32.65],
+    // Sul da Ásia
+    ['nanak', 'as', 1469, null, 'e', 'fe', 'ev', 2, 'Nascimento de Guru Nanak', 'Punjab', 73.7, 31.45],
+    ['gama', 'as', 1498, null, 'e', 'troca', 'ev', 3, 'Vasco da Gama chega a Calicute', 'Calicute', 75.78, 11.26],
+    ['vitthala', 'as', 1500, 1565, 's', 'arte', 'co', 1, 'Templo de Vitthala', 'Hampi', 76.46, 15.33, 'edificio', 'séc. XVI'],
+    ['krishna', 'as', 1509, 1529, 'i', 'poder', 'pr', 2, 'Reinado de Krishnadevaraya em Vijayanagara', 'Hampi', 76.46, 15.33],
+    ['goa', 'as', 1510, null, 'e', 'poder', 'ev', 2, 'Portugueses tomam Goa', 'Goa', 73.9, 15.5],
+    ['panipat', 'as', 1526, null, 'e', 'poder', 'ev', 3, 'Batalha de Panipat, início do Império Mogol', 'Panipat', 76.97, 29.39],
+    ['akbar', 'as', 1556, 1605, 'i', 'poder', 'pr', 2, 'Reinado de Akbar', 'Agra', 78.0, 27.18],
+    ['hamzanama', 'as', 1562, 1577, 'ci', 'arte', 'do', 2, 'Hamzanama, manuscrito ilustrado mogol', 'Corte mogol', 77.66, 27.09, 'manuscrito'],
+    ['talikota', 'as', 1565, null, 'e', 'poder', 'ev', 2, 'Batalha de Talikota', 'Decão', 76.3, 16.5],
+    ['humayun', 'as', 1565, 1572, 'ci', 'arte', 'co', 2, 'Túmulo de Humayun', 'Délhi', 77.25, 28.59, 'cupula'],
+    ['fatehpur', 'as', 1571, 1585, 'i', 'arte', 'co', 2, 'Fatehpur Sikri, capital de Akbar', 'Fatehpur Sikri', 77.66, 27.09, 'edificio'],
+    // Leste e Sudeste Asiático
+    ['zhenghe', 'al', 1405, 1433, 'i', 'troca', 'pr', 3, 'Viagens de Zheng He', 'Nanquim', 118.78, 32.06],
+    ['proibida', 'al', 1406, 1420, 'i', 'arte', 'co', 3, 'Cidade Proibida', 'Pequim', 116.39, 39.92, 'edificio'],
+    ['yongle', 'al', 1408, null, 'e', 'saber', 'do', 2, 'Enciclopédia Yongle', 'Nanquim', 118.78, 32.06, 'manuscrito'],
+    ['xuande', 'al', 1426, 1435, 'i', 'arte', 'ob', 2, 'Porcelana azul e branca do reinado Xuande', 'Jingdezhen', 117.18, 29.27, 'vaso'],
+    ['le', 'al', 1428, null, 'e', 'poder', 'ev', 1, 'Lê Lợi funda a dinastia Lê', 'Thăng Long', 105.85, 21.03],
+    ['angkor', 'al', 1431, null, 'c', 'poder', 'ev', 2, 'Ayutthaya toma Angkor', 'Angkor', 103.87, 13.41],
+    ['hangul', 'al', 1443, 1446, 'i', 'saber', 'do', 3, 'Hangul, o Hunminjeongeum', 'Hanseong', 126.98, 37.57, 'manuscrito'],
+    ['onin', 'al', 1467, 1477, 'i', 'poder', 'pr', 2, 'Guerra de Ōnin', 'Quioto', 135.77, 35.01],
+    ['ginkaku', 'al', 1482, 1490, 'ci', 'arte', 'co', 1, 'Ginkaku-ji, o Pavilhão de Prata', 'Quioto', 135.77, 35.01, 'edificio'],
+    ['sesshu', 'al', 1495, null, 'e', 'arte', 'ob', 2, 'Haboku sansui, de Sesshū', 'Yamaguchi', 131.47, 34.18, 'pintura'],
+    ['malaca', 'al', 1511, null, 'e', 'poder', 'ev', 3, 'Portugueses tomam Malaca', 'Malaca', 102.25, 2.19],
+    ['mactan', 'al', 1521, null, 'e', 'poder', 'ev', 2, 'Batalha de Mactan', 'Mactan', 123.96, 10.31],
+    ['majapahit', 'al', 1527, null, 'c', 'poder', 'ev', 1, 'Fim de Majapahit', 'Java', 112.38, -7.56],
+    ['tanegashima', 'al', 1543, null, 'e', 'troca', 'ev', 2, 'Portugueses chegam a Tanegashima', 'Tanegashima', 130.97, 30.6],
+    ['macau', 'al', 1557, null, 'e', 'troca', 'ev', 2, 'Portugueses estabelecem-se em Macau', 'Macau', 113.54, 22.2],
+    ['bencao', 'al', 1578, null, 'e', 'saber', 'do', 2, 'Bencao Gangmu, de Li Shizhen', 'Hubei', 115.4, 30.2, 'manuscrito'],
+    ['hideyoshi', 'al', 1590, null, 'e', 'poder', 'ev', 2, 'Hideyoshi unifica o Japão', 'Odawara', 139.15, 35.25],
+    ['imjin', 'al', 1592, 1598, 'i', 'poder', 'pr', 2, 'Guerra Imjin', 'Península coreana', 127.5, 36.5],
+    ['sekigahara', 'al', 1600, null, 'e', 'poder', 'ev', 2, 'Batalha de Sekigahara', 'Sekigahara', 136.47, 35.37],
+    // Oceania e Pacífico
+    ['nanmadol', 'oc', 1200, 1600, 'ci', 'arte', 'co', 2, 'Nan Madol', 'Pohnpei', 158.33, 6.84, 'edificio'],
+    ['tonga', 'oc', 1200, 1500, 'ci', 'poder', 'pr', 1, 'Auge da rede marítima de Tuʻi Tonga', 'Tonga', -175.2, -21.13],
+    ['moai', 'oc', 1250, 1600, 'ci', 'arte', 'co', 3, 'Construção dos moai', 'Rapa Nui', -109.35, -27.11, 'moai'],
+    ['pa', 'oc', 1500, null, 'c', 'vida', 'ev', 1, 'Difusão dos pā fortificados', 'Aotearoa', 175.0, -39.0],
+    ['guam', 'oc', 1521, null, 'e', 'troca', 'ev', 2, 'Frota de Magalhães chega a Guam', 'Guam', 144.79, 13.44],
+    ['mendana', 'oc', 1568, null, 'e', 'troca', 'ev', 1, 'Mendaña chega às ilhas Salomão', 'Ilhas Salomão', 160.0, -9.5],
+    // Trecho pouco preenchido (cena 6)
+    ['carlos', 'eu', 800, null, 'e', 'poder', 'ev', 1, 'Coroação de Carlos Magno', 'Roma', 12.45, 41.9],
+    ['maia', 'am', 800, 950, 'ci', 'vida', 'pr', 2, 'Abandono das cidades maias do sul', 'Petén', -89.6, 17.2],
+    ['khmer', 'al', 802, null, 'c', 'poder', 'ev', 2, 'Jayavarman II funda o Império Khmer', 'Phnom Kulen', 104.1, 13.6],
+    ['sabedoria', 'ao', 830, null, 'c', 'saber', 'ev', 2, 'Casa da Sabedoria em Bagdá', 'Bagdá', 44.36, 33.31],
+    ['sutra', 'al', 868, null, 'e', 'saber', 'do', 3, 'Sutra do Diamante, livro impresso datado', 'Dunhuang', 94.66, 40.14, 'manuscrito'],
+    ['song', 'al', 960, null, 'e', 'poder', 'ev', 1, 'Fundação da dinastia Song', 'Kaifeng', 114.3, 34.8],
+    ['fatimida', 'af', 969, null, 'e', 'poder', 'ev', 2, 'Fatímidas fundam o Cairo', 'Cairo', 31.24, 30.04],
+    ['meadows', 'am', 1021, null, 'e', 'troca', 'ev', 2, 'Nórdicos em L’Anse aux Meadows', 'Terra Nova', -55.53, 51.6]
+  ];
+  const laneIx = Object.fromEntries(LANES.map((l, i) => [l.id, i]));
+  const RECS = RAW.map(r => ({
+    id: r[0], lane: laneIx[r[1]], laneId: r[1], s: r[2], e: r[3] == null ? r[2] : r[3], range: r[3] != null,
+    prec: r[4], cat: r[5], kind: r[6], imp: r[7], title: r[8], place: r[9], lon: r[10], lat: r[11],
+    glyph: r[12] || null, dl: r[13] || null
+  }));
+  const byId = Object.fromEntries(RECS.map(r => [r.id, r]));
+
+  // Textos de demonstração para os registros abertos nas cenas.
+  const TEXT = {
+    piri: {
+      kindLabel: 'Documento · carta náutica',
+      dating: '1513 · data exata, registrada no próprio mapa como 919 AH',
+      body: [
+        'Carta desenhada em pergaminho pelo almirante e cartógrafo otomano Piri Reis. O fragmento que sobreviveu mostra as costas atlânticas da Europa e da África e parte do litoral da América do Sul.',
+        'Nas anotações, o autor diz ter combinado cerca de vinte mapas mais antigos, entre eles um atribuído a Colombo. Em 1517 a carta foi apresentada ao sultão Selim I, no Egito. Foi reencontrada em 1929, no Palácio de Topkapı.'
+      ],
+      links: [['colombo', 'fonte citada nas anotações'], ['tordesilhas', 'o mundo que o mapa registra'], ['cairo', 'ano em que foi entregue ao sultão'], ['magalhaes', 'próxima grande viagem']]
+    },
+    idia: {
+      kindLabel: 'Objeto · marfim esculpido',
+      dating: 'início do séc. XVI · datação por século',
+      body: [
+        'Pendente de marfim associado à corte do Benin e à rainha-mãe Idia, mãe do obá Esigie. No alto da cabeça, uma fileira de pequenas figuras alterna rostos de portugueses e peixes.',
+        'Dois exemplares muito parecidos estão hoje em museus fora da Nigéria.'
+      ],
+      links: [['placas', 'mesma tradição de corte'], ['mina', 'contato com os portugueses na costa']]
+    }
+  };
+
+  const LINKS = [
+    ['piri', 'colombo'], ['piri', 'tordesilhas'], ['piri', 'cairo'], ['piri', 'magalhaes'],
+    ['dias', 'gama'], ['melinde', 'gama'], ['gama', 'goa'], ['goa', 'malaca'], ['malaca', 'macau'], ['macau', 'tanegashima'],
+    ['zhenghe', 'proibida'], ['zhenghe', 'xuande'], ['gutenberg', 'lutero'], ['gutenberg', 'copernico'],
+    ['colombo', 'tordesilhas'], ['colombo', 'tenoch'], ['cabral', 'tordesilhas'], ['magalhaes', 'guam'], ['guam', 'mactan'],
+    ['constant', 'topkapi'], ['constant', 'solimao'], ['solimao', 'suleymaniye'], ['solimao', 'viena'], ['ulugh', 'zij'],
+    ['idia', 'placas'], ['mina', 'idia'], ['sunniali', 'tombuctu'], ['tombuctu', 'askia'], ['askia', 'tondibi'],
+    ['panipat', 'akbar'], ['akbar', 'fatehpur'], ['akbar', 'hamzanama'], ['tenoch', 'pedrasol'], ['tenoch', 'mendoza'],
+    ['cajamarca', 'potosi'], ['pachacuti', 'machu'], ['safavida', 'chaldiran'], ['safavida', 'ardabil'], ['ardabil', 'shahnameh'],
+    ['duomo', 'venus'], ['venus', 'davi'], ['davi', 'sistina'], ['lutero', 'trento'], ['copernico', 'gregoriano'],
+    ['ceuta', 'mina'], ['cairo', 'chaldiran'], ['onin', 'hideyoshi'], ['hideyoshi', 'imjin']
+  ];
+
+  // Sociedades e Estados de longa duração: [faixa, início, fim, nome]. Datas arredondadas.
+  const POLS = [
+    ['am', -3000, -1800, 'Caral'], ['am', -1200, -400, 'Olmecas'], ['am', -900, -200, 'Chavín'],
+    ['am', 100, 550, 'Teotihuacan'], ['am', 250, 900, 'Maias, período clássico'], ['am', 500, 1000, 'Wari e Tiwanaku'],
+    ['am', 1050, 1350, 'Cahokia'], ['am', 1428, 1521, 'Mexicas'], ['am', 1438, 1533, 'Tawantinsuyu (Incas)'],
+    ['am', 1521, 1825, 'Domínio colonial ibérico'],
+    ['af', -3100, -30, 'Egito faraônico'], ['af', -1070, 350, 'Kush'], ['af', -814, -146, 'Cartago'],
+    ['af', 100, 940, 'Axum'], ['af', 700, 1100, 'Gana (Wagadu)'], ['af', 1100, 1450, 'Grande Zimbábue'],
+    ['af', 1235, 1600, 'Mali'], ['af', 1180, 1897, 'Reino do Benin'], ['af', 1390, 1857, 'Reino do Kongo'],
+    ['af', 1464, 1591, 'Songhai'], ['af', 1270, 1974, 'Etiópia salomônica'],
+    ['eu', -2000, -1450, 'Creta minoica'], ['eu', -800, -146, 'Pólis gregas'], ['eu', -509, 476, 'Roma'],
+    ['eu', 330, 1453, 'Império Romano do Oriente'], ['eu', 751, 888, 'Carolíngios'], ['eu', 962, 1806, 'Sacro Império'],
+    ['eu', 882, 1240, 'Rus de Kiev'], ['eu', 1139, 1910, 'Reino de Portugal'], ['eu', 1479, 1700, 'Espanha dos Habsburgo'],
+    ['ao', -3000, -2000, 'Suméria e Acádia'], ['ao', -1894, -539, 'Babilônia'], ['ao', -550, -330, 'Aquemênidas'],
+    ['ao', -247, 224, 'Partas'], ['ao', 224, 651, 'Sassânidas'], ['ao', 661, 1258, 'Califados omíada e abássida'],
+    ['ao', 1206, 1368, 'Império Mongol'], ['ao', 1370, 1507, 'Timúridas'], ['ao', 1299, 1922, 'Império Otomano'],
+    ['ao', 1501, 1736, 'Safávidas'],
+    ['as', -2600, -1900, 'Civilização do Indo'], ['as', -1500, -500, 'Período védico'], ['as', -322, -185, 'Máurias'],
+    ['as', 320, 550, 'Guptas'], ['as', 848, 1279, 'Cholas'], ['as', 1206, 1526, 'Sultanato de Délhi'],
+    ['as', 1336, 1646, 'Vijayanagara'], ['as', 1526, 1857, 'Império Mogol'],
+    ['al', -1600, -1046, 'Shang'], ['al', -1046, -256, 'Zhou'], ['al', -202, 220, 'Han'], ['al', 618, 907, 'Tang'],
+    ['al', 960, 1279, 'Song'], ['al', 802, 1431, 'Império Khmer'], ['al', 1368, 1644, 'Ming'], ['al', 1392, 1897, 'Joseon'],
+    ['al', 1336, 1573, 'Xogunato Ashikaga'], ['al', 1293, 1527, 'Majapahit'], ['al', 1644, 1912, 'Qing'],
+    ['oc', -300000, 2025, 'Povos aborígenes da Austrália, presença contínua'], ['oc', -1600, -500, 'Cultura Lapita'],
+    ['oc', 900, 1300, 'Povoamento da Polinésia Oriental'], ['oc', 950, 1865, 'Tuʻi Tonga']
+  ].map((p, i) => ({ id: 'p' + i, lane: laneIx[p[0]], s: p[1], e: p[2], name: p[3] }));
+
+  // Marcos do tempo profundo (só no panorama). Datas arqueológicas, sujeitas a revisão.
+  const DEEP = [
+    ['af', -300000, 'Homo sapiens em Jebel Irhoud'], ['oc', -60000, 'Chegada a Sahul'],
+    ['al', -43500, 'Arte rupestre em Sulawesi'], ['eu', -34000, 'Gruta de Chauvet'],
+    ['am', -21000, 'Pegadas de White Sands'], ['ao', -9500, 'Göbekli Tepe'], ['as', -7000, 'Mehrgarh']
+  ].map((d, i) => ({ id: 'd' + i, lane: laneIx[d[0]], s: d[1], e: d[1], name: d[2], deep: true }));
+
+  // Simulação de escala: ~2.900 registros anônimos entre 1400 e 1600.
+  // O peso por região repete de propósito o viés das fontes mais acessíveis (Europa super-representada).
+  function mulberry(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  const rnd = mulberry(1513);
+  const gauss = () => { let u = 0; for (let i = 0; i < 4; i++) u += rnd(); return (u - 2) / 0.58; };
+  const pick = (w) => { let r = rnd() * w.reduce((a, b) => a + b, 0); for (let i = 0; i < w.length; i++) { r -= w[i]; if (r <= 0) return i; } return w.length - 1; };
+  const laneW = [0.10, 0.09, 0.34, 0.13, 0.10, 0.20, 0.04]; // am af eu ao as al oc
+  const catW = [0.30, 0.24, 0.14, 0.12, 0.12, 0.08];
+  const peaks = [[1453, 6], [1500, 12], [1519, 7], [1545, 8], [1588, 9], [1420, 8]];
+  const SIM = [];
+  for (let i = 0; i < 2900; i++) {
+    const lane = pick(laneW);
+    let y; const m = rnd();
+    if (m < 0.42) y = 1400 + rnd() * 200;
+    else if (m < 0.62) y = 1400 + 200 * Math.sqrt(rnd());
+    else { const p = peaks[Math.floor(rnd() * peaks.length)]; y = p[0] + gauss() * p[1]; }
+    if (lane === 6 && rnd() < 0.5) y = 1400 + rnd() * 200;
+    if (y < 1400 || y > 1600) y = 1400 + rnd() * 200;
+    SIM.push({ lane, s: y, cat: CATS[pick(catW)].id, v: rnd() });
+  }
+
+  const ROMAN = { 15: 'XV', 16: 'XVI', 17: 'XVII', 9: 'IX', 10: 'X', 11: 'XI' };
+  function fmtYear(y) {
+    y = Math.round(y);
+    if (y <= -10000) return Math.round(-y / 1000).toLocaleString('pt-BR') + ' mil AEC';
+    if (y < 0) return (-y) + ' AEC';
+    if (y === 0) return '1 AEC';
+    return String(y);
+  }
+  function fmtDate(r) {
+    if (r.dl) return r.dl;
+    if (r.prec === 'e') return String(r.s);
+    if (r.prec === 'c') return 'c. ' + r.s;
+    if (r.prec === 'i') return r.s + '–' + r.e;
+    if (r.prec === 'ci') return 'c. ' + r.s + '–' + r.e;
+    return r.s + '–' + r.e;
+  }
+
+  // Silhuetas ilustrativas (caixa 100 x 120). Ocupam o lugar das fotografias de acervo.
+  function glyph(name) {
+    const c = 'currentColor', k = 'style="fill:var(--cut)"', ks = 'style="stroke:var(--cut)"';
+    switch (name) {
+      case 'mapa': {
+        let rays = '';
+        [[34, 74], [72, 34]].forEach(([cx, cy]) => { for (let i = 0; i < 16; i++) { const a = i * Math.PI / 8; rays += `<line x1="${cx}" y1="${cy}" x2="${(cx + Math.cos(a) * 90).toFixed(1)}" y2="${(cy + Math.sin(a) * 90).toFixed(1)}" stroke="${c}" stroke-width=".6" opacity=".55"/>`; } });
+        return `<defs><clipPath id="gm"><rect x="12" y="14" width="76" height="92"/></clipPath></defs><rect x="12" y="14" width="76" height="92" fill="${c}" opacity=".16"/><g clip-path="url(#gm)">${rays}<path d="M88 14v92H62c-4-8 2-14-2-22s-12-8-10-18 10-10 8-20-10-12-6-22 12-6 14-10z" fill="${c}" opacity=".8"/><path d="M12 30c8 2 10 10 6 16s-6 10-6 16z" fill="${c}" opacity=".8"/></g><circle cx="34" cy="74" r="3" fill="${c}"/><circle cx="72" cy="34" r="2.2" fill="${c}"/>`;
+      }
+      case 'mascara': {
+        let dots = ''; for (let i = 0; i < 9; i++) { const a = Math.PI * (1.12 + i * 0.095); dots += `<circle cx="${(50 + Math.cos(a) * 31).toFixed(1)}" cy="${(60 + Math.sin(a) * 44).toFixed(1)}" r="3.4" fill="${c}"/>`; }
+        let col = ''; for (let i = 0; i < 7; i++) col += `<rect x="${27 + i * 6.8}" y="100" width="4.6" height="9" fill="${c}"/>`;
+        return `${dots}<path d="M50 24c17 0 27 14 27 33 0 24-13 42-27 42S23 81 23 57c0-19 10-33 27-33z" fill="${c}"/><path d="M33 56c5-5 11-5 14 0-4 3-10 3-14 0zM53 56c3-5 9-5 14 0-4 3-10 3-14 0z" ${k}/><path d="M47 62h6l3 14h-12z" ${k} opacity=".55"/><path d="M41 84h18" ${ks} stroke-width="2.4" fill="none"/>${col}`;
+      }
+      case 'vaso':
+        return `<path d="M40 14h20v9c0 4 4 6 9 10 9 7 15 17 15 30 0 18-10 32-20 37v6H36v-6C26 95 16 81 16 63c0-13 6-23 15-30 5-4 9-6 9-10z" fill="${c}"/><path d="M18 56h64M17 66h66" ${ks} stroke-width="1.6" fill="none"/><path d="M34 76c6 8 10 8 16 0 6 8 10 8 16 0" ${ks} stroke-width="1.6" fill="none"/><path d="M38 26h24" ${ks} stroke-width="1.4"/>`;
+      case 'manuscrito': {
+        let ln = ''; for (let i = 0; i < 9; i++) ln += `<rect x="${i < 3 ? 44 : 24}" y="${30 + i * 8}" width="${i < 3 ? 32 : (i === 8 ? 30 : 52)}" height="2.4" fill="${c}" opacity=".75"/>`;
+        return `<rect x="16" y="14" width="68" height="96" fill="${c}" opacity=".18"/><rect x="24" y="28" width="16" height="20" fill="${c}"/><path d="M28 44l4-12 4 12" ${ks} stroke-width="1.6" fill="none"/>${ln}<rect x="24" y="102" width="52" height="1" fill="${c}" opacity=".5"/>`;
+      }
+      case 'disco': {
+        let t = ''; for (let i = 0; i < 24; i++) { const a = i * Math.PI / 12; t += `<line x1="${(50 + Math.cos(a) * 30).toFixed(1)}" y1="${(60 + Math.sin(a) * 30).toFixed(1)}" x2="${(50 + Math.cos(a) * 38).toFixed(1)}" y2="${(60 + Math.sin(a) * 38).toFixed(1)}" ${ks} stroke-width="2"/>`; }
+        return `<circle cx="50" cy="60" r="41" fill="${c}"/>${t}<circle cx="50" cy="60" r="25" fill="none" ${ks} stroke-width="1.6"/><circle cx="50" cy="60" r="16" fill="none" ${ks} stroke-width="1.6"/><circle cx="50" cy="60" r="7" ${k}/>`;
+      }
+      case 'pintura':
+        return `<rect x="16" y="14" width="68" height="92" fill="${c}" opacity=".2"/><rect x="16" y="14" width="68" height="92" fill="none" stroke="${c}" stroke-width="5"/><circle cx="50" cy="48" r="11" fill="${c}"/><path d="M28 104c0-24 8-38 22-38s22 14 22 38z" fill="${c}"/>`;
+      case 'escultura':
+        return `<circle cx="50" cy="20" r="8" fill="${c}"/><path d="M38 32h24l4 30h-7l-2 34H43l-2-34h-7z" fill="${c}"/><rect x="28" y="98" width="44" height="12" fill="${c}" opacity=".6"/>`;
+      case 'tapete':
+        return `<rect x="20" y="8" width="60" height="104" fill="${c}"/><rect x="26" y="14" width="48" height="92" fill="none" ${ks} stroke-width="1.6"/><rect x="31" y="19" width="38" height="82" fill="none" ${ks} stroke-width=".9"/><path d="M50 40l12 20-12 20-12-20z" ${k}/><circle cx="50" cy="60" r="5" fill="${c}"/><path d="M31 19h10a10 10 0 01-10 10zM69 19v10a10 10 0 01-10-10zM31 101v-10a10 10 0 0110 10zM69 101h-10a10 10 0 0110-10z" ${k} opacity=".8"/>`;
+      case 'quipu': {
+        let s = ''; for (let i = 0; i < 11; i++) { const x = 16 + i * 6.8, L = 46 + ((i * 37) % 48); s += `<line x1="${x}" y1="22" x2="${x + (i % 3 - 1) * 2}" y2="${22 + L}" stroke="${c}" stroke-width="1.5"/>`; for (let j = 0; j < 1 + (i * 7) % 3; j++) s += `<circle cx="${x + (i % 3 - 1) * 1}" cy="${36 + j * 14 + (i * 5) % 9}" r="2.3" fill="${c}"/>`; }
+        return `<path d="M8 24c22-6 60-6 84 0" fill="none" stroke="${c}" stroke-width="3.4" stroke-linecap="round"/>${s}`;
+      }
+      case 'astrolabio':
+        return `<circle cx="50" cy="16" r="6" fill="none" stroke="${c}" stroke-width="3"/><circle cx="50" cy="66" r="40" fill="${c}"/><circle cx="50" cy="66" r="31" fill="none" ${ks} stroke-width="1.4"/><circle cx="50" cy="56" r="17" fill="none" ${ks} stroke-width="1.2"/><path d="M18 88L82 44" ${ks} stroke-width="3" /><circle cx="50" cy="66" r="3.4" ${k}/>`;
+      case 'placa':
+        return `<rect x="18" y="10" width="64" height="100" fill="${c}"/><circle cx="50" cy="40" r="11" ${k}/><path d="M36 100V66c0-7 6-12 14-12s14 5 14 12v34z" ${k}/><circle cx="27" cy="19" r="3.4" ${k}/><circle cx="73" cy="19" r="3.4" ${k}/><circle cx="27" cy="101" r="3.4" ${k}/><circle cx="73" cy="101" r="3.4" ${k}/><path d="M22 60h10M68 60h10" ${ks} stroke-width="3"/>`;
+      case 'moai':
+        return `<path d="M36 8h30l4 24-4 5v10l6 9v10l-6 4v10l10 8v24H26V88l8-8V46l-3-8z" fill="${c}"/><path d="M38 34h28" ${ks} stroke-width="4"/><path d="M40 70h20" ${ks} stroke-width="2.4"/>`;
+      case 'cupula':
+        return `<rect x="47" y="8" width="6" height="12" fill="${c}"/><circle cx="50" cy="22" r="5" fill="${c}"/><path d="M18 76c0-30 14-50 32-50s32 20 32 50z" fill="${c}"/><rect x="14" y="78" width="72" height="30" fill="${c}" opacity=".62"/><path d="M34 76c2-22 8-38 16-48M66 76c-2-22-8-38-16-48M50 28v48" ${ks} stroke-width="1.3" fill="none"/><path d="M44 108V92a6 6 0 0112 0v16z" ${k}/>`;
+      default: // edificio em terraços
+        return `<rect x="38" y="26" width="24" height="16" fill="${c}"/><rect x="28" y="44" width="44" height="16" fill="${c}" opacity=".9"/><rect x="18" y="62" width="64" height="18" fill="${c}" opacity=".78"/><rect x="8" y="82" width="84" height="24" fill="${c}" opacity=".62"/><path d="M45 106V92h10v14z" ${k}/><path d="M46 42v-8h8v8z" ${k}/>`;
+    }
+  }
+
+  const glyphSvg = (name, attrs) => `<svg viewBox="0 0 100 120" ${attrs || ''}>${glyph(name)}</svg>`;
+
+  return { glyphSvg, LANES, CATS, KINDS, PREC, RECS, byId, TEXT, LINKS, POLS, DEEP, SIM, fmtYear, fmtDate, glyph, laneIx, ROMAN };
+})();
+
+window.ATLAS_LAND = {"type":"MultiPolygon","coordinates":[[[[-67.8,-53.8],[-65.1,-54.7],[-65.5,-55.2],[-67,-54.9],[-68.1,-55.6],[-71,-55.1],[-73.3,-54],[-74.7,-52.8],[-71.1,-54.1],[-70.3,-52.9],[-68.6,-52.6],[-67.8,-53.8]]],[[[-58.5,-51.1],[-57.7,-51.5],[-59.4,-52.2],[-61.2,-51.8],[-58.5,-51.1]]],[[[70.3,-49.7],[68.7,-49.8],[68.9,-48.6],[70.5,-49.1],[70.3,-49.7]]],[[[145.4,-40.8],[146.4,-41.1],[148.3,-40.9],[147.9,-43.2],[146,-43.5],[144.7,-41.2],[145.4,-40.8]]],[[[173,-40.9],[174,-40.9],[174.2,-41.8],[172.7,-43.4],[173.1,-43.9],[171.5,-44.2],[170.6,-45.9],[169.3,-46.6],[166.7,-46.2],[167,-45.1],[168.3,-44.1],[170.5,-43],[172.8,-40.5],[173,-40.9]]],[[[174.6,-36.2],[175.3,-37.2],[177.4,-38],[178.5,-37.7],[178,-39.2],[177.2,-39.1],[176,-41.3],[174.7,-41.3],[175.2,-40.5],[173.8,-39.5],[174.6,-38.8],[174.3,-36.5],[172.6,-34.5],[174.3,-35.3],[174.6,-36.2]]],[[[167.1,-22.2],[165.5,-21.7],[164,-20.1],[165,-20.5],[167.1,-22.2]]],[[[-180,-16.6],[179.4,-16.8],[179.4,-16.4],[-180,-16.1],[-180,-16.6]]],[[[50.1,-13.6],[50.5,-15.2],[49.4,-18],[47.1,-24.9],[45.4,-25.6],[44,-25],[43.3,-22.1],[44.4,-20.1],[44,-17.4],[44.4,-16.2],[46.3,-15.8],[47.7,-14.6],[49.2,-12],[50.1,-13.6]]],[[[143.6,-13.8],[145.4,-15],[145.6,-16.8],[146.4,-19],[148.8,-20.4],[149.7,-22.3],[150.7,-22.4],[150.9,-23.5],[152.9,-25.3],[153.1,-27.3],[153.6,-28.1],[152.9,-31.6],[151.7,-33],[150.1,-36.4],[150,-37.4],[148.3,-37.8],[146.3,-39],[144.9,-38.4],[143.6,-38.8],[140.6,-38],[139.6,-36.1],[138.1,-35.6],[138.2,-34.4],[136.8,-35.3],[137.9,-33.6],[137.8,-32.9],[136,-34.9],[134.1,-32.8],[134.3,-32.6],[131.3,-31.5],[129.5,-31.6],[127.1,-32.3],[126.1,-32.2],[124.2,-33],[123.7,-33.9],[119.9,-34],[118,-35.1],[116.6,-35],[115,-34.2],[115.8,-32.2],[115,-29.5],[114.2,-28.1],[113.4,-25.6],[114.2,-25.8],[113.4,-24.4],[114.1,-21.8],[114.6,-21.8],[116.7,-20.7],[117.4,-20.7],[120.9,-19.7],[122.2,-18.2],[123,-16.4],[123.4,-17.3],[123.8,-16.1],[125.7,-14.2],[127.1,-13.8],[128.4,-14.9],[129.4,-14.4],[130.6,-12.5],[132.6,-12.1],[132.4,-11.1],[135.3,-12.2],[136.5,-11.9],[137,-12.4],[135.4,-14.7],[139.3,-17.4],[140.9,-17.4],[141.7,-15],[141.7,-12.4],[142.5,-10.7],[143.5,-12.8],[143.6,-13.8]]],[[[124.4,-10.1],[123.6,-10.4],[124,-9.3],[125.1,-8.7],[127,-8.3],[127,-8.7],[125.1,-9.4],[124.4,-10.1]]],[[[108.6,-6.8],[110.5,-6.9],[110.8,-6.5],[112.6,-6.9],[113,-7.6],[115.7,-8.4],[114.6,-8.8],[113.5,-8.3],[111.5,-8.3],[108.3,-7.8],[105.4,-6.9],[106.1,-5.9],[107.3,-6],[108.6,-6.8]]],[[[152,-5.5],[150.2,-6.3],[148.4,-5.4],[150.8,-5.5],[152.3,-4.3],[152,-5.5]]],[[[134.1,-1.2],[134.4,-2.8],[135.5,-3.4],[136.3,-2.3],[138.3,-1.7],[144.6,-3.9],[146,-5.5],[147.6,-6.1],[147,-6.7],[148.7,-9.1],[150.8,-10.3],[147.9,-10.1],[146,-8.1],[144.7,-7.6],[143.3,-8.2],[142.6,-9.3],[141,-9.1],[140.1,-8.3],[137.6,-8.4],[138.7,-7.3],[137.9,-5.4],[135.2,-4.5],[133.7,-3.5],[133,-4.1],[132,-2.8],[133.7,-2.2],[132.2,-2.2],[130.5,-0.9],[132.4,-0.4],[134.1,-1.2]]],[[[125.2,1.4],[124.4,0.4],[120.2,0.2],[120,-0.5],[120.9,-1.4],[123.3,-0.6],[121.5,-1.9],[122.5,-3.2],[123.2,-5.3],[122.2,-5.3],[120.3,-2.9],[120.4,-5.5],[119.4,-5.4],[119.5,-3.5],[118.8,-2.8],[120,0.6],[120.9,1.3],[124.1,0.9],[125.2,1.4]]],[[[128.7,1.1],[128.1,-0.9],[127.4,1],[127.9,2.2],[128.7,1.1]]],[[[105.8,-5.9],[104.7,-5.9],[102.6,-4.2],[101.4,-2.8],[100.1,-0.7],[99.3,0.2],[98.6,1.8],[95.4,5],[95.3,5.5],[97.5,5.2],[100.6,2.1],[101.7,2.1],[103.8,0.1],[103.4,-0.7],[104.4,-1.1],[104.9,-2.3],[106.1,-3.1],[105.8,-5.9]]],[[[117.9,1.8],[119,0.9],[117.8,0.8],[117.5,-0.8],[116.6,-1.5],[116.1,-4],[114.9,-4.1],[113.3,-3.1],[112.1,-3.5],[110.2,-2.9],[110.1,-1.6],[109.1,-0.5],[109.1,1.3],[109.7,2],[111.2,1.9],[111.4,2.7],[113,3.1],[114.2,4.5],[117.1,6.9],[117.7,6],[119.2,5.4],[118.4,5],[117.3,3.2],[117.9,1.8]]],[[[126.4,8.4],[126.2,6.3],[125.8,7.3],[125.4,5.6],[124.2,6.2],[124.2,7.4],[123.6,7.8],[122.1,6.9],[122.3,8],[123.5,8.7],[123.8,8.2],[126.2,9.3],[126.4,8.4]]],[[[81.2,6.2],[80.3,6],[79.7,8.2],[80.1,9.8],[81.8,7.5],[81.2,6.2]]],[[[124,10.3],[123,9],[122.4,9.7],[122.9,10.9],[124.1,11.2],[124,10.3]]],[[[125.5,12.2],[125.8,11],[125,11.3],[124.8,10.1],[124.3,12.6],[125.5,12.2]]],[[[121.3,18.5],[122.5,17.1],[121.7,15.9],[121.7,14.3],[124,13.8],[124.1,12.5],[122.9,13.6],[120.6,13.9],[120.1,15],[120.7,18.5],[121.3,18.5]]],[[[-72.6,19.9],[-70.8,19.9],[-68.3,18.6],[-71.7,18],[-74.4,18.7],[-72.3,18.7],[-72.6,19.9]]],[[[110.3,18.7],[108.7,18.5],[109.1,19.8],[110.8,20.1],[110.3,18.7]]],[[[-79.7,22.8],[-78.3,22.5],[-76.5,21.2],[-74.2,20.3],[-75.6,19.9],[-77.8,19.9],[-77.1,20.4],[-78.1,20.7],[-78.7,21.6],[-81.8,22.2],[-82.8,22.7],[-84.1,21.9],[-84.2,22.6],[-82.3,23.2],[-79.7,22.8]]],[[[121.2,22.8],[120.7,22],[120.1,23.6],[121.5,25.3],[122,25],[121.2,22.8]]],[[[134.6,34.1],[133,32.7],[132.4,33],[132.9,34.1],[134.6,34.1]]],[[[15.5,38.2],[15.1,36.6],[12.4,37.6],[12.6,38.1],[15.5,38.2]]],[[[9.2,41.2],[9.8,40.5],[9.7,39.2],[8.4,39.2],[8.2,41],[9.2,41.2]]],[[[141,37.1],[140.3,35.1],[139,34.7],[137.2,34.6],[135.8,33.5],[135.1,34.6],[131,33.9],[132,33.1],[131.3,31.5],[130.2,31.4],[130.4,32.3],[129.4,33.3],[132.6,35.4],[134.6,35.7],[135.7,35.5],[136.7,37.3],[137.4,36.8],[139.4,38.2],[140.1,39.4],[140.3,41.2],[141.4,41.4],[141.9,39.2],[141,38.2],[141,37.1]]],[[[143.9,44.2],[145.3,44.4],[145.5,43.3],[144.1,43],[143.2,42],[141.6,42.7],[141.1,41.6],[140,41.6],[140.3,43.3],[141.4,43.4],[142,45.6],[143.9,44.2]]],[[[-123.5,48.5],[-125.7,48.8],[-127,49.8],[-128.1,50],[-128.4,50.8],[-125.8,50.3],[-123.5,48.5]]],[[[-56.1,50.7],[-55.8,49.6],[-53.5,49.2],[-52.6,47.5],[-53.1,46.7],[-54.2,46.8],[-54.2,47.8],[-59.3,47.6],[-59.2,48.5],[-58.4,49.1],[-56.7,51.3],[-55.4,51.6],[-56.1,50.7]]],[[[143.6,50.7],[144.7,49],[143.2,49.3],[142.6,47.9],[143.5,46.8],[142.1,46],[141.9,48.9],[142.2,51],[141.6,51.9],[141.7,53.3],[142.6,53.8],[143.3,52.7],[143.6,50.7]]],[[[-6.8,52.3],[-8.6,51.7],[-10,51.8],[-9.2,52.9],[-9.7,53.9],[-7.6,55.1],[-5.7,54.6],[-6,53.2],[-6.8,52.3]]],[[[-153,57.1],[-154,56.7],[-154.7,57.5],[-153.2,58],[-152.1,57.6],[-153,57.1]]],[[[-3,58.6],[-4.1,57.6],[-2,57.7],[-3.1,56],[-2.1,55.9],[-1.1,54.6],[-0.4,54.5],[0.5,52.9],[1.7,52.7],[0.5,50.8],[-0.8,50.8],[-3.6,50.2],[-5.8,50.2],[-4.3,51.2],[-5.3,52],[-4.2,52.3],[-4.6,53.5],[-3.1,53.4],[-3.6,54.6],[-5.6,55.3],[-6.2,56.8],[-5,58.6],[-3,58.6]]],[[[-85.2,65.7],[-81.6,64.5],[-80.1,63.7],[-81,63.4],[-83.1,64.1],[-85.5,63.1],[-86.4,64],[-85.9,65.7],[-85.2,65.7]]],[[[-14.5,66.5],[-14.7,65.8],[-13.6,65.1],[-14.9,64.4],[-18.7,63.5],[-22.8,64],[-21.8,64.4],[-24,64.9],[-22.2,65.4],[-24.3,65.6],[-23.7,66.3],[-22.1,66.4],[-20.6,65.7],[-19.1,66.3],[-17.8,66],[-16.2,66.5],[-14.5,66.5]]],[[[-75.9,67.1],[-77,67.1],[-76.8,68.1],[-75.1,68],[-75.9,67.1]]],[[[-180,69],[-174.6,67.1],[-171.9,66.9],[-169.9,66],[-172.5,65.4],[-172.6,64.5],[-173.9,64.3],[-176,64.9],[-176.2,65.4],[-178.4,65.4],[-178.7,66.1],[-179.9,65.9],[-180,65],[180,65],[177.4,64.6],[179.4,63],[179.2,62.3],[177.4,62.5],[173.7,61.7],[170.7,60.3],[170.3,59.9],[168.9,60.6],[166.3,59.8],[163.5,59.9],[162,58.2],[163.2,57.6],[163.1,56.2],[162.1,56.1],[162.1,54.9],[160.4,54.3],[160,53.2],[158.5,53],[158.2,51.9],[156.8,51],[155.4,55.4],[155.9,56.8],[156.8,57.8],[158.4,58.1],[161.9,60.3],[163.7,61.1],[164.5,62.6],[163.3,62.5],[162.7,61.6],[160.1,60.5],[159.3,61.8],[156.7,61.4],[154.2,59.8],[155,59.1],[151.3,58.8],[151.3,59.5],[149.8,59.7],[148.5,59.2],[145.5,59.3],[142.2,59],[135.1,54.7],[136.7,54.6],[138.2,53.8],[139.9,54.2],[141.3,53.1],[140.6,51.2],[140.1,48.4],[138.2,46.3],[134.9,43.4],[133.5,42.8],[132.3,43.3],[129.7,41.6],[129.7,40.9],[127.5,39.8],[129.5,36.8],[129.1,35.1],[126.5,34.4],[126.1,36.7],[126.9,36.9],[126.2,37.7],[124.7,38.1],[125.4,39.4],[124.3,39.9],[121.1,38.9],[122.2,40.4],[121.6,40.9],[117.5,38.7],[119.7,37.2],[120.8,37.9],[122.4,37.5],[122.5,36.9],[121.1,36.7],[119.2,34.9],[120.2,34.4],[121.9,31.7],[121.3,30.7],[122.1,29.8],[121.7,28.2],[121.1,28.1],[118.7,24.5],[115.9,22.8],[113.8,22.5],[113.2,22.1],[110.8,21.4],[109.9,20.3],[109.9,21.4],[108.5,21.7],[106.7,20.7],[105.7,19.1],[107.4,16.7],[108.9,15.3],[109.3,13.4],[109.2,11.7],[107.2,10.4],[105.2,8.6],[105.1,9.9],[103.5,10.6],[102.6,12.2],[100.8,12.6],[100.1,13.4],[100,12.3],[99.2,10],[99.9,9.2],[100.5,7.4],[101.6,6.7],[103.4,4.9],[103.5,2.8],[104.2,1.3],[103.5,1.2],[101.4,2.8],[100.2,5.3],[100.3,6],[99.5,7.3],[98.1,8.3],[98.8,11.4],[97.6,16.1],[97.2,16.9],[95.4,15.7],[94.2,16],[94.3,18.2],[92.1,21.2],[91.4,22.8],[90.5,22.8],[90.3,21.8],[87,21.5],[86.5,20.2],[85.1,19.5],[82.2,17],[82.2,16.6],[80.3,15.9],[80,15.1],[80.3,13],[79.9,12.1],[79.9,10.4],[77.5,8],[76.6,8.9],[75.7,11.3],[74.9,12.7],[74.4,14.6],[73.5,16],[72.8,19.2],[72.6,21.4],[70.5,20.9],[69.2,22.1],[69.6,22.5],[67.4,23.9],[66.4,25.4],[61.5,25.1],[57.4,25.7],[56.5,27.1],[54.7,26.5],[51.5,27.9],[50.1,30.1],[48,30],[48.8,27.7],[50.2,26.7],[50.7,25.5],[51.6,25.8],[51.8,24],[54,24.1],[56.4,26.4],[56.4,24.9],[57.4,23.9],[58.7,23.6],[59.8,22.3],[57.8,19.1],[56.6,18.6],[55.3,17.2],[52.4,16.4],[52.2,15.6],[49.6,14.7],[48.7,14],[45.6,13.3],[45,12.7],[43.5,12.6],[42.7,16.8],[40.9,19.5],[39.1,21.3],[39.1,22.6],[35.1,28.1],[35,29.4],[33.9,27.6],[32.7,28.7],[34.1,26.1],[35.7,23.9],[35.5,23.1],[36.9,22],[37.5,18.6],[38.4,18],[39.3,15.9],[41.2,14.5],[43.3,12.4],[42.7,11.7],[44.1,10.4],[46.6,10.8],[51.1,12],[51,10.6],[49.5,6.8],[48.6,5.3],[46.6,2.9],[43.1,0.3],[41.6,-1.7],[40.3,-2.6],[39.2,-4.7],[38.8,-6.5],[39.4,-6.8],[39.2,-8.5],[40.5,-10.8],[40.8,-14.7],[39.5,-16.7],[37.4,-17.6],[34.8,-19.8],[34.7,-20.5],[35.6,-22.1],[35.6,-23.7],[35,-24.5],[33,-25.4],[32.5,-28.3],[30.1,-31.1],[28.2,-32.8],[25.8,-33.9],[22.6,-33.9],[19.6,-34.8],[18.2,-33.9],[18.2,-31.7],[16.3,-28.6],[15.2,-27.1],[14.4,-23.9],[14.3,-22.1],[13.4,-20.9],[12.6,-19],[11.8,-18.1],[11.6,-16.7],[12.7,-13.1],[13.6,-12],[13.7,-10.7],[12.9,-9.2],[13.2,-8.6],[11.9,-5],[9.4,-2.1],[8.8,-1.1],[9.5,1],[9.8,3.1],[8.5,4.8],[5.9,4.3],[4.3,6.3],[1.1,5.9],[-2,4.7],[-4,5.2],[-5.8,5],[-7.5,4.3],[-9,4.8],[-12.9,7.8],[-13.2,8.9],[-14.8,10.9],[-16.6,12.2],[-16.7,13.6],[-17.6,14.7],[-16.5,16.1],[-16.1,18.1],[-16.3,20.1],[-17.1,21],[-17,21.9],[-16,23.7],[-15.1,24.5],[-14.4,26.3],[-12.6,28],[-11.7,28.1],[-9.6,29.9],[-9.8,31.2],[-8.7,33.2],[-6.9,34.1],[-5.9,35.8],[-4.6,35.3],[-2.2,35.2],[1.5,36.6],[6.3,37.1],[8.4,36.9],[9.5,37.4],[10.6,36.4],[10.8,34.8],[10.2,34.3],[11.1,33.3],[15.2,32.3],[15.7,31.4],[19.1,30.3],[20.1,31],[19.8,31.8],[20.9,32.7],[22.9,32.6],[23.2,32.2],[26.5,31.6],[28.9,30.9],[30.1,31.5],[33.8,31],[34.3,31.2],[36,34.6],[36.1,35.8],[34.7,36.8],[34,36.2],[32.5,36.1],[30.6,36.7],[29.7,36.1],[27.6,36.7],[26.3,38.2],[26.8,39],[26.2,39.5],[27.3,40.4],[28.8,40.5],[29.2,41.2],[31.1,41.1],[33.5,42],[35.2,42],[38.3,40.9],[40.4,41],[41.6,41.5],[41.5,42.6],[36.7,45.2],[38.2,46.2],[37.7,46.6],[39.1,47.3],[35.8,46.6],[35,45.7],[36.5,45.5],[33.9,44.4],[32.5,45.3],[33.6,45.9],[30.7,46.6],[28.8,44.9],[28.6,43.7],[27.7,42.6],[28.8,41.1],[27.6,41],[26.4,40.2],[26.1,40.8],[22.8,40.5],[23,39],[24,38.2],[22.8,37.3],[23.2,36.4],[21.7,36.8],[21.1,38.3],[19.4,40.3],[19.5,41.7],[18.9,42.3],[16,43.5],[14.9,45.1],[13.1,45.7],[12.3,45.4],[12.6,44.1],[14,42.8],[15.9,41.5],[18.4,40.4],[18.3,39.8],[16.9,40.4],[17.2,39.4],[16.1,38],[15.4,40],[13.6,41.2],[12.9,41.3],[10.5,42.9],[10.2,43.9],[8.9,44.4],[6.5,43.1],[4.6,43.4],[3.1,43.1],[3,41.9],[0.8,41],[-0.3,39.3],[0.1,38.7],[-0.7,37.6],[-2.1,36.7],[-4.4,36.7],[-5.4,35.9],[-6.5,36.9],[-8.9,36.9],[-8.8,38.3],[-9.5,38.7],[-8.8,40.8],[-9.4,43],[-8,43.7],[-4.3,43.4],[-1.9,43.4],[-1.4,44],[-1.2,46],[-3,47.6],[-4.5,48],[-4.6,48.7],[-1.6,48.6],[-1.9,49.8],[-1,49.3],[1.3,50.1],[1.6,50.9],[3.8,51.6],[4.7,53.1],[8.8,54],[8.1,55.5],[8.5,57.1],[10.6,57.7],[10.9,56.5],[9.6,55.5],[9.9,54.6],[10.9,54],[12.5,54.5],[14.1,53.8],[17.6,54.9],[19.7,54.4],[21.3,55.2],[21.1,56.8],[22.5,57.8],[24.1,57],[24.4,58.4],[23.3,59.2],[25.9,59.6],[28,59.5],[29.1,60],[28.1,60.5],[26.3,60.4],[22.9,59.8],[21.3,60.7],[21.1,62.6],[22.4,63.8],[25.4,65.1],[23.9,66],[22.2,65.7],[21.4,64.4],[17.8,62.7],[17.1,61.3],[18.8,60.1],[17.9,59],[16.8,58.7],[15.9,56.1],[14.7,56.2],[14.1,55.4],[12.9,55.4],[11,58.9],[10.4,59.5],[8.4,58.3],[7.1,58.1],[5.7,58.6],[5,62],[5.9,62.6],[8.6,63.5],[10.5,64.5],[14.8,67.8],[19.2,69.8],[21.4,70.3],[23,70.2],[24.5,71],[28.2,71.2],[31.3,70.5],[30,70.2],[31.1,69.6],[32.1,69.9],[33.8,69.3],[36.5,69.1],[40.3,67.9],[41.1,66.8],[38.4,66],[33.9,66.8],[33.2,66.6],[34.8,65.9],[34.9,64.4],[37,63.9],[36.5,64.8],[37.2,65.1],[39.6,64.5],[40.4,64.8],[39.8,65.5],[42.1,66.5],[44,66.1],[44.5,66.8],[43.7,67.4],[44.2,68],[43.5,68.6],[46.3,68.2],[46.8,67.7],[45.6,67.6],[46.3,66.7],[47.9,66.9],[48.1,67.5],[53.7,68.9],[53.5,68.2],[57.3,68.5],[58.8,68.9],[59.9,68.3],[61.1,68.9],[60.6,69.9],[63.5,69.5],[68.5,68.1],[69.2,68.6],[67.3,69.9],[66.7,71],[68.5,71.9],[69.9,73],[72.6,72.8],[71.8,71.4],[72.8,70.4],[72.6,69],[73.7,68.4],[71.3,66.3],[72.4,66.2],[73.9,66.8],[75.1,67.8],[74.9,69],[73.6,69.6],[74.4,70.6],[73.1,71.4],[75.7,72.3],[75.9,71.9],[77.6,72.3],[79.7,72.3],[81.5,71.7],[80.6,72.6],[80.5,73.6],[82.3,73.9],[86.8,73.9],[86,74.5],[87.2,75.1],[93.2,76],[96.7,75.9],[98.9,76.4],[100.8,76.4],[102,77.3],[104.4,77.7],[106.1,77.4],[104.7,77.1],[108.2,76.7],[111.1,76.7],[114.1,75.8],[113.9,75.3],[109.4,74.2],[113.5,73.3],[115.6,73.8],[118.8,73.6],[119,73.1],[123.2,73],[123.3,73.7],[127,73.6],[128.6,73],[128.5,72],[129.7,71.2],[131.3,70.8],[132.3,71.8],[133.9,71.4],[135.6,71.7],[137.5,71.3],[139.9,71.5],[139.1,72.4],[140.5,72.8],[149.5,72.2],[150.4,71.6],[153,70.8],[157,71],[159,70.9],[159.7,69.7],[160.9,69.4],[164.1,69.7],[167.8,69.6],[169.6,68.7],[170.8,69],[170.5,70.1],[173.6,69.8],[175.7,69.9],[178.6,69.4],[-180,69]],[[49.1,41.3],[49.6,40.6],[48.9,38.8],[49.2,37.6],[50.8,36.9],[53.8,37],[53.9,39],[52.7,40],[52.9,40.9],[54.7,41],[53.7,42.1],[52.9,41.9],[52.5,42.8],[51.3,43.1],[50.3,44.6],[51.3,44.5],[51.3,45.2],[53,45.3],[53,46.9],[51.2,47],[47.7,45.6],[46.7,44.6],[47.6,43.7],[47.5,43],[49.1,41.3]]],[[[-95.6,69.1],[-96.3,68.8],[-98.4,69],[-99.8,69.4],[-98.2,70.1],[-95.6,69.1]]],[[[-180,71.5],[180,70.8],[178.7,71.1],[-180,71.5]]],[[[-90.5,69.5],[-90.5,68.5],[-89.2,69.3],[-88,68.6],[-88.3,67.9],[-87.3,67.2],[-85.6,68.8],[-85.5,69.9],[-82.6,69.7],[-81.3,69.2],[-82,68.1],[-81.4,67.1],[-83.3,66.4],[-85.8,66.6],[-87.3,64.8],[-88.5,64.1],[-89.9,64],[-90.8,63],[-91.9,62.8],[-94.2,60.9],[-94.7,58.9],[-93.2,58.8],[-92.3,57.1],[-90.9,57.3],[-89,56.9],[-87.3,56],[-85,55.3],[-82.3,55.1],[-82.4,54.3],[-81.4,52.2],[-79.9,51.2],[-78.6,52.6],[-79.1,54.1],[-79.8,54.7],[-78.2,55.1],[-76.5,56.5],[-77.3,58.1],[-78.5,58.8],[-77.3,59.9],[-78.1,62.3],[-77.4,62.6],[-74.7,62.2],[-73.8,62.4],[-71.4,61.1],[-69.6,61.1],[-69.3,59],[-67.7,58.2],[-66.2,58.8],[-64.6,60.3],[-61.4,57],[-61.8,56.3],[-59.6,55.2],[-57.3,54.6],[-56.9,53.8],[-55.8,53.3],[-55.7,52.1],[-58.8,51.1],[-60,50.2],[-61.7,50.1],[-66.4,50.2],[-68.5,49.1],[-71.1,46.8],[-70.3,47],[-68.7,48.3],[-66.6,49.1],[-65.1,49.2],[-64.2,48.7],[-65.1,48.1],[-64.5,46.2],[-63.2,45.7],[-61.5,45.9],[-60.5,47],[-59.8,45.9],[-61,45.3],[-63.3,44.7],[-65.4,43.5],[-66.2,44.5],[-64.4,45.3],[-67.1,45.1],[-67,44.8],[-70.1,43.7],[-70.8,42.9],[-70,41.6],[-72.9,41.2],[-71.9,40.9],[-74,40.6],[-74.2,39.7],[-75.7,37.9],[-76.5,38.7],[-75.7,35.6],[-76.4,34.8],[-78.6,33.9],[-81.3,31.4],[-81.5,30.7],[-80.1,26.9],[-80.4,25.2],[-81.2,25.2],[-82.9,27.9],[-82.7,28.6],[-83.7,29.9],[-85.1,29.6],[-86.4,30.4],[-89.6,30.2],[-89.4,29.2],[-90.9,29.1],[-91.6,29.7],[-94.7,29.5],[-96.6,28.3],[-97.4,27.4],[-97.1,25.9],[-97.7,24.3],[-97.9,22.4],[-97.2,20.6],[-95.9,18.8],[-94.4,18.1],[-91.4,18.9],[-90.8,19.3],[-90.3,21],[-87.1,21.5],[-88.4,16.5],[-88.9,15.9],[-84.4,15.8],[-83.1,15],[-83.9,11.4],[-83.4,10.4],[-81.4,8.8],[-79.6,9.6],[-76.8,8.6],[-75.7,9.4],[-75.5,10.6],[-73.4,11.2],[-71.8,12.4],[-71.9,11.4],[-71.7,9.1],[-71,9.9],[-71.4,11],[-68.9,11.4],[-68.2,10.6],[-66.2,10.6],[-64.9,10.1],[-64.3,10.6],[-61.9,10.7],[-62.4,9.9],[-60.8,9.4],[-60.7,8.6],[-59.1,8],[-57.1,6],[-55,6],[-52.9,5.4],[-51.3,4.2],[-49.9,1],[-50.4,-0.1],[-48.6,-0.2],[-48.6,-1.2],[-47.8,-0.6],[-44.9,-1.6],[-44.6,-2.7],[-43.4,-2.4],[-41.5,-2.9],[-40,-2.9],[-37.2,-4.8],[-35.2,-5.5],[-34.7,-7.3],[-35.1,-9],[-37,-11],[-39,-13.8],[-38.9,-15.7],[-39.8,-19.6],[-40.8,-20.9],[-40.9,-21.9],[-42,-23],[-44.6,-23.4],[-46.5,-24.1],[-48.5,-25.9],[-48.9,-28.7],[-50.7,-31],[-52.3,-32.2],[-53.8,-34.4],[-54.9,-35],[-58.5,-34.4],[-57.2,-35.3],[-56.8,-36.9],[-57.7,-38.2],[-59.2,-38.7],[-62.3,-38.8],[-62.1,-40.7],[-63.8,-41.2],[-65.1,-41.1],[-65,-42.1],[-63.5,-42.6],[-65.2,-43.5],[-65.6,-45],[-66.5,-45],[-67.6,-46.3],[-65.6,-47.2],[-66,-48.1],[-67.2,-48.7],[-67.8,-49.9],[-69.1,-50.7],[-68.2,-52.4],[-69.5,-52.3],[-70.8,-52.9],[-71,-53.8],[-72.6,-53.5],[-74.9,-52.3],[-75.6,-48.7],[-74.1,-46.9],[-75.6,-46.6],[-74.7,-45.8],[-74.4,-44.1],[-73.2,-44.5],[-72.7,-42.4],[-73.4,-42.1],[-73.7,-43.4],[-74.3,-43.2],[-73.7,-39.9],[-73.2,-39.3],[-73.6,-37.2],[-73.2,-37.1],[-71.4,-32.4],[-71.7,-30.9],[-71.5,-28.9],[-70.9,-27.6],[-70.1,-21.4],[-70.4,-18.3],[-71.5,-17.4],[-73.4,-16.4],[-76,-14.6],[-77.1,-12.2],[-79.8,-7.2],[-81.3,-6.1],[-81.4,-4.7],[-79.8,-2.7],[-81,-2.2],[-80.1,0.8],[-78.9,1.4],[-78.4,2.6],[-77.1,3.8],[-77.5,6.7],[-78.2,8.3],[-79.1,9],[-80.5,8.1],[-80,7.5],[-83,8.2],[-83.6,9.1],[-85.8,10.1],[-85.7,11.1],[-87.7,12.9],[-91.2,13.9],[-93.4,15.6],[-94.7,16.2],[-96.6,15.7],[-100.8,17.2],[-101.9,17.9],[-103.5,18.3],[-105,19.3],[-105.7,20.4],[-105.3,21.4],[-106,22.8],[-108.4,25.2],[-109.4,25.8],[-109.3,26.4],[-112.2,29],[-113.1,31.2],[-114.8,31.8],[-114.7,30.2],[-111.6,26.7],[-110.7,24.8],[-109.4,23.4],[-110.3,23.4],[-112.2,24.7],[-112.3,26],[-114.5,27.1],[-114.2,28.6],[-115.5,29.6],[-117.3,33],[-118.5,34],[-120.4,34.4],[-123.7,39],[-124.4,40.3],[-124.5,42.8],[-123.9,45.5],[-124.6,48.4],[-123.1,48],[-123,49],[-125.6,50.4],[-127.4,50.8],[-127.8,52.3],[-129.1,52.8],[-129.3,53.6],[-130.5,54.8],[-132,55.5],[-132.2,56.4],[-133.5,57.2],[-134.1,58.1],[-136.6,58.2],[-139.9,59.5],[-142.6,60.1],[-144,60],[-147.1,60.9],[-148.2,60.7],[-148,60],[-151.7,59.2],[-151.4,60.7],[-154,59.4],[-153.3,58.9],[-154.2,58.1],[-156.3,57.4],[-158.4,56],[-160.3,55.6],[-163.1,54.7],[-164.9,54.6],[-161.8,55.9],[-160.6,56],[-157.7,57.6],[-157,58.9],[-159.1,58.4],[-160.4,59.1],[-162,58.7],[-161.9,59.6],[-163.8,59.8],[-165.3,60.5],[-166.1,61.5],[-164.6,63.1],[-163.1,63.1],[-160.8,63.8],[-161.5,64.4],[-160.8,64.8],[-165,64.4],[-166.4,64.7],[-168.1,65.7],[-164.5,66.6],[-163.8,66.1],[-161.7,66.1],[-165.4,68],[-166.8,68.4],[-166.2,68.9],[-164.4,68.9],[-161.9,70.3],[-156.6,71.4],[-152.3,70.6],[-149.7,70.5],[-144.9,70],[-143.6,70.2],[-139.1,69.5],[-136.5,68.9],[-134.4,69.6],[-132.9,69.5],[-129.8,70.2],[-129.1,69.8],[-128.1,70.5],[-125.8,69.5],[-124.4,70.2],[-124.3,69.4],[-122.7,69.9],[-113.9,68.4],[-115.3,67.9],[-113.5,67.7],[-109.9,68],[-108.9,67.4],[-107.8,67.9],[-108.8,68.3],[-106.1,68.8],[-104.3,68],[-101.5,67.6],[-98.4,67.8],[-98.6,68.4],[-94.7,68.1],[-94.2,69.1],[-96.5,70.1],[-96.4,71.2],[-95.2,71.9],[-92.9,71.3],[-91.5,70.2],[-92.4,69.7],[-90.5,69.5]]],[[[-114.2,73.1],[-114.7,72.7],[-112.4,73],[-111.1,72.5],[-109.9,73],[-108.2,71.7],[-107.7,72.1],[-108.4,73.1],[-107.5,73.2],[-105.4,72.7],[-104.5,71],[-101,70],[-101.1,69.6],[-102.7,69.5],[-102.4,68.8],[-106,69.2],[-109,68.8],[-113.3,68.5],[-113.9,69],[-116.1,69.2],[-117.3,70],[-112.4,70.4],[-114.3,70.6],[-117.9,70.5],[-118.4,70.9],[-116.1,71.3],[-119.4,71.6],[-117.9,72.7],[-115.2,73.3],[-114.2,73.1]]],[[[-76.3,73.1],[-76.3,72.8],[-79.5,72.7],[-80.9,73.3],[-80.4,73.8],[-78.1,73.7],[-76.3,73.1]]],[[[-86.6,73.2],[-85.8,72.5],[-84.9,73.3],[-82.3,73.8],[-80.6,72.7],[-80.8,72.1],[-77.8,72.8],[-74.2,71.8],[-74.1,71.3],[-72.2,71.6],[-71.2,70.9],[-68.8,70.5],[-67,69.2],[-68.8,68.7],[-64.9,67.8],[-63.4,66.9],[-61.9,66.9],[-62.2,66.2],[-63.9,65],[-66.7,66.4],[-68,66.3],[-68.1,65.7],[-65.3,64.4],[-64.7,63.4],[-65,62.7],[-68.8,63.7],[-66.2,61.9],[-68.9,62.3],[-72.2,63.4],[-71.9,63.7],[-74.8,64.7],[-74.8,64.4],[-77.7,64.2],[-78.6,64.6],[-77.9,65.3],[-74,65.5],[-73.9,66.3],[-72.7,67.3],[-73.3,68.1],[-76.9,68.9],[-76.2,69.1],[-79,70.2],[-81.3,69.7],[-84.9,70],[-88.7,70.4],[-89.5,70.8],[-90.2,72.2],[-88.4,73.5],[-85.8,73.8],[-86.6,73.2]]],[[[-100.4,73.8],[-97.4,73.8],[-98.1,73],[-96.5,72.6],[-96.7,71.7],[-98.4,71.3],[-102.5,72.5],[-100.4,72.7],[-101.5,73.4],[-100.4,73.8]]],[[[-93.2,72.8],[-94.3,72],[-95.4,72.1],[-96,72.9],[-95.5,73.9],[-94.5,74.1],[-90.5,73.9],[-92,73],[-93.2,72.8]]],[[[-120.5,71.4],[-123.1,70.9],[-123.6,71.3],[-125.9,71.9],[-123.9,73.7],[-124.9,74.3],[-121.5,74.4],[-117.6,74.2],[-115.5,73.5],[-119.2,72.5],[-120.5,71.4]]],[[[150.7,75.1],[149.6,74.7],[146.1,75.2],[146.4,75.5],[150.7,75.1]]],[[[-93.6,75],[-94.2,74.6],[-96.8,74.9],[-94.9,75.6],[-93.6,75]]],[[[145.1,75.6],[144.3,74.8],[140.6,74.8],[139,74.6],[137,75.3],[137.5,75.9],[141.5,76.1],[145.1,75.6]]],[[[-98.5,76.7],[-97.7,76.3],[-98.2,75],[-100.9,75.1],[-100.9,75.6],[-102.5,75.6],[-102.6,76.3],[-98.5,76.7]]],[[[-108.2,76.2],[-107.8,75.8],[-105.9,76],[-106.3,75],[-109.7,74.9],[-112.2,74.4],[-113.9,74.7],[-111.8,75.2],[-116.3,75],[-117.7,75.2],[-115.4,76.5],[-112.6,76.1],[-110.8,75.5],[-109.1,75.5],[-110.5,76.4],[-109.6,76.8],[-108.2,76.2]]],[[[57.5,70.7],[53.7,70.8],[53.4,71.2],[51.6,71.5],[52.4,72.8],[54.4,73.6],[53.5,73.8],[55.9,74.6],[55.6,75.1],[61.2,76.3],[64.5,76.4],[68.2,76.9],[68.2,76.2],[61.6,75.3],[58.5,74.3],[55.4,72.4],[55.6,71.5],[57.5,70.7]]],[[[-94.7,77.1],[-91.6,76.8],[-91,76.1],[-89.2,75.6],[-86.4,75.5],[-84.8,75.7],[-81.1,75.7],[-79.8,74.9],[-81.9,74.4],[-83.2,74.6],[-88.1,74.4],[-92.4,74.8],[-92.9,75.9],[-93.9,76.3],[-97.1,76.8],[-96.7,77.2],[-94.7,77.1]]],[[[-116.2,77.6],[-116.3,76.9],[-119.9,76.1],[-122.9,76.1],[-119.1,77.5],[-116.2,77.6]]],[[[-110.2,77.7],[-112.1,77.4],[-113.5,77.7],[-112.7,78.1],[-109.9,78],[-110.2,77.7]]],[[[24.7,77.9],[22.5,77.4],[20.7,77.7],[20.8,78.3],[22.9,78.5],[24.7,77.9]]],[[[-95.8,78.1],[-98.1,78.1],[-98.6,78.9],[-95.6,78.4],[-95.8,78.1]]],[[[-100.1,78.3],[-99.7,77.9],[-102.9,78.3],[-105.5,79.3],[-100.8,78.8],[-100.1,78.3]]],[[[105.1,78.3],[99.4,77.9],[101.3,79.2],[102.8,79.3],[105.4,78.7],[105.1,78.3]]],[[[18.3,79.7],[21.5,79],[19,78.6],[17.6,77.6],[17.1,76.8],[15.9,76.8],[13.8,77.4],[14.7,77.7],[13.2,78],[11.2,78.9],[10.4,79.7],[13.2,80],[13.7,79.7],[17,80.1],[18.3,79.7]]],[[[25.4,80.4],[27.4,80.1],[25.9,79.5],[23,79.4],[20.1,79.6],[17.4,80.3],[22.9,80.7],[25.4,80.4]]],[[[51.1,80.5],[47.6,80],[47.1,80.6],[44.8,80.6],[50,80.9],[51.1,80.5]]],[[[99.9,78.9],[97.8,78.8],[93.3,79.4],[92.5,80.1],[91.2,80.3],[93.8,81],[95.9,81.3],[97.9,80.7],[100.2,79.8],[99.9,78.9]]],[[[-87,79.7],[-85.8,79.3],[-89,78.3],[-92.9,78.3],[-94,78.8],[-93.1,79.4],[-95,79.4],[-96.7,80.2],[-94.7,81.2],[-92.4,81.3],[-91.1,80.7],[-87.8,80.3],[-87,79.7]]],[[[-68.5,83.1],[-63.7,82.9],[-61.9,82.4],[-67.7,81.5],[-65.5,81.5],[-69.5,80.6],[-71.2,79.8],[-73.9,79.4],[-76.9,79.3],[-75.4,78.5],[-77.9,77.9],[-79.6,77],[-77.9,76.8],[-80.6,76.2],[-83.2,76.5],[-86.1,76.3],[-89.5,76.5],[-89.6,77],[-87.8,77.2],[-88.3,77.9],[-85,77.5],[-86.3,78.2],[-88,78.4],[-85.4,79],[-85.1,79.3],[-86.9,80.3],[-83.4,80.1],[-81.8,80.5],[-87.6,80.5],[-89.4,80.9],[-91.6,81.9],[-87,82.3],[-85.5,82.7],[-83.2,82.3],[-82.4,82.9],[-79.3,83.1],[-75.7,83.1],[-72.8,83.2],[-68.5,83.1]]],[[[-27.1,83.5],[-20.8,82.7],[-22.7,82.3],[-31.9,82.2],[-27.9,82.1],[-24.8,81.8],[-22.9,82.1],[-22.1,81.7],[-23.2,81.2],[-20.6,81.5],[-15.8,81.9],[-12.8,81.7],[-12.2,81.3],[-17.7,80.1],[-19.7,78.8],[-19.7,77.6],[-18.5,77],[-21.7,76.6],[-19.8,76.1],[-19.6,75.2],[-20.7,75.2],[-19.4,74.3],[-21.6,74.2],[-20.8,73.5],[-23.6,73.3],[-22.3,72.2],[-24.3,72.6],[-22.1,71.5],[-21.8,70.7],[-23.5,70.5],[-25.5,71.4],[-25.2,70.8],[-26.4,70.2],[-22.3,70.1],[-27.7,68.5],[-31.8,68.1],[-34.2,66.7],[-36.4,66],[-39.8,65.5],[-40.7,64.8],[-41.2,63.5],[-42.8,62.7],[-42.4,61.9],[-43.4,60.1],[-44.8,60],[-46.3,60.9],[-48.3,60.9],[-51.6,63.6],[-52.3,65.2],[-53.7,66.1],[-54,67.2],[-53,68.4],[-51.5,68.7],[-50.9,69.9],[-53.5,69.3],[-54.7,69.6],[-54.4,70.8],[-51.4,70.6],[-54,71.5],[-55.8,71.7],[-54.7,72.6],[-58.6,75.5],[-61.3,76.1],[-68.5,76.1],[-71.4,77],[-66.8,77.4],[-71,77.6],[-73.3,78],[-73.2,78.4],[-65.7,79.4],[-65.3,79.8],[-68,80.1],[-67.1,80.5],[-62.2,81.3],[-62.6,81.8],[-57.2,82.2],[-54.1,82.2],[-53,81.9],[-50.4,82.4],[-44.5,81.7],[-46.9,82.2],[-46.8,82.6],[-43.4,83.2],[-39.9,83.2],[-38.6,83.5],[-35.1,83.6],[-27.1,83.5]]]]};
+/* Mockups das três direções de arte. Mesmos dados, três composições. */
+(function () {
+  const A = window.ATLAS, d3 = window.d3;
+  if (!A || !d3) return;
+  const R = A.RECS.filter(r => r.e >= 1400 && r.s <= 1600);
+  const N = R.length;
+  const el = id => document.getElementById(id);
+  const cat = id => A.CATS.find(c => c.id === id).name;
+
+  /* ---------- A · Arquivo Vivo ---------- */
+  (function () {
+    const host = el('mock-a'); if (!host) return;
+    const hero = A.byId.idia, next = ['pedrasol', 'monalisa', 'sistina'].map(i => A.byId[i]);
+    const x = d3.scaleLinear([1400, 1600], [0, 1104]);
+    let ticks = '';
+    for (let y = 1400; y <= 1600; y += 10) ticks += `<line x1="${x(y)}" x2="${x(y)}" y1="40" y2="${y % 50 ? 46 : 52}" class="t"/>` + (y % 50 ? '' : `<text x="${x(y)}" y="74" class="n">${y}</text>`);
+    const marks = R.filter(r => r.s >= 1400).map(r => `<line x1="${x(r.s).toFixed(1)}" x2="${x(r.s).toFixed(1)}" y1="${r.glyph ? 22 : 30}" y2="40" class="${r.glyph ? 'o' : 'e'}"/>`).join('');
+    host.innerHTML = `
+      <header class="ca-top"><span class="ca-wm">Atlas</span><nav><b>Sala 1400–1600</b><span>Salas</span><span>Acervo</span><span>Sobre</span></nav><span class="ca-s">Buscar</span></header>
+      <section class="ca-intro">
+        <p class="ca-eye">Sala 1400–1600 · ${N} registros de demonstração</p>
+        <h3>O mundo<br>por volta<br>de <em>1500</em></h3>
+        <p class="ca-p">Objetos, obras e documentos de sete regiões, em ordem de tempo. Role para atravessar a sala.</p>
+        <p class="ca-arrows"><span>←</span><span>→</span></p>
+      </section>
+      <figure class="ca-hero">
+        <div class="ca-plate">${A.glyphSvg(hero.glyph)}</div>
+        <figcaption><span class="k">47 de ${N}</span><em>${hero.title}</em><span>${hero.place} · ${A.fmtDate(hero)}</span><span>Marfim esculpido</span></figcaption>
+      </figure>
+      <div class="ca-next">${next.map((r, i) => `<figure class="n${i}"><div class="ca-plate">${A.glyphSvg(r.glyph)}</div><figcaption><em>${r.title}</em><span>${A.fmtDate(r)}</span></figcaption></figure>`).join('')}</div>
+      <div class="ca-ruler"><svg viewBox="-24 0 1152 84" width="1152" height="84">
+        <line x1="0" x2="1104" y1="40" y2="40" class="b"/>${ticks}${marks}
+        <rect x="${x(1500)}" y="14" width="${x(1521) - x(1500)}" height="26" class="w"/>
+        <line x1="${x(1500)}" x2="${x(1500)}" y1="6" y2="40" class="h"/><text x="${x(1500) + 6}" y="11" class="hl">em exposição · 1500–1521</text>
+      </svg></div>`;
+  })();
+
+  /* ---------- B · Observatório do Tempo ---------- */
+  (function () {
+    const host = el('mock-b'); if (!host) return;
+    const W = 1200, H = 720, x = d3.scaleLinear([1400, 1600], [196, 1160]);
+    const laneY = i => 126 + i * 64, col = c => `var(--b-${c})`;
+    const pos = {}; const hash = s => { let h = 7; for (const ch of s) h = (h * 31 + ch.charCodeAt(0)) % 997; return h / 997; };
+    R.forEach(r => { pos[r.id] = [x(Math.max(1400, r.s)), laneY(r.lane) + (hash(r.id) - 0.5) * 34]; });
+    const sel = A.byId.gama, linked = new Set(A.LINKS.filter(l => l.includes('gama')).flat());
+    let s = `<rect width="${W}" height="${H}" class="bg"/>`;
+    A.LANES.forEach((l, i) => { s += `<line x1="196" x2="1160" y1="${laneY(i)}" y2="${laneY(i)}" class="ln"/><text x="28" y="${laneY(i) + 3}" class="lb">${l.name.toUpperCase()}</text>`; });
+    for (let y = 1400; y <= 1600; y += 25) s += `<line x1="${x(y)}" x2="${x(y)}" y1="92" y2="544" class="gr"/><text x="${x(y)}" y="682" class="ax" text-anchor="middle">${y}</text>`;
+    s += A.SIM.map(p => `<circle cx="${x(p.s).toFixed(1)}" cy="${(laneY(p.lane) + (p.v - 0.5) * 50).toFixed(1)}" r="1" style="fill:${col(p.cat)}" opacity=".42"/>`).join('');
+    s += A.LINKS.filter(l => pos[l[0]] && pos[l[1]]).map(l => {
+      const p = pos[l[0]], q = pos[l[1]], on = l.includes('gama'), mx = (p[0] + q[0]) / 2, my = Math.min(p[1], q[1]) - Math.abs(p[0] - q[0]) * 0.22 - 14;
+      return `<path d="M${p[0].toFixed(1)} ${p[1].toFixed(1)}Q${mx.toFixed(1)} ${my.toFixed(1)} ${q[0].toFixed(1)} ${q[1].toFixed(1)}" class="arc${on ? ' on' : ''}"/>`;
+    }).join('');
+    s += R.map(r => {
+      const p = pos[r.id], on = linked.has(r.id);
+      return (r.range && r.e - r.s <= 60 ? `<line x1="${p[0].toFixed(1)}" x2="${x(Math.min(1600, r.e)).toFixed(1)}" y1="${p[1].toFixed(1)}" y2="${p[1].toFixed(1)}" style="stroke:${col(r.cat)}" class="iv"/>` : '')
+        + `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="${1.6 + r.imp * 0.8}" style="fill:${col(r.cat)}" class="pt${on ? ' on' : ''}"/>`;
+    }).join('');
+    const placed = [];
+    R.filter(r => r.imp === 3 || linked.has(r.id)).sort((p, q) => (linked.has(q.id) ? 1 : 0) - (linked.has(p.id) ? 1 : 0)).forEach(r => {
+      const p = pos[r.id], t = r.title.length > 30 ? r.title.slice(0, 29) + '…' : r.title, w = t.length * 5.5 + 10, bx = [p[0] + 7, p[1] - 9, p[0] + 7 + w, p[1] + 4];
+      if (bx[2] > 1170 || placed.some(b => !(bx[0] > b[2] || bx[2] < b[0] || bx[1] > b[3] || bx[3] < b[1]))) return;
+      placed.push(bx); s += `<text x="${(p[0] + 8).toFixed(1)}" y="${(p[1] + 3).toFixed(1)}" class="tl${linked.has(r.id) ? ' on' : ''}">${t}</text>`;
+    });
+    const sp = pos.gama;
+    s += `<line x1="${sp[0]}" x2="${sp[0]}" y1="92" y2="660" class="cross"/><circle cx="${sp[0]}" cy="${sp[1]}" r="9" class="ring"/>`;
+    const bins = d3.bin().domain([1400, 1600]).thresholds(d3.range(1400, 1600, 2))(A.SIM.map(p => p.s).concat(R.map(r => r.s)));
+    const hy = d3.scaleLinear([0, d3.max(bins, b => b.length)], [0, 78]);
+    s += bins.map(b => `<rect x="${x(b.x0).toFixed(1)}" y="${(660 - hy(b.length)).toFixed(1)}" width="${(x(b.x1) - x(b.x0) - 1.4).toFixed(1)}" height="${hy(b.length).toFixed(1)}" class="hb${b.x0 >= 1480 && b.x1 <= 1520 ? ' in' : ''}"/>`).join('');
+    s += `<rect x="${x(1480)}" y="574" width="${x(1520) - x(1480)}" height="88" class="br"/><text x="${x(1480)}" y="568" class="ax">JANELA 1480–1520</text>`;
+    s += `<text x="28" y="40" class="wm">ATLAS / OBSERVATÓRIO</text><text x="28" y="60" class="ax">N = ${(A.SIM.length + N).toLocaleString('pt-BR')} REGISTROS · ${A.SIM.length.toLocaleString('pt-BR')} SIMULADOS · 7 REGIÕES</text>`;
+    s += `<g transform="translate(846,26)"><rect width="314" height="78" class="ro"/><text x="14" y="22" class="ax hi">1498 · CALICUTE · 11,26° N 75,78° L</text><text x="14" y="45" class="rt">${sel.title}</text><text x="14" y="64" class="ax">${linked.size - 1} CONEXÕES · ${cat(sel.cat).toUpperCase()}</text></g>`;
+    s += `<g transform="translate(28,602)">${A.CATS.map((c, i) => `<circle cx="4" cy="${i * 14}" r="3" style="fill:${col(c.id)}"/><text x="14" y="${i * 14 + 3}" class="ax">${c.name.toUpperCase()}</text>`).join('')}</g>`;
+    host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">${s}</svg>`;
+  })();
+
+  /* ---------- C · Atlas da Humanidade ---------- */
+  (function () {
+    const host = el('mock-c'); if (!host || !window.ATLAS_LAND) return;
+    const W = 1200, H = 720, w0 = 1475, w1 = 1525;
+    const proj = d3.geoEqualEarth().rotate([-10, 0]).fitExtent([[26, 84], [846, 512]], { type: 'Sphere' }), path = d3.geoPath(proj);
+    const inWin = R.filter(r => r.s <= w1 && r.e >= w0), keyed = inWin.filter(r => r.imp === 3 && !r.range || ['idia', 'pedrasol', 'monalisa'].includes(r.id)).sort((a, b) => a.s - b.s).slice(0, 13);
+    const routes = [
+      ['Vasco da Gama, 1497–1498', 'r1', [[-9.14, 38.72], [-17, 28], [-23.5, 15], [-22, 0], [-28, -18], [-15, -32], [5, -36], [18.47, -34.36], [27, -34], [35.5, -24], [40.7, -15], [40.12, -3.22], [58, 6], [75.78, 11.26]]],
+      ['Magalhães e Elcano, 1519–1522', 'r2', [[-6.35, 36.78], [-17, 28], [-25, 10], [-32, -8], [-43.2, -22.9], [-58, -36], [-67.5, -49.3], [-70, -52.6], [-78, -48], [-90, -30], [-115, -16], [-145, -8], [-168, 2], [172, 8], [144.79, 13.44], [123.96, 10.31], [127.4, 0.7], [125, -9], [100, -20], [70, -32], [40, -37], [18.5, -36], [5, -25], [-15, 0], [-24, 15], [-28, 30], [-6.35, 36.78]]]
+    ];
+    let s = `<rect width="${W}" height="${H}" class="paper"/><path d="${path({ type: 'Sphere' })}" class="sea"/><path d="${path(d3.geoGraticule().step([30, 30])())}" class="grat"/><path d="${path(window.ATLAS_LAND)}" class="land"/><path d="${path({ type: 'Sphere' })}" class="neat"/>`;
+    [['Oceano Atlântico', -34, 6], ['Oceano Índico', 78, -24], ['Oceano Pacífico', -135, 2], ['Oceano Pacífico', 158, 24]].forEach(o => { const p = proj([o[1], o[2]]); s += `<text x="${p[0]}" y="${p[1]}" class="ocean" text-anchor="middle">${o[0]}</text>`; });
+    routes.forEach(r => { s += `<path d="${path({ type: 'LineString', coordinates: r[2] })}" class="route ${r[1]}"/>`; });
+    s += inWin.filter(r => !keyed.includes(r)).map(r => { const p = proj([r.lon, r.lat]); return `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="2.6" class="pin"/>`; }).join('');
+    const used = [];
+    keyed.forEach((r, i) => {
+      let p = proj([r.lon, r.lat]); let dx = 0, dy = 0;
+      while (used.some(u => Math.hypot(u[0] - p[0] - dx, u[1] - p[1] - dy) < 17)) { dx += 12; dy -= 9; }
+      used.push([p[0] + dx, p[1] + dy]);
+      s += (dx ? `<line x1="${p[0]}" y1="${p[1]}" x2="${p[0] + dx}" y2="${p[1] + dy}" class="lead"/><circle cx="${p[0]}" cy="${p[1]}" r="1.8" class="pin"/>` : '') + `<circle cx="${p[0] + dx}" cy="${p[1] + dy}" r="8" class="num"/><text x="${p[0] + dx}" y="${p[1] + dy + 3.6}" class="numt" text-anchor="middle">${i + 1}</text>`;
+    });
+    s += `<text x="28" y="38" class="rub">ATLAS DA HUMANIDADE · PRANCHA DE DEMONSTRAÇÃO</text><text x="28" y="68" class="ttl">O mundo entre ${w0} e ${w1}</text>`;
+    s += `<text x="846" y="68" class="meta" text-anchor="end">${inWin.length} registros na janela · projeção Equal Earth</text>`;
+    s += `<g transform="translate(884,40)"><text class="rub" y="0">LEGENDA</text>${keyed.map((r, i) => `<g transform="translate(0,${22 + i * 26})"><circle cx="8" cy="-4" r="8" class="num"/><text x="8" y="-0.4" class="numt" text-anchor="middle">${i + 1}</text><text x="26" y="0" class="lg"><tspan class="${r.prec === 'e' ? 'yr' : 'yr it'}">${A.fmtDate(r)}</tspan><tspan dx="7">${r.title.length > 30 ? r.title.slice(0, 29) + '…' : r.title}</tspan></text></g>`).join('')}
+      <g transform="translate(0,${22 + keyed.length * 26 + 14})"><line x1="0" x2="34" y1="-4" y2="-4" class="route r1"/><text x="42" y="0" class="lg">${routes[0][0]}</text><line x1="0" x2="34" y1="16" y2="16" class="route r2"/><text x="42" y="20" class="lg">${routes[1][0]}</text><text x="0" y="44" class="meta">Traçados esquemáticos. Datas em itálico são aproximadas.</text></g></g>`;
+    const x = d3.scaleLinear([1400, 1600], [190, 1172]), ry = i => 566 + i * 17;
+    s += `<line x1="28" x2="1172" y1="540" y2="540" class="rule"/><rect x="${x(w0)}" y="548" width="${x(w1) - x(w0)}" height="${7 * 17 + 6}" class="win"/>`;
+    A.LANES.forEach((l, i) => { s += `<text x="28" y="${ry(i)}" class="rg">${l.name}</text><line x1="190" x2="1172" y1="${ry(i) - 4}" y2="${ry(i) - 4}" class="rr"/>`; });
+    s += R.map(r => (r.range
+      ? `<rect x="${x(Math.max(1400, r.s)).toFixed(1)}" y="${ry(r.lane) - 6.2}" width="${Math.max(2, x(Math.min(1600, r.e)) - x(Math.max(1400, r.s))).toFixed(1)}" height="4.4" class="iv${r.prec === 'i' ? '' : ' est'}"/>`
+      : `<line x1="${x(r.s).toFixed(1)}" x2="${x(r.s).toFixed(1)}" y1="${ry(r.lane) - 11}" y2="${ry(r.lane) + 2}" class="tk${r.imp === 3 ? ' k' : ''}"/>`)).join('');
+    for (let y = 1400; y <= 1600; y += 25) s += `<text x="${x(y)}" y="702" class="ax" text-anchor="middle">${y}</text><line x1="${x(y)}" x2="${x(y)}" y1="684" y2="689" class="rule"/>`;
+    s += `<path d="M${x(w0)} 548v-8M${x(w1)} 548v-8" class="hand"/>`;
+    host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">${s}</svg>`;
+  })();
+})();
+
+/* Storyboard navegável — direção "Meridiano".
+   Toda a tela é função de um estado: janela de tempo [a, b], recuo do painel, altura das faixas. */
+(function () {
+  const A = window.ATLAS, d3 = window.d3, root = document.getElementById('stage');
+  if (!root || !d3 || !A) return;
+
+  const W = 1200, H = 772, GUT = 150, TOP = 92, LH = 560, AX = TOP + LH, MINI = 698, PANEL = 372;
+  // Escala do tempo: linear depois de 3200 AEC, logarítmica antes (pré-história comprimida).
+  const T0 = -3200, DMIN = -300000, DW = 520, K = DW / Math.log(DMIN / T0);
+  const warp = y => (y >= T0 ? y : T0 - K * Math.log(y / T0));
+  const unwarp = w => (w >= T0 ? w : T0 * Math.exp((T0 - w) / K));
+  const EXT = [warp(DMIN), 2025];
+  const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const sstep = (e0, e1, x) => { const t = clamp((x - e0) / (e1 - e0), 0, 1); return t * t * (3 - 2 * t); };
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const AO = A.laneIx.ao;
+
+  const S = {
+    a: EXT[0], b: EXT[1], inset: 0, h: A.LANES.map(() => LH / 7), focus: -1,
+    sel: null, panel: null, mer: null, margin: 5, hover: null, sim: true,
+    cats: new Set(A.CATS.map(c => c.id)), scene: 0
+  };
+  const SCENES = [
+    { win: [DMIN, 2025], focus: -1, panel: null },
+    { win: [1300, 1700], focus: -1, panel: null },
+    { win: [1496, 1546], focus: AO, panel: null },
+    { win: [1496, 1546], focus: AO, panel: 'rec', sel: 'piri' },
+    { win: [1496, 1546], focus: -1, panel: 'cut', mer: 1513 },
+    { win: [780, 1030], focus: -1, panel: 'acervo' }
+  ];
+
+  /* ---------- estrutura ---------- */
+  const screen = root.querySelector('.st-screen');
+  screen.innerHTML = `
+    <div class="st-top">
+      <div class="st-wm"><i>Atlas</i><span>da História da Humanidade</span></div>
+      <div class="st-win" id="st-win"></div>
+      <div class="st-nav"><span class="st-search">Buscar <kbd>/</kbd></span><span>Acervo</span><span>Sobre</span></div>
+    </div>
+    <div class="st-chips">
+      <span class="st-chips__l">Categorias</span>
+      <div class="st-chips__c" id="st-chips"></div>
+      <span class="st-count" id="st-count"></span>
+    </div>
+    <canvas class="st-canvas" width="${W * 2}" height="${H * 2}"></canvas>
+    <svg class="st-svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Linha do tempo por regiões do mundo">
+      <defs>
+        <pattern id="st-hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" class="st-hatchline"/></pattern>
+        <clipPath id="st-clip"><rect id="st-cliprect" x="${GUT}" y="${TOP - 30}" width="${W - GUT}" height="${H}"/></clipPath>
+      </defs>
+    </svg>
+    <aside class="st-panel" id="st-panel" aria-live="polite"></aside>
+    <div class="st-status">
+      <span class="st-level" id="st-level"></span>
+      <span class="st-legend">
+        <span><svg width="14" height="10"><circle cx="7" cy="5" r="3.2" class="lg-fill"/></svg>data exata</span>
+        <span><svg width="22" height="10"><line x1="1" y1="5" x2="21" y2="5" class="lg-dash"/><circle cx="11" cy="5" r="3" class="lg-open"/></svg>aproximada</span>
+        <span><svg width="22" height="10"><rect x="1" y="3" width="20" height="4" class="lg-fill"/></svg>intervalo</span>
+        <span><svg width="22" height="10"><rect x="1.5" y="3" width="19" height="4" class="lg-est"/></svg>estimado</span>
+        <span><svg width="22" height="10"><rect x="0" y="1" width="22" height="8" fill="url(#st-hatch)"/></svg>sem pesquisa</span>
+      </span>
+      <span class="st-zoom"><button type="button" id="st-out" aria-label="Afastar">−</button><button type="button" id="st-in" aria-label="Aproximar">+</button></span>
+    </div>`;
+  const svg = d3.select(screen).select('svg.st-svg');
+  const canvas = screen.querySelector('canvas'), ctx = canvas.getContext('2d');
+  const panel = screen.querySelector('#st-panel');
+  const G = {};
+  ['lanes', 'grid', 'strip', 'pols', 'clusters', 'keys', 'fichas', 'marks', 'mer', 'axis', 'mini', 'labels'].forEach(n => {
+    G[n] = svg.append('g').attr('class', 'L-' + n);
+    if (['strip', 'pols', 'clusters', 'keys', 'fichas', 'marks'].includes(n)) G[n].attr('clip-path', 'url(#st-clip)');
+  });
+
+  const chips = d3.select('#st-chips').selectAll('button').data(A.CATS).join('button')
+    .attr('type', 'button').attr('class', 'st-chip').attr('aria-pressed', 'true')
+    .html(c => `<i style="background:var(--c-${c.id})"></i>${c.name}`)
+    .on('click', (ev, c) => {
+      if (S.cats.has(c.id)) { if (S.cats.size > 1) S.cats.delete(c.id); } else S.cats.add(c.id);
+      chips.attr('aria-pressed', d => String(S.cats.has(d.id)));
+      render();
+    });
+
+  /* ---------- geometria ---------- */
+  const PR = () => W - S.inset;
+  const X = y => GUT + (warp(y) - S.a) / (S.b - S.a) * (PR() - GUT);
+  const XI = x => unwarp(S.a + (x - GUT) / (PR() - GUT) * (S.b - S.a));
+  const heights = f => A.LANES.map((_, i) => (f < 0 ? LH / 7 : i === f ? 236 : (LH - 236) / 6));
+  const active = r => S.cats.has(r.cat);
+  const inCut = r => S.mer == null || (r.s <= S.mer + S.margin && r.e >= S.mer - S.margin);
+  let colors = {};
+  function readColors() {
+    const cs = getComputedStyle(root);
+    A.CATS.forEach(c => { colors[c.id] = cs.getPropertyValue('--c-' + c.id).trim(); });
+  }
+
+  const wrap = (text, max, lines) => {
+    const words = text.split(' '), out = []; let cur = '';
+    for (const w of words) {
+      if (!cur) cur = w; else if ((cur + ' ' + w).length <= max) cur += ' ' + w; else { out.push(cur); cur = w; }
+    }
+    if (cur) out.push(cur);
+    if (out.length > lines) { out.length = lines; out[lines - 1] = out[lines - 1].replace(/[\s,]*\S{0,3}$/, '') + '…'; }
+    return out;
+  };
+  const cut = (t, n) => (t.length > n ? t.slice(0, n - 1).replace(/[\s,]+$/, '') + '…' : t);
+
+  /* ---------- desenho ---------- */
+  function render() {
+    const span = S.b - S.a, pr = PR(), pw = pr - GUT, ppy = pw / span;
+    const aN1 = sstep(700, 1500, span), aN3 = 1 - sstep(90, 170, span), aN2 = 1 - aN1 - aN3;
+    const y0 = XI(GUT), y1 = XI(pr);
+    const ly = []; let acc = TOP; S.h.forEach(h => { ly.push(acc); acc += h; });
+    const mode = i => (S.h[i] < 62 ? 'c' : S.h[i] > 150 ? 'f' : 'n');
+    const sh = i => (mode(i) === 'c' ? 12 : 15);
+    const base = i => ly[i] + S.h[i] - sh(i);
+    const pitch = lerp(11, 16, aN1), bandH = lerp(1.5, 12, aN1);
+    const rowsOf = i => (mode(i) === 'c' ? 1 : aN1 > 0.5 ? 3 : 2);
+    d3.select('#st-cliprect').attr('width', Math.max(0, pw));
+
+    const recs = A.RECS.filter(r => active(r) && r.e >= y0 - 2 && r.s <= y1 + 2);
+    const counts = A.LANES.map(() => 0);
+    recs.forEach(r => { counts[r.lane]++; });
+    const sims = S.sim ? A.SIM.filter(r => active(r) && r.s >= y0 && r.s <= y1) : [];
+    sims.forEach(r => { counts[r.lane]++; });
+
+    // faixas
+    G.lanes.selectAll('rect.lane').data(A.LANES).join('rect').attr('class', (d, i) => 'lane' + (i % 2 ? ' alt' : '') + (i === S.focus ? ' on' : ''))
+      .attr('x', 0).attr('width', W).attr('y', (d, i) => ly[i]).attr('height', (d, i) => S.h[i]);
+    G.lanes.selectAll('line.lane-r').data(A.LANES.concat([0])).join('line').attr('class', 'lane-r')
+      .attr('x1', 0).attr('x2', W).attr('y1', (d, i) => (i < 7 ? ly[i] : AX)).attr('y2', (d, i) => (i < 7 ? ly[i] : AX));
+    G.lanes.selectAll('line.gut').data([0]).join('line').attr('class', 'gut').attr('x1', GUT).attr('x2', GUT).attr('y1', TOP).attr('y2', AX);
+
+    // rótulos das faixas
+    const lab = G.labels.selectAll('g.lab').data(A.LANES).join(en => {
+      const g = en.append('g').attr('class', 'lab');
+      g.append('text').attr('class', 'lab-n').each(function (d) { d3.select(this).selectAll('tspan').data(d.lines).join('tspan').attr('x', 18).attr('dy', (l, i) => (i ? 14 : 0)).text(l => l); });
+      g.append('text').attr('class', 'lab-c').attr('x', 18);
+      g.append('path').attr('class', 'lab-k');
+      return g;
+    });
+    lab.attr('transform', (d, i) => `translate(0,${ly[i]})`).classed('on', (d, i) => i === S.focus);
+    lab.select('.lab-n').attr('y', (d, i) => (mode(i) === 'c' ? 16 : 20));
+    lab.select('.lab-c').attr('y', (d, i) => (mode(i) === 'c' ? 16 : 20) + d.lines.length * 14 + (mode(i) === 'c' ? -1 : 1))
+      .text((d, i) => (counts[i] ? counts[i].toLocaleString('pt-BR') + (counts[i] === 1 ? ' registro' : ' registros') : 'sem registros'));
+    lab.select('.lab-k').attr('d', (d, i) => (i === S.focus ? 'M134 13l4 4 4-4' : 'M136 11l4 4-4 4'));
+
+    // tira do acervo: hachura onde não há pesquisa, limpa na sala aberta
+    const cov = [X(1400), X(1600)];
+    G.strip.selectAll('rect.hatch').data(A.LANES).join('rect').attr('class', 'hatch').attr('fill', 'url(#st-hatch)')
+      .attr('x', GUT).attr('width', Math.max(0, pw)).attr('y', (d, i) => base(i)).attr('height', (d, i) => sh(i));
+    G.strip.selectAll('rect.cov').data(A.LANES).join('rect').attr('class', (d, i) => 'cov' + (i % 2 ? ' alt' : ''))
+      .attr('x', cov[0]).attr('width', Math.max(0, cov[1] - cov[0])).attr('y', (d, i) => base(i)).attr('height', (d, i) => sh(i));
+    G.strip.selectAll('line.st').data(A.LANES).join('line').attr('class', 'st').attr('x1', GUT).attr('x2', pr).attr('y1', (d, i) => base(i)).attr('y2', (d, i) => base(i));
+
+    // sedimento simulado (canvas)
+    ctx.setTransform(2, 0, 0, 2, 0, 0); ctx.clearRect(0, 0, W, H);
+    if (sims.length) {
+      ctx.globalAlpha = clamp(ppy / 16, 0.07, 0.62) * (S.mer == null ? 1 : 0.45);
+      for (const r of sims) {
+        const x = X(r.s); if (x < GUT || x > pr) continue;
+        ctx.fillStyle = colors[r.cat]; ctx.fillRect(Math.round(x), base(r.lane) + 1.5, 1, sh(r.lane) - 3);
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    // sociedades e Estados: barras no panorama, linhas de contexto de perto
+    const pol = [];
+    const items = (aN1 > 0.03 ? A.DEEP : []).concat(A.POLS);
+    A.LANES.forEach((_, li) => {
+      const rows = Array.from({ length: rowsOf(li) }, () => []);
+      items.filter(p => p.lane === li).sort((p, q) => (q.deep ? 1e9 : q.e - q.s) - (p.deep ? 1e9 : p.e - p.s)).forEach(p => {
+        const lw = p.name.length * 5.5 + 12;
+        let x0 = X(p.s), x1 = X(p.e), showL = true;
+        if (p.deep) { if (x0 < GUT - 2 || x0 > pr) return; x0 = Math.max(x0, GUT + 7); x1 = x0 + lw + 8; x0 -= 5; }
+        else {
+          if (x1 < GUT || x0 > pr) return; x0 = Math.max(x0, GUT); x1 = Math.min(x1, pr);
+          if (x1 - x0 < 2.5) return; showL = x1 - x0 >= lw;
+        }
+        for (let r = 0; r < rows.length; r++) {
+          if (rows[r].every(e => x1 + 4 < e[0] || x0 - 4 > e[1])) { rows[r].push([x0, x1]); pol.push({ p, x0, x1, y: ly[li] + 3 + r * pitch, showL, li }); return; }
+        }
+      });
+    });
+    const pg = G.pols.selectAll('g.pol').data(pol, d => d.p.id).join(en => {
+      const g = en.append('g').attr('class', d => 'pol' + (d.p.deep ? ' deep' : ''));
+      g.append(d => document.createElementNS('http://www.w3.org/2000/svg', d.p.deep ? 'path' : 'rect'));
+      g.append('text').text(d => d.p.name);
+      return g;
+    });
+    pg.attr('opacity', d => (d.p.deep ? aN1 : 1));
+    pg.filter(d => !d.p.deep).select('rect').attr('x', d => d.x0).attr('width', d => d.x1 - d.x0).attr('y', d => d.y + pitch - 1.5 - bandH).attr('height', bandH)
+      .attr('fill-opacity', lerp(0.4, 0.13, aN1));
+    pg.filter(d => d.p.deep).select('path').attr('d', d => `M${d.x0 + 5} ${d.y + pitch - 12}l4 4.5-4 4.5-4-4.5z`);
+    pg.select('text').attr('x', d => d.x0 + (d.p.deep ? 13 : 4)).attr('y', d => d.y + pitch - 4.2).attr('display', d => (d.showL ? null : 'none'));
+
+    // grupos contados (nível intermediário)
+    let clus = [];
+    if (aN2 > 0.03) {
+      const want = 46 / ppy, bin = [1, 2, 5, 10, 20, 25, 50, 100, 200].find(s => s >= want) || 500;
+      const m = new Map();
+      const add = (lane, y, cat) => {
+        const k = lane * 100000 + Math.floor(y / bin) + 50000; let e = m.get(k);
+        if (!e) { e = { k: k + ':' + bin, lane, bi: Math.floor(y / bin), n: 0, c: {} }; m.set(k, e); }
+        e.n++; e.c[cat] = (e.c[cat] || 0) + 1;
+      };
+      recs.forEach(r => { if (r.s >= y0 && r.s <= y1) add(r.lane, r.s, r.cat); });
+      sims.forEach(r => add(r.lane, r.s, r.cat));
+      clus = Array.from(m.values()).map(e => {
+        e.x = X((e.bi + 0.5) * bin); e.bin = bin;
+        e.cat = Object.keys(e.c).sort((p, q) => e.c[q] - e.c[p])[0];
+        e.r = clamp(3 + 1.25 * Math.log2(e.n + 1), 3.6, 13);
+        const top = ly[e.lane] + 3 + rowsOf(e.lane) * pitch + (mode(e.lane) === 'c' ? 0 : 12);
+        e.y = (top + base(e.lane)) / 2; return e;
+      });
+    }
+    const cg = G.clusters.attr('opacity', aN2).attr('display', aN2 > 0.03 ? null : 'none').selectAll('g.clu').data(clus, d => d.k).join(en => {
+      const g = en.append('g').attr('class', 'clu'); g.append('circle'); g.append('text'); return g;
+    });
+    cg.attr('transform', d => `translate(${d.x},${d.y})`).on('click', (ev, d) => { ev.stopPropagation(); zoomTo((d.bi + 0.5) * d.bin, Math.max(40, Math.min(d.bin * 2.4, 60)), d.lane); });
+    cg.select('circle').attr('r', d => d.r).style('fill', d => `var(--c-${d.cat})`).style('stroke', d => `var(--c-${d.cat})`);
+    cg.select('text').attr('dy', '0.35em').text(d => (d.r >= 8 ? d.n : ''));
+
+    // acontecimentos estruturantes rotulados (nível intermediário)
+    let keys = [];
+    if (aN2 > 0.03) {
+      A.LANES.forEach((_, li) => {
+        if (mode(li) === 'c') return; let last = -1e9;
+        recs.filter(r => r.lane === li && r.imp === 3 && r.s >= y0).sort((p, q) => p.s - q.s).forEach(r => {
+          const x = X(r.s), t = cut(r.title, 32), w = t.length * 5.9 + 14;
+          if (x < last + 10 || x + 30 > pr) return; last = x + w;
+          keys.push({ r, x, t, y: ly[li] + 3 + rowsOf(li) * pitch + 10, yb: base(li) });
+        });
+      });
+    }
+    const kg = G.keys.attr('opacity', aN2).attr('display', aN2 > 0.03 ? null : 'none').selectAll('g.key').data(keys, d => d.r.id).join(en => {
+      const g = en.append('g').attr('class', 'key'); g.append('line'); g.append('circle').attr('r', 2.4); g.append('text'); return g;
+    });
+    kg.attr('transform', d => `translate(${d.x},${d.y})`).attr('opacity', d => (inCut(d.r) ? 1 : 0.25)).on('click', (ev, d) => { ev.stopPropagation(); openRec(d.r.id); });
+    kg.select('line').attr('y1', 1).attr('y2', d => d.yb - d.y);
+    kg.select('circle').attr('cy', -3.5).style('fill', d => `var(--c-${d.r.cat})`);
+    kg.select('text').attr('x', 7).text(d => d.t);
+
+    // fichas (nível próximo)
+    let fichas = [];
+    if (aN3 > 0.03) {
+      A.LANES.forEach((_, li) => {
+        const m = mode(li), placed = [];
+        const zy = ly[li] + 3 + rowsOf(li) * pitch + (m === 'c' ? 3 : 3);
+        recs.filter(r => r.lane === li).map(r => ({ r, pri: r.imp + (r.glyph ? 0.6 : 0) + (r.id === S.sel ? 10 : 0) + (S.mer != null && inCut(r) ? 4 : 0) + (r.prec === 'd' ? -2 : 0) }))
+          .sort((p, q) => q.pri - p.pri).forEach(({ r }) => {
+            let x = X(r.s); if (r.range && x < GUT + 6 && X(r.e) > GUT + 40) x = GUT + 6;
+            if (x < GUT + 3 || x > pr - 26) return;
+            const date = A.fmtDate(r); let w, lines;
+            if (m === 'c') { lines = [cut(r.title, 30)]; w = date.length * 5.9 + lines[0].length * 5.6 + 18; }
+            else if (m === 'n') { lines = wrap(r.title, 20, 2); w = (r.glyph ? 40 : 7) + Math.max(date.length * 5.9, d3.max(lines, l => l.length) * 6) + 4; }
+            else { lines = r.glyph ? wrap(r.title, 17, 3) : wrap(r.title, 14, 4); w = 108; }
+            if (!placed.every(e => x + w + 10 < e[0] || x - 10 > e[1])) return;
+            placed.push([x, x + w]);
+            fichas.push({ r, x, zy, m, lines, date, stem: base(li) - zy, key: r.id + ':' + m });
+          });
+      });
+    }
+    const fg = G.fichas.attr('opacity', aN3).attr('display', aN3 > 0.03 ? null : 'none').selectAll('g.fic').data(fichas, d => d.key).join(en => {
+      const g = en.append('g').attr('class', d => 'fic fic-' + d.m);
+      g.append('line').attr('class', 'stem');
+      g.each(function (d) {
+        const s = d3.select(this), r = d.r;
+        if (d.m === 'c') {
+          const t = s.append('text').attr('x', 6).attr('y', 10);
+          t.append('tspan').attr('class', 'f-date').text(d.date); t.append('tspan').attr('class', 'f-ttl').attr('dx', 6).text(d.lines[0]);
+        } else if (d.m === 'n') {
+          const tx = r.glyph ? 40 : 7;
+          if (r.glyph) { s.append('rect').attr('class', 'plate').attr('x', 4).attr('y', 0).attr('width', 30).attr('height', 36); s.append('g').attr('class', 'gly').html(A.glyphSvg(r.glyph, 'x="7" y="3" width="24" height="30"')); }
+          s.append('text').attr('class', 'f-date').attr('x', tx).attr('y', 9).text(d.date);
+          d.lines.forEach((l, i) => s.append('text').attr('class', 'f-ttl').attr('x', tx).attr('y', 21.5 + i * 12.5).text(l));
+        } else if (r.glyph) {
+          s.append('rect').attr('class', 'plate').attr('x', 4).attr('y', 2).attr('width', 96).attr('height', 118);
+          s.append('g').attr('class', 'gly').html(A.glyphSvg(r.glyph, 'x="19" y="14" width="66" height="94"'));
+          s.append('text').attr('class', 'f-date').attr('x', 4).attr('y', 135).text(d.date);
+          d.lines.forEach((l, i) => s.append('text').attr('class', 'f-serif it').attr('x', 4).attr('y', 151 + i * 15).text(l));
+          s.append('text').attr('class', 'f-place').attr('x', 4).attr('y', 151 + d.lines.length * 15 + 0.5).text(cut(r.place, 20));
+        } else {
+          s.append('line').attr('class', 'f-rule').attr('x1', 4).attr('x2', 100).attr('y1', 3).attr('y2', 3);
+          s.append('text').attr('class', 'f-eye').attr('x', 4).attr('y', 18).text(A.KINDS[r.kind]);
+          d.lines.forEach((l, i) => s.append('text').attr('class', 'f-serif').attr('x', 4).attr('y', 39 + i * 18).text(l));
+          s.append('text').attr('class', 'f-date').attr('x', 4).attr('y', 39 + d.lines.length * 18).text(d.date);
+          s.append('text').attr('class', 'f-place').attr('x', 4).attr('y', 39 + d.lines.length * 18 + 14).text(cut(r.place, 20));
+        }
+        s.append('rect').attr('class', 'hit').attr('x', 0).attr('y', -1).attr('width', d.m === 'f' ? 104 : 150).attr('height', d.m === 'f' ? 186 : d.m === 'n' ? 38 : 14);
+      });
+      return g;
+    });
+    fg.attr('transform', d => `translate(${d.x},${d.zy})`).classed('sel', d => d.r.id === S.sel).attr('opacity', d => (inCut(d.r) ? 1 : 0.22))
+      .on('click', (ev, d) => { ev.stopPropagation(); openRec(d.r.id); });
+    fg.select('line.stem').attr('y1', 0).attr('y2', d => d.stem).style('stroke', d => `var(--c-${d.r.cat})`);
+
+    // marcas de datação, uma por registro
+    const rr = clamp(1 + ppy * 1.1, 1.1, 3.1);
+    const mg = G.marks.selectAll('g.mk').data(recs, d => d.id).join(en => {
+      const g = en.append('g').attr('class', d => 'mk p-' + d.prec);
+      g.each(function (d) {
+        const s = d3.select(this);
+        if (d.range) s.append('rect'); else { if (d.prec === 'c') s.append('line'); s.append('circle'); }
+        s.append('title').text(`${A.fmtDate(d)} · ${d.title}`);
+      });
+      return g;
+    });
+    mg.style('color', d => `var(--c-${d.cat})`).attr('opacity', d => (inCut(d) ? 1 : 0.22)).classed('sel', d => d.id === S.sel)
+      .on('click', (ev, d) => { ev.stopPropagation(); openRec(d.id); });
+    mg.select('circle').attr('cx', d => X(d.s)).attr('cy', d => base(d.lane) + (sh(d.lane) > 12 ? 4.8 : 4)).attr('r', d => rr + (d.imp === 3 && ppy > 1 ? 0.6 : 0));
+    mg.select('line').attr('x1', d => X(d.s - 5)).attr('x2', d => X(d.s + 5)).attr('y1', d => base(d.lane) + (sh(d.lane) > 12 ? 4.8 : 4)).attr('y2', d => base(d.lane) + (sh(d.lane) > 12 ? 4.8 : 4)).attr('display', ppy > 1.2 ? null : 'none');
+    mg.select('rect').attr('x', d => Math.max(GUT - 4, X(d.s))).attr('width', d => Math.max(1.5, Math.min(pr + 4, X(d.e)) - Math.max(GUT - 4, X(d.s))))
+      .attr('y', d => base(d.lane) + (sh(d.lane) > 12 ? 9.3 : 7.6)).attr('height', d => (sh(d.lane) > 12 ? 4 : 3.2));
+
+    // eixo
+    const steps = [1, 2, 5, 10, 25, 50, 100, 250, 500, 1000], step = steps.find(s => s * ppy >= 76) || 2000;
+    const ticks = []; const ya = Math.max(y0, T0 + 1);
+    for (let y = Math.ceil(ya / step) * step; y <= y1; y += step) ticks.push({ y, x: X(y), t: y === 0 ? 'AEC | EC' : y < 0 ? (-y) + ' AEC' : String(y) });
+    if (S.a < T0) [[-300000, '300 mil'], [-10000, '10 mil']].forEach(d => { const x = X(d[0]); if (x >= GUT - 1 && x <= pr) ticks.push({ y: d[0], x, t: d[1], deep: 1 }); });
+    G.grid.selectAll('line').data(ticks, d => d.y).join('line').attr('x1', d => d.x).attr('x2', d => d.x).attr('y1', TOP).attr('y2', AX);
+    const tg = G.axis.selectAll('g.tk').data(ticks, d => d.y).join(en => { const g = en.append('g').attr('class', 'tk'); g.append('line').attr('y2', 6); g.append('text').attr('y', 19); return g; });
+    tg.attr('transform', d => `translate(${d.x},${AX})`).select('text').text(d => d.t).attr('text-anchor', d => (d.x < GUT + 24 ? 'start' : d.x > pr - 30 ? 'end' : 'middle'));
+    const sub = step / (step === 25 || step === 250 || step === 2 ? 5 : step === 1 ? 1 : 5), minor = [];
+    if (sub * ppy > 5 && sub !== step) for (let y = Math.ceil(ya / sub) * sub; y <= y1; y += sub) minor.push(y);
+    G.axis.selectAll('line.mn').data(minor, d => d).join('line').attr('class', 'mn').attr('x1', d => X(d)).attr('x2', d => X(d)).attr('y1', AX).attr('y2', AX + 3);
+    const notes = [];
+    if (S.a < T0 - 20) notes.push({ k: 'deep', x: GUT, t: 'pré-história em escala comprimida', a: 'start', o: aN1 }, { k: 'brk', x: X(T0), t: '' });
+    if (aN1 > 0.2 && cov[1] > GUT && cov[0] < pr) notes.push({ k: 'room', x: (cov[0] + cov[1]) / 2, t: 'sala aberta: 1400–1600', a: 'middle', o: aN1 });
+    const ng = G.axis.selectAll('g.note').data(notes, d => d.k).join(en => { const g = en.append('g').attr('class', d => 'note n-' + d.k); g.append('path'); g.append('text').attr('y', 33); return g; });
+    ng.attr('transform', d => `translate(${d.x},${AX})`).attr('opacity', d => (d.o == null ? 1 : d.o));
+    ng.select('text').text(d => d.t).attr('text-anchor', d => d.a);
+    ng.select('path').attr('d', d => (d.k === 'brk' ? 'M-4 5l3-10M1 5l3-10' : ''));
+
+    // minimapa: toda a história, com a janela atual
+    const mr = pr - 18, mx = w => GUT + (w - EXT[0]) / (EXT[1] - EXT[0]) * (mr - GUT);
+    const mm = G.mini.selectAll('g.mm').data([0]).join(en => {
+      const g = en.append('g').attr('class', 'mm');
+      g.append('text').attr('class', 'mm-l').attr('x', 18).attr('y', MINI + 14).text('toda a história');
+      g.append('rect').attr('class', 'mm-bg').attr('fill', 'url(#st-hatch)'); g.append('rect').attr('class', 'mm-cov'); g.append('g').attr('class', 'mm-t');
+      g.append('rect').attr('class', 'mm-w'); g.append('rect').attr('class', 'mm-hit'); return g;
+    });
+    mm.select('.mm-bg').attr('x', GUT).attr('y', MINI).attr('width', Math.max(0, mr - GUT)).attr('height', 20);
+    mm.select('.mm-cov').attr('x', mx(1400)).attr('y', MINI).attr('width', mx(1600) - mx(1400)).attr('height', 20);
+    mm.select('.mm-t').selectAll('line').data([-3000, -2000, -1000, 0, 1000, 2000]).join('line').attr('x1', d => mx(d)).attr('x2', d => mx(d)).attr('y1', MINI + 20).attr('y2', MINI + 24);
+    mm.select('.mm-w').attr('x', mx(S.a)).attr('y', MINI - 3).attr('width', Math.max(5, mx(S.b) - mx(S.a))).attr('height', 26);
+    mm.select('.mm-hit').attr('x', GUT).attr('y', MINI - 4).attr('width', Math.max(0, mr - GUT)).attr('height', 28)
+      .on('click', ev => { ev.stopPropagation(); const w = EXT[0] + (pt(ev)[0] - GUT) / (mr - GUT) * (EXT[1] - EXT[0]); const hs = (S.b - S.a) / 2; go(fit({ a: w - hs, b: w + hs })); });
+
+    // meridiano
+    const m = S.mer != null ? S.mer : S.hover, md = [];
+    if (m != null) { const x = X(m); if (x >= GUT && x <= pr) md.push({ x, m }); }
+    const meg = G.mer.selectAll('g.mer').data(md).join(en => {
+      const g = en.append('g').attr('class', 'mer'); g.append('rect').attr('class', 'band'); g.append('line');
+      g.append('rect').attr('class', 'chip').attr('rx', 2); g.append('text').attr('text-anchor', 'middle'); return g;
+    });
+    meg.classed('pin', S.mer != null);
+    meg.select('line').attr('x1', d => d.x).attr('x2', d => d.x).attr('y1', TOP).attr('y2', AX + 7);
+    meg.select('.band').attr('display', S.mer != null ? null : 'none').attr('x', d => X(d.m - S.margin)).attr('width', d => X(d.m + S.margin) - X(d.m - S.margin)).attr('y', TOP).attr('height', LH);
+    const ypp = 1 / ppy, rs = ypp < 0.5 ? 1 : ypp < 2.5 ? 5 : ypp < 12 ? 10 : 50;
+    const mt = d => (S.mer != null ? `${d.m} ± ${S.margin} anos` : d.m < T0 ? 'c. ' + A.fmtYear(Math.round(d.m / 1000) * 1000) : A.fmtYear(Math.round(d.m / rs) * rs));
+    meg.select('text').attr('x', d => clamp(d.x, GUT + 48, pr - 48)).attr('y', AX + 19.5).text(mt);
+    meg.select('.chip').each(function (d) { const w = mt(d).length * 6.6 + 26; d3.select(this).attr('x', clamp(d.x, GUT + 48, pr - 48) - w / 2).attr('y', AX + 7).attr('width', w).attr('height', 18); });
+
+    // leituras
+    const lvl = aN1 > 0.5 ? 'Panorama' : aN3 > 0.5 ? 'Vitrine' : 'Era';
+    const f0 = y0 < T0 ? A.fmtYear(Math.round(y0 / 1000) * 1000) : A.fmtYear(y0), yrs = Math.round(y1 - y0);
+    document.getElementById('st-win').innerHTML = `<b>${f0} – ${A.fmtYear(y1)}</b>` + (y0 >= T0 ? `<span>${yrs.toLocaleString('pt-BR')} anos</span>` : '');
+    document.getElementById('st-level').innerHTML = `<b>${lvl}</b><span>${lvl === 'Panorama' ? 'sociedades e Estados de longa duração' : lvl === 'Era' ? 'registros agrupados, acontecimentos estruturantes' : 'um registro por marca, fichas e pranchas'}</span>`;
+    const nd = recs.length, ns = sims.length;
+    document.getElementById('st-count').innerHTML = `<b>${nd}</b> de demonstração` + (S.sim ? ` · <b>${ns.toLocaleString('pt-BR')}</b> simulados` : '') + ' nesta janela';
+    panel.style.transform = `translateX(${PANEL - S.inset}px)`;
+    panel.style.visibility = S.inset > 1 ? 'visible' : 'hidden';
+    screen.classList.toggle('has-panel', S.inset > 120);
+  }
+
+  /* ---------- navegação ---------- */
+  function fit(t) {
+    let span = clamp(t.b - t.a, 8, EXT[1] - EXT[0]), a = t.a;
+    a = clamp(a, EXT[0], EXT[1] - span);
+    return Object.assign({}, t, { a, b: a + span });
+  }
+  let timer = null;
+  function go(to, dur) {
+    const from = { a: S.a, b: S.b, inset: S.inset, h: S.h.slice() };
+    const t = { a: to.a != null ? to.a : S.a, b: to.b != null ? to.b : S.b, inset: to.inset != null ? to.inset : S.inset, h: heights(S.focus) };
+    const zi = d3.interpolateZoom([(from.a + from.b) / 2, 0, from.b - from.a], [(t.a + t.b) / 2, 0, t.b - t.a]);
+    const D = reduce ? 0 : dur != null ? dur : clamp(zi.duration * 0.95, 520, 1900);
+    if (timer) timer.stop();
+    const apply = k => {
+      const z = zi(k); S.a = z[0] - z[2] / 2; S.b = z[0] + z[2] / 2;
+      S.inset = lerp(from.inset, t.inset, k); S.h = from.h.map((h, i) => lerp(h, t.h[i], k)); render();
+    };
+    if (!D) { apply(1); return; }
+    const e = d3.easeCubicInOut;
+    timer = d3.timer(el => { const k = Math.min(1, el / D); apply(e(k)); if (k >= 1) timer.stop(); });
+  }
+  function zoomTo(year, span, lane) {
+    if (lane != null) S.focus = lane;
+    const c = warp(year); go(fit({ a: c - span / 2, b: c + span / 2 }));
+  }
+  function setPanel(kind) { S.panel = kind; drawPanel(); return kind ? PANEL : 0; }
+  function openRec(id) {
+    const r = A.byId[id]; S.sel = id; S.mer = null; S.focus = r.lane;
+    const inset = setPanel('rec'), span = Math.min(S.b - S.a, 60), vis = (W - inset - GUT) / (W - GUT);
+    let a = S.a, b = S.b; const xs = warp(r.s);
+    if (b - a > 170 || xs < a + (b - a) * 0.06 || xs > a + (b - a) * vis * 0.86) { a = xs - span * 0.3; b = a + span; }
+    go(fit({ a, b, inset }));
+  }
+  function openCut(year) { S.mer = Math.round(year); S.focus = -1; const inset = setPanel('cut'); let a = S.a, b = S.b; if (b - a > 120 || S.mer < a + 4 || S.mer > b - 4) { a = S.mer - 17; b = S.mer + 33; } go(fit({ a, b, inset })); }
+  function closePanel() { S.sel = null; S.mer = null; go({ inset: setPanel(null) }); }
+  function scene(i) {
+    const sc = SCENES[i]; S.scene = i; S.focus = sc.focus; S.sel = sc.sel || null; S.mer = sc.mer != null ? sc.mer : null; S.margin = 5;
+    const inset = setPanel(sc.panel);
+    go(fit({ a: warp(sc.win[0]), b: warp(sc.win[1]), inset }));
+    root.dispatchEvent(new CustomEvent('scene', { detail: i }));
+  }
+
+  /* ---------- painel ---------- */
+  const deg = (v, p, n) => `${Math.abs(v).toFixed(2).replace('.', ',')}° ${v >= 0 ? p : n}`;
+  const linkBtn = (r, why) => `<li><button type="button" data-go="${r.id}"><span class="yr">${A.fmtDate(r)}</span><span class="tt">${r.title}</span><span class="why">${why ? why + ' · ' : ''}${A.LANES[r.lane].name}</span></button></li>`;
+  function drawPanel() {
+    let h = '';
+    const head = k => `<div class="pn-head"><span class="pn-kind">${k}</span><button type="button" class="pn-x" data-close aria-label="Fechar painel">×</button></div>`;
+    if (S.panel === 'rec') {
+      const r = A.byId[S.sel], t = A.TEXT[r.id] || {};
+      const cat = A.CATS.find(c => c.id === r.cat);
+      let links = t.links ? t.links.map(l => [A.byId[l[0]], l[1]]) : A.LINKS.filter(l => l.includes(r.id)).map(l => [A.byId[l[0] === r.id ? l[1] : l[0]], '']);
+      h = head(t.kindLabel || A.KINDS[r.kind])
+        + (r.glyph ? `<div class="pn-plate">${A.glyphSvg(r.glyph)}</div><p class="pn-credit">Silhueta ilustrativa. No acervo real, este espaço traz a fotografia com instituição, crédito e licença.</p>` : '')
+        + `<h3 class="pn-title">${r.title}</h3>
+        <dl class="pn-meta">
+          <div><dt>Datação</dt><dd>${t.dating || A.fmtDate(r) + ' · ' + A.PREC[r.prec]}</dd></div>
+          <div><dt>Lugar</dt><dd>${r.place}<span>${deg(r.lat, 'N', 'S')}, ${deg(r.lon, 'L', 'O')}</span></dd></div>
+          <div><dt>Região</dt><dd>${A.LANES[r.lane].name}</dd></div>
+          <div><dt>Categoria</dt><dd><i style="background:var(--c-${r.cat})"></i>${cat.name}</dd></div>
+        </dl>
+        <div class="pn-body">${(t.body || ['Texto de demonstração. A ficha real traz contexto, descrição e leitura crítica das fontes.']).map(p => `<p>${p}</p>`).join('')}</div>
+        <button type="button" class="pn-btn" data-cut="${r.range ? Math.round((r.s + r.e) / 2) : r.s}">Ver o mundo em ${r.range ? Math.round((r.s + r.e) / 2) : r.s}</button>`
+        + (links.length ? `<h4>Conexões</h4><ul class="pn-links">${links.map(l => linkBtn(l[0], l[1])).join('')}</ul>` : '')
+        + `<h4>Fontes</h4><p class="pn-none">Nenhuma fonte cadastrada. Este é um registro de demonstração, ainda não validado.</p>
+        <div class="pn-status"><span class="dash">demonstração</span><span>status: rascunho</span></div>`;
+    } else if (S.panel === 'cut') {
+      const hit = A.RECS.filter(r => active(r) && inCut(r));
+      const proj = d3.geoEqualEarth().rotate([-10, 0]).fitExtent([[2, 2], [330, 164]], { type: 'Sphere' }), path = d3.geoPath(proj);
+      h = head('Corte no tempo') + `<h3 class="pn-title">Enquanto isso, em ${S.mer}</h3>
+        <p class="pn-sub">Registros que cruzam ${S.mer - S.margin}–${S.mer + S.margin}, por região.</p>
+        <svg class="pn-map" viewBox="0 0 332 166"><path class="sph" d="${path({ type: 'Sphere' })}"/><path class="land" d="${path(window.ATLAS_LAND)}"/>${hit.map(r => { const p = proj([r.lon, r.lat]); return `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="${r.range ? 2.6 : 3.4}" style="fill:var(--c-${r.cat})"${r.range ? ' opacity=".7"' : ''}/>`; }).join('')}</svg>
+        <ul class="pn-cut">${A.LANES.map((l, i) => {
+          const rs = hit.filter(r => r.lane === i).sort((p, q) => (q.range ? 0 : 3) + q.imp - ((p.range ? 0 : 3) + p.imp));
+          const pts = rs.filter(r => !r.range);
+          return `<li><span class="rg">${l.name}</span><div>${rs.slice(0, 2).map(r => `<button type="button" data-go="${r.id}"><span class="yr">${A.fmtDate(r)}</span>${r.title}</button>`).join('')}${rs.length > 2 ? `<em>mais ${rs.length - 2} ${rs.length - 2 === 1 ? 'registro' : 'registros'}</em>` : ''}${!rs.length ? '<em>sem registros neste corte</em>' : !pts.length ? '<em>só processos de longa duração, nenhuma data exata</em>' : ''}</div></li>`;
+        }).join('')}</ul>
+        <div class="pn-margin"><span>Margem</span>${[1, 5, 25].map(mg => `<button type="button" data-margin="${mg}" aria-pressed="${S.margin === mg}">± ${mg} ${mg === 1 ? 'ano' : 'anos'}</button>`).join('')}</div>`;
+    } else if (S.panel === 'acervo') {
+      const y0 = Math.round(unwarp(warp(SCENES[5].win[0]))), y1 = SCENES[5].win[1];
+      const n = A.RECS.filter(r => r.e >= y0 && r.s <= y1).length, cx = w => 96 + (w - EXT[0]) / (EXT[1] - EXT[0]) * 232;
+      h = head('Estado do acervo') + `<h3 class="pn-title it">Aqui o atlas ainda está quase em branco.</h3>
+        <div class="pn-body"><p>Entre ${y0} e ${y1} há ${n} registros de demonstração. As linhas no topo de cada faixa mostram dinastias e Estados para orientar a leitura. A pesquisa deste trecho ainda não começou.</p></div>
+        <h4>Cobertura por região, de 300 mil AEC a hoje</h4>
+        <svg class="pn-cov" viewBox="0 0 332 ${A.LANES.length * 19 + 4}">${A.LANES.map((l, i) => `<text x="0" y="${i * 19 + 12}">${l.name.replace(' e Central', '').replace('Leste e Sudeste Asiático', 'Leste e Sudeste As.').replace(' e Pacífico', '')}</text><rect x="96" y="${i * 19 + 4}" width="232" height="10" fill="url(#st-hatch)"/><rect class="c" x="${cx(1400)}" y="${i * 19 + 4}" width="${cx(1600) - cx(1400)}" height="10"/>${A.RECS.filter(r => r.lane === i && r.s < 1100).map(r => `<rect class="c" x="${cx(r.s).toFixed(1)}" y="${i * 19 + 4}" width="1.2" height="10"/>`).join('')}`).join('')}<rect class="w" x="${cx(y0)}" y="1" width="${Math.max(4, cx(y1) - cx(y0))}" height="${A.LANES.length * 19}"/></svg>
+        <dl class="pn-nums"><div><dt>${A.RECS.length}</dt><dd>registros de demonstração</dd></div><div><dt>1</dt><dd>sala aberta, 1400–1600</dd></div><div><dt>0</dt><dd>registros validados</dd></div></dl>
+        <button type="button" class="pn-btn" data-win="1300,1700">Ir para o trecho mais denso, 1400–1600</button>
+        <p class="pn-none">No produto, este painel também leva ao diário de pesquisa, com o que está sendo estudado agora.</p>`;
+    }
+    panel.innerHTML = h; panel.scrollTop = 0;
+  }
+  panel.addEventListener('click', ev => {
+    const b = ev.target.closest('button'); if (!b) return;
+    if (b.dataset.close != null) closePanel();
+    else if (b.dataset.go) openRec(b.dataset.go);
+    else if (b.dataset.cut) openCut(+b.dataset.cut);
+    else if (b.dataset.margin) { S.margin = +b.dataset.margin; drawPanel(); render(); }
+    else if (b.dataset.win) { const w = b.dataset.win.split(',').map(Number); S.focus = -1; go(fit({ a: warp(w[0]), b: warp(w[1]), inset: setPanel(null) })); }
+  });
+
+  /* ---------- ponteiro: meridiano, arrasto, abrir faixa ---------- */
+  const node = svg.node();
+  const pt = ev => { const r = node.getBoundingClientRect(); return [(ev.clientX - r.left) * W / r.width, (ev.clientY - r.top) * H / r.height]; };
+  let drag = null;
+  node.addEventListener('pointerdown', ev => {
+    const p = pt(ev); if (p[1] < TOP || p[1] > AX + 30 || ev.button) return;
+    drag = { x: p[0], y: p[1], a: S.a, b: S.b, moved: false, id: ev.pointerId };
+  });
+  node.addEventListener('pointermove', ev => {
+    const p = pt(ev);
+    if (drag) {
+      const dx = p[0] - drag.x;
+      if (!drag.moved && Math.abs(dx) > 4) { drag.moved = true; if (timer) timer.stop(); try { node.setPointerCapture(drag.id); } catch (e) { /* sem captura */ } node.classList.add('dragging'); }
+      if (drag.moved) { const dw = -dx / (PR() - GUT) * (drag.b - drag.a), t = fit({ a: drag.a + dw, b: drag.b + dw }); S.a = t.a; S.b = t.b; S.hover = null; render(); }
+      return;
+    }
+    const h = p[0] > GUT && p[0] < PR() && p[1] > TOP - 30 && p[1] < AX + 30 ? XI(p[0]) : null;
+    if (h !== S.hover) { S.hover = h; render(); }
+  });
+  const up = ev => {
+    if (!drag) return; const d = drag; drag = null; node.classList.remove('dragging');
+    if (d.moved || ev.type === 'pointercancel') return;
+    if (d.y > TOP && d.y < AX && !ev.target.closest('.fic,.mk,.clu,.key')) {
+      let acc = TOP, li = -1; S.h.forEach((h, i) => { if (d.y >= acc && d.y < acc + h) li = i; acc += h; });
+      if (li >= 0) { S.focus = S.focus === li ? -1 : li; go({}, 620); }
+    }
+  };
+  node.addEventListener('pointerup', up); node.addEventListener('pointercancel', up);
+  node.addEventListener('pointerleave', () => { if (S.hover != null && !drag) { S.hover = null; render(); } });
+  const zoomBy = f => { const c = (S.a + S.b) / 2, s = (S.b - S.a) * f; go(fit({ a: c - s / 2, b: c + s / 2 })); };
+  document.getElementById('st-in').addEventListener('click', () => zoomBy(0.45));
+  document.getElementById('st-out').addEventListener('click', () => zoomBy(2.2));
+
+  /* ---------- API para a página ---------- */
+  window.AtlasStage = {
+    scene, restyle() { readColors(); render(); },
+    setSim(v) { S.sim = v; render(); }, count: SCENES.length
+  };
+  readColors(); drawPanel(); render();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => render());
+})();
+
+/* Página: escala das telas, controles do storyboard e pequenos desenhos de apoio. */
+(function () {
+  const A = window.ATLAS, d3 = window.d3;
+
+  // telas de tamanho fixo, escaladas para a largura disponível
+  const screens = Array.from(document.querySelectorAll('.screen'));
+  function fitScreens() {
+    screens.forEach(s => {
+      const w = +s.dataset.w, h = +s.dataset.h, min = +(s.dataset.min || 760);
+      const k = Math.max(s.clientWidth, min) / w, fit = s.firstElementChild, inner = fit.firstElementChild;
+      fit.style.width = w * k + 'px'; fit.style.height = h * k + 'px'; inner.style.transform = `scale(${k})`;
+    });
+  }
+  fitScreens();
+  if (window.ResizeObserver) new ResizeObserver(fitScreens).observe(document.body); else window.addEventListener('resize', fitScreens);
+
+  // sumário
+  const tocBtns = Array.from(document.querySelectorAll('.toc button'));
+  tocBtns.forEach(b => b.addEventListener('click', () => { const t = document.getElementById(b.dataset.to); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }));
+  if (window.IntersectionObserver) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) tocBtns.forEach(b => b.setAttribute('aria-current', String(b.dataset.to === e.target.id))); }), { rootMargin: '-45% 0px -50% 0px' });
+    document.querySelectorAll('section.sec').forEach(s => io.observe(s));
+  }
+  if (!A || !d3) return;
+
+  // silhuetas e mapa dos mockups de celular
+  document.querySelectorAll('[data-glyph]').forEach(e => { e.innerHTML = A.glyphSvg(e.dataset.glyph); });
+  const cm = document.querySelector('[data-cutmap]'), cl = document.querySelector('[data-cutlist]');
+  if (cm && window.ATLAS_LAND) {
+    const hit = A.RECS.filter(r => r.s <= 1518 && r.e >= 1508);
+    const proj = d3.geoEqualEarth().rotate([-10, 0]).fitExtent([[4, 4], [246, 122]], { type: 'Sphere' }), path = d3.geoPath(proj);
+    cm.innerHTML = `<path class="sph" d="${path({ type: 'Sphere' })}"/><path class="land" d="${path(window.ATLAS_LAND)}"/>` + hit.map(r => { const p = proj([r.lon, r.lat]); return `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="2.6" style="fill:var(--c-${r.cat})"/>`; }).join('');
+    cl.innerHTML = A.LANES.map((l, i) => {
+      const rs = hit.filter(r => r.lane === i && !r.range).sort((a, b) => b.imp - a.imp)[0];
+      return `<li><b>${l.name}</b><span>${rs ? `<span>${A.fmtDate(rs)}</span>${rs.title}` : '<em>só processos longos</em>'}</span></li>`;
+    }).join('');
+  }
+
+  // esquema do conceito D
+  const dg = document.getElementById('diagram-d');
+  if (dg) {
+    const x = d3.scaleLinear([1400, 1600], [150, 500]), y = i => 34 + i * 34; let s = '';
+    A.LANES.forEach((l, i) => { s += `<rect x="0" y="${y(i)}" width="520" height="34" style="fill:var(--${i % 2 ? 'surface' : 'bg'})"/><text class="dl" x="14" y="${y(i) + 21}">${l.name.replace(' e Central', '').replace('Leste e Sudeste Asiático', 'Leste e Sudeste Asiát.')}</text>`; });
+    A.RECS.filter(r => r.s >= 1400 && r.s <= 1600 && r.imp >= 2 && r.e - r.s <= 60).forEach(r => {
+      const on = r.s <= 1518 && r.e >= 1508, c = `var(--c-${r.cat})`;
+      s += r.range ? `<rect x="${x(r.s).toFixed(1)}" y="${y(r.lane) + 21}" width="${(x(Math.min(1600, r.e)) - x(r.s)).toFixed(1)}" height="3.4" style="fill:${c}" opacity="${on ? 1 : 0.35}"/>`
+        : `<circle cx="${x(r.s).toFixed(1)}" cy="${y(r.lane) + 12}" r="${on ? 3.6 : 2.6}" style="fill:${c}" opacity="${on ? 1 : 0.4}"/>`;
+    });
+    s += `<rect x="${x(1508)}" y="34" width="${x(1518) - x(1508)}" height="238" style="fill:var(--rub)" opacity=".1"/><line x1="${x(1513)}" x2="${x(1513)}" y1="20" y2="280" style="stroke:var(--rub)" stroke-width="1.5"/><text class="dm" x="${x(1513) + 7}" y="24">meridiano · 1513</text>`;
+    s += `<line x1="150" x2="500" y1="280" y2="280" style="stroke:var(--ink3)"/>` + [1400, 1450, 1500, 1550, 1600].map(t => `<line x1="${x(t)}" x2="${x(t)}" y1="280" y2="285" style="stroke:var(--ink3)"/><text x="${x(t)}" y="300" text-anchor="middle">${t}</text>`).join('');
+    s += `<text x="14" y="24">paralelos · regiões</text><text x="14" y="300">tempo</text><line x1="150" x2="150" y1="34" y2="280" style="stroke:var(--rule)"/>`;
+    dg.innerHTML = s;
+  }
+
+  // storyboard
+  const stage = document.getElementById('stage'), api = window.AtlasStage;
+  if (!stage || !api) return;
+  const SC = [
+    { t: 'Toda a história numa tela', k: 'Panorama',
+      f: ['Sete faixas regionais, de 300 mil anos atrás até hoje. Em cada uma, barras de sociedades e Estados de longa duração. Na base de cada faixa, a tira do acervo: hachurada onde ainda não há pesquisa, marcada onde há registros.',
+        'Primeiro as faixas e os nomes das sociedades. Depois a sala aberta, 1400–1600, único trecho com registros. Por último o eixo e o minimapa.',
+        'O cursor carrega o meridiano com o ano. Arrastar percorre o tempo. A pré-história usa escala comprimida, sinalizada no eixo.',
+        'Zoom contínuo sobre 1400–1600. As barras afinam até virar linhas de contexto no topo de cada faixa e o bloco de sedimento se abre em grupos contados.'] },
+    { t: 'Uma era de perto', k: 'Quatro séculos',
+      f: ['De 1300 a 1700. Estados e dinastias viram linhas de contexto. Os registros aparecem agrupados em círculos com contagem, coloridos pela categoria dominante. Só os acontecimentos estruturantes têm rótulo.',
+        'Primeiro os rótulos dos acontecimentos estruturantes. Depois os grupos e seu tamanho, que mostram onde há mais material. Por último o contexto político e o eixo.',
+        'Clicar num grupo aproxima até ele se desfazer em registros. Os filtros por categoria recalculam os grupos na hora.',
+        'Zoom para 1496–1546 e abertura da faixa Ásia Ocidental e Central. Os grupos se desfazem em marcas individuais. As outras faixas encolhem e continuam na tela.'] },
+    { t: 'A vitrine de uma região', k: 'Cinquenta anos',
+      f: ['A faixa aberta mostra pranchas de objetos e fichas de acontecimentos. As outras seguem visíveis em versão compacta. Na base de cada faixa há uma marca por registro, com a forma da sua datação.',
+        'Primeiro as pranchas com imagem. Depois as fichas de texto. Por último as marcas de datação e as faixas vizinhas.',
+        'Clicar em outra faixa troca a vitrine. Arrastar percorre os anos. O que não cabe como ficha permanece como marca e ganha ficha ao aproximar.',
+        'Clique na prancha do Mapa de Piri Reis. O painel entra pela direita e a linha do tempo se comprime para continuar inteira na tela.'] },
+    { t: 'Um registro aberto', k: 'Detalhe',
+      f: ['Painel com imagem, título, datação com grau de precisão, lugar, texto, conexões, fontes e status. À esquerda a linha do tempo permanece, com o registro marcado.',
+        'Primeiro imagem e título. Depois datação e lugar. Em seguida as conexões. Por último fontes, crédito da imagem e status.',
+        'Cada conexão é um salto e leva a linha do tempo até o outro registro. O botão “Ver o mundo em 1513” fixa o meridiano naquele ano.',
+        'Botão “Ver o mundo em 1513”. O painel troca de conteúdo, a faixa aberta volta ao tamanho normal e o meridiano fica fixo.'] },
+    { t: 'Enquanto isso', k: 'Simultaneidade',
+      f: ['Meridiano fixo em 1513, com margem de cinco anos. Os registros que cruzam o corte ficam acesos e o resto recua. O painel lista até dois registros por região e mostra os pontos num planisfério.',
+        'Primeiro a linha do meridiano e os registros acesos. Depois a lista por região. Por último o planisfério.',
+        'A margem do corte muda entre ±1, ±5 e ±25 anos. Regiões sem data exata no corte dizem isso com todas as letras. No produto, o meridiano também poderá ser arrastado.',
+        'Afastar e deslizar até 780–1030, um trecho onde a pesquisa ainda não começou.'] },
+    { t: 'Um trecho em branco', k: 'Acervo em construção',
+      f: ['Duzentos e cinquenta anos com oito registros. As linhas de contexto continuam, a tira do acervo aparece hachurada e o painel mostra o estado do acervo: quantos registros existem e onde eles estão.',
+        'Primeiro a frase que explica o vazio. Depois os poucos registros existentes. Por último o mapa de cobertura por região.',
+        'Um atalho leva ao trecho mais denso. O minimapa mostra a única sala aberta. No produto, o painel também leva ao diário de pesquisa.',
+        'Fim do percurso. O atalho para 1400–1600 devolve à cena 2.'] }
+  ];
+  const tabs = document.getElementById('sb-tabs'), LBL = ['Na tela', 'Hierarquia visual', 'Navegação', 'Transição para a próxima cena'];
+  tabs.innerHTML = SC.map((s, i) => `<button type="button" role="tab" data-i="${i}" aria-selected="${i === 0}"><b>CENA ${i + 1}</b><span>${s.k}</span></button>`).join('');
+  const prev = document.getElementById('sb-prev'), next = document.getElementById('sb-next'); let cur = 0;
+  function notes(i) {
+    cur = i;
+    tabs.querySelectorAll('button').forEach((b, j) => b.setAttribute('aria-selected', String(j === i)));
+    document.getElementById('sb-k').textContent = `Cena ${i + 1} de ${SC.length} · ${SC[i].k}`;
+    document.getElementById('sb-title').textContent = SC[i].t;
+    document.getElementById('sb-fields').innerHTML = SC[i].f.map((t, j) => `<div><dt>${LBL[j]}</dt><dd>${t}</dd></div>`).join('');
+    prev.disabled = i === 0; next.disabled = i === SC.length - 1;
+  }
+  tabs.addEventListener('click', ev => { const b = ev.target.closest('button'); if (b) api.scene(+b.dataset.i); });
+  prev.addEventListener('click', () => api.scene(Math.max(0, cur - 1)));
+  next.addEventListener('click', () => api.scene(Math.min(SC.length - 1, cur + 1)));
+  stage.addEventListener('scene', ev => notes(ev.detail));
+  notes(0);
+
+  const pair = (a, b, fn) => { const A1 = document.getElementById(a), B1 = document.getElementById(b); const set = v => { A1.setAttribute('aria-pressed', String(v)); B1.setAttribute('aria-pressed', String(!v)); fn(v); }; A1.addEventListener('click', () => set(true)); B1.addEventListener('click', () => set(false)); return set; };
+  pair('sim-on', 'sim-off', v => api.setSim(v));
+  const setSkin = pair('skin-day', 'skin-night', v => { stage.dataset.skin = v ? 'day' : 'night'; api.restyle(); });
+  const th = document.documentElement.getAttribute('data-theme');
+  if (th === 'dark' || (!th && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) setSkin(false);
+})();
+
+</script>
+</body>
+</html>

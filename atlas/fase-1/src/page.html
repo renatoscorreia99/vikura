@@ -1,0 +1,442 @@
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Atlas Interativo da História da Humanidade · Fase 1</p>
+  <h1>Como deve ser <em>explorar</em> a história</h1>
+  <p class="lede">Três direções de arte, uma recomendação e seis cenas navegáveis para decidir a aparência e o comportamento do atlas antes de construir o produto.</p>
+  <p class="facts"><span><b>Recorte de referência</b> 1400–1600</span><span><b>Dados</b> de demonstração, sem validação de fontes</span><span><b>Depois desta etapa</b> escolher a direção e seguir para o protótipo</span></p>
+</header>
+
+<nav class="toc" aria-label="Seções"><div class="toc__in">
+  <button type="button" data-to="premissas">Premissas</button>
+  <button type="button" data-to="direcoes">Três direções</button>
+  <button type="button" data-to="recomendacao">Recomendação</button>
+  <button type="button" data-to="storyboard">Storyboard</button>
+  <button type="button" data-to="zoom">Zoom e datas</button>
+  <button type="button" data-to="interface">Interface</button>
+  <button type="button" data-to="conteudo">Conteúdo</button>
+  <button type="button" data-to="decisoes">Decisões</button>
+</div></nav>
+
+<section class="sec" id="premissas">
+  <div class="sec__head">
+    <span class="sec__k">Premissas</span>
+    <h2>Quatro regras que valem para qualquer direção</h2>
+    <p>Elas saem do briefing e orientam as escolhas das próximas seções.</p>
+  </div>
+  <ul class="principles">
+    <li><b>O tempo é o território.</b><span>A linha do tempo é a tela principal. Mapa, busca e fichas respondem a ela.</span></li>
+    <li><b>Aproximar muda o que se vê.</b><span>Cada nível de zoom troca o tipo de informação: sociedades, depois séculos, depois objetos.</span></li>
+    <li><b>Nenhuma região é a régua das outras.</b><span>O mundo aparece em faixas regionais lado a lado. “Idade Média” e “Renascimento” são fenômenos locais, mostrados na faixa a que pertencem.</span></li>
+    <li><b>O vazio faz parte do acervo.</b><span>O atlas mostra onde a pesquisa já chegou e onde ainda não chegou. Um trecho sem registros aparece como trecho sem registros.</span></li>
+  </ul>
+</section>
+
+<section class="sec" id="direcoes">
+  <div class="sec__head">
+    <span class="sec__k">Exploração visual</span>
+    <h2>Três direções de arte</h2>
+    <p>As três telas usam o mesmo conjunto de demonstração: 110 registros nomeados entre 1400 e 1600 e 2.900 pontos simulados. Assim a comparação é de linguagem visual, com o conteúdo constante.</p>
+  </div>
+
+  <article class="concept">
+    <header class="concept__head">
+      <span class="concept__k">Conceito A</span>
+      <h3>Arquivo Vivo</h3>
+      <p class="concept__thesis">O objeto vem primeiro. A linha do tempo é a régua discreta de uma galeria.</p>
+    </header>
+    <div class="screen" data-w="1200" data-h="720"><div class="screen__fit"><div class="screen__in" id="mock-a"></div></div></div>
+    <div class="sheet">
+      <div>
+        <div><h4>Paleta</h4><ul class="sw">
+          <li><i style="background:#F7F7F4"></i>Parede<code>#F7F7F4</code></li>
+          <li><i style="background:#121314"></i>Tinta<code>#121314</code></li>
+          <li><i style="background:#6B6E70"></i>Grafite<code>#6B6E70</code></li>
+          <li><i style="background:#DCDCD7"></i>Passe-partout<code>#DCDCD7</code></li>
+          <li><i style="background:#24409A"></i>Lápis-lazúli<code>#24409A</code></li>
+        </ul></div>
+        <div><h4>Tipografia</h4><div class="spec"><b style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300">Marfim, <i>1500</i></b><span>Legenda de museu em Hanken Grotesk</span><small>Cormorant Garamond + Hanken Grotesk</small></div></div>
+      </div>
+      <dl>
+        <div><dt>Identidade</dt><dd>Parede branca de galeria, serifa grande e leve, objeto fotografado sobre fundo neutro, legendas de museu. A cor vem dos próprios objetos.</dd></div>
+        <div><dt>Composição</dt><dd>Um objeto em destaque ocupa o centro. Os vizinhos no tempo esperam em fila à direita. A régua do período fica no rodapé.</dd></div>
+        <div><dt>Navegação</dt><dd>A rolagem horizontal passa de objeto em objeto, em ordem cronológica. A régua permite saltar. O zoom troca de sala, isto é, de período.</dd></div>
+        <div><dt>Interação</dt><dd>Abrir um objeto amplia a prancha em tela cheia, com a legenda ao lado. As setas levam ao anterior e ao seguinte no tempo.</dd></div>
+      </dl>
+      <div>
+        <div><h4>Vantagens</h4><ul class="pc">
+          <li>É a mais bonita com pouco conteúdo. Dez bons objetos já sustentam a experiência.</li>
+          <li>Cada prancha vira uma imagem pronta para publicar no X.</li>
+          <li>Leitura calma, familiar a quem visita museus.</li>
+        </ul></div>
+        <div><h4>Limitações</h4><ul class="pc pc--con">
+          <li>Depende de boas fotografias com licença clara.</li>
+          <li>Acontecimentos sem imagem ficam em segundo plano.</li>
+          <li>Simultaneidade e densidade quase não aparecem.</li>
+          <li>Com milhares de registros, tende a virar catálogo paginado.</li>
+        </ul></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <header class="concept__head">
+      <span class="concept__k">Conceito B</span>
+      <h3>Observatório do Tempo</h3>
+      <p class="concept__thesis">A história como campo de pontos. A densidade é a paisagem.</p>
+    </header>
+    <div class="screen" data-w="1200" data-h="720"><div class="screen__fit"><div class="screen__in" id="mock-b"></div></div></div>
+    <div class="sheet">
+      <div>
+        <div><h4>Paleta</h4><ul class="sw">
+          <li><i style="background:#0B0F1E"></i>Noite<code>#0B0F1E</code></li>
+          <li><i style="background:#121831"></i>Bruma<code>#121831</code></li>
+          <li><i style="background:#E9ECF5"></i>Estrela<code>#E9ECF5</code></li>
+          <li><i style="background:#F2C66B"></i>Seleção<code>#F2C66B</code></li>
+          <li><i style="background:linear-gradient(90deg,#F0776B 0 20%,#F2C66B 20% 40%,#5FC7E8 40% 60%,#B49BF0 60% 80%,#6FD69B 80%)"></i>Categorias<code>5 matizes</code></li>
+        </ul></div>
+        <div><h4>Tipografia</h4><div class="spec"><b style="font-family:'IBM Plex Mono',monospace;font-size:28px;letter-spacing:.04em">N = 3.010</b><span style="font-family:'IBM Plex Sans',sans-serif">Texto corrido em IBM Plex Sans</span><small>IBM Plex Mono + IBM Plex Sans</small></div></div>
+      </div>
+      <dl>
+        <div><dt>Identidade</dt><dd>Fundo noturno azul-índigo, pontos luminosos, tipografia monoespaçada, leituras numéricas. Nenhum ornamento.</dd></div>
+        <div><dt>Composição</dt><dd>Campo de pontos em tela cheia, com o tempo na horizontal e as regiões na vertical. Histograma de densidade no rodapé e um painel de leitura flutuante.</dd></div>
+        <div><dt>Navegação</dt><dd>Zoom contínuo com roda ou pinça e arrasto. A janela de tempo é selecionada no histograma.</dd></div>
+        <div><dt>Interação</dt><dd>Selecionar um ponto acende seus vínculos como arcos. Os filtros recolorem o campo na hora.</dd></div>
+      </dl>
+      <div>
+        <div><h4>Vantagens</h4><ul class="pc">
+          <li>Escala muito bem para milhares de registros.</li>
+          <li>Padrões, lacunas e simultaneidade aparecem de imediato.</li>
+          <li>Rende bons vídeos curtos de desenvolvimento.</li>
+        </ul></div>
+        <div><h4>Limitações</h4><ul class="pc pc--con">
+          <li>Fria e abstrata. Sobra pouco lugar para a imagem do objeto.</li>
+          <li>Com pouco conteúdo, parece um céu vazio.</li>
+          <li>Pede familiaridade com visualização de dados.</li>
+          <li>Pode lembrar um painel analítico, o oposto de um museu.</li>
+        </ul></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <header class="concept__head">
+      <span class="concept__k">Conceito C</span>
+      <h3>Atlas da Humanidade</h3>
+      <p class="concept__thesis">Onde e quando ao mesmo tempo. O mapa conduz e a linha do tempo recorta.</p>
+    </header>
+    <div class="screen" data-w="1200" data-h="720"><div class="screen__fit"><div class="screen__in" id="mock-c"></div></div></div>
+    <div class="sheet">
+      <div>
+        <div><h4>Paleta</h4><ul class="sw">
+          <li><i style="background:#CFDDD8"></i>Mar<code>#CFDDD8</code></li>
+          <li><i style="background:#F2EDDF"></i>Terra<code>#F2EDDF</code></li>
+          <li><i style="background:#2B2520"></i>Sépia<code>#2B2520</code></li>
+          <li><i style="background:#A3303A"></i>Carmim<code>#A3303A</code></li>
+          <li><i style="background:#2F5D7C"></i>Azul de rota<code>#2F5D7C</code></li>
+        </ul></div>
+        <div><h4>Tipografia</h4><div class="spec"><b style="font-family:'Spectral',Georgia,serif;font-style:italic;font-size:32px;letter-spacing:.06em">Oceano Índico</b><span style="font-family:'Archivo Narrow',sans-serif;font-size:14px">Rótulos e dados em Archivo Narrow</span><small>Spectral + Archivo Narrow</small></div></div>
+      </div>
+      <dl>
+        <div><dt>Identidade</dt><dd>Carta náutica e atlas impresso: mar verde-acinzentado, terra em cor de papel, rubricas em carmim, mares em itálico espaçado.</dd></div>
+        <div><dt>Composição</dt><dd>Planisfério em dois terços da tela, legenda numerada à direita e uma faixa temporal por região no rodapé.</dd></div>
+        <div><dt>Navegação</dt><dd>A janela de tempo desliza no rodapé e o mapa se atualiza. Zoom geográfico e zoom temporal são independentes.</dd></div>
+        <div><dt>Interação</dt><dd>As rotas se desenham conforme a janela avança. Clicar num alfinete abre a ficha ancorada ao lugar.</dd></div>
+      </dl>
+      <div>
+        <div><h4>Vantagens</h4><ul class="pc">
+          <li>A melhor para simultaneidade e para relações entre territórios.</li>
+          <li>A geografia orienta quem não domina a cronologia.</li>
+          <li>Base natural para rotas, impérios e trocas.</li>
+        </ul></div>
+        <div><h4>Limitações</h4><ul class="pc pc--con">
+          <li>O mapa disputa o papel principal com a linha do tempo.</li>
+          <li>Objetos sem lugar preciso, ou que mudaram de lugar, ficam mal resolvidos.</li>
+          <li>Fronteiras históricas pedem dados que ainda não existem no projeto.</li>
+          <li>Em telas pequenas o mapa perde quase tudo.</li>
+        </ul></div>
+      </div>
+    </div>
+  </article>
+  <p class="note">Nos mockups, as silhuetas ocupam o lugar das fotografias de acervo. Rotas e posições no mapa são esquemáticas.</p>
+</section>
+
+<section class="sec" id="recomendacao">
+  <div class="sec__head">
+    <span class="sec__k">Recomendação · Conceito D</span>
+    <h2>Meridiano: uma quarta direção, feita das três</h2>
+  </div>
+  <div class="rec">
+    <div>
+      <p class="rec__idea">Um mapa em que a longitude foi trocada pelo tempo. As regiões do mundo são paralelos, faixas horizontais lado a lado. Cada instante é um <em>meridiano</em>: uma linha vertical que cruza todas as regiões no mesmo ano.</p>
+      <div class="cols" style="margin-top:26px">
+        <div><h4>Paleta Dia</h4><ul class="sw">
+          <li><i style="background:#ECEEE8"></i>Gesso<code>#ECEEE8</code></li>
+          <li><i style="background:#16201D"></i>Tinta verde<code>#16201D</code></li>
+          <li><i style="background:#7F540D"></i>Latão<code>#7F540D</code></li>
+          <li><i style="background:#A3352F"></i>Rubrica<code>#A3352F</code></li>
+        </ul></div>
+        <div><h4>Paleta Noite</h4><ul class="sw">
+          <li><i style="background:#0E1716"></i>Verde-garrafa<code>#0E1716</code></li>
+          <li><i style="background:#E9EDE4"></i>Marfim<code>#E9EDE4</code></li>
+          <li><i style="background:#D9A541"></i>Latão claro<code>#D9A541</code></li>
+          <li><i style="background:#EE8A72"></i>Rubrica clara<code>#EE8A72</code></li>
+        </ul></div>
+      </div>
+      <div class="spec" style="margin-top:22px"><b style="font-family:var(--serif)">Mapa de <i>Piri Reis</i></b><span>Interface em Hanken Grotesk, datas em <span class="mono">IBM Plex Mono · 1513 · 40,41° N</span></span><small>Newsreader + Hanken Grotesk + IBM Plex Mono</small></div>
+    </div>
+    <figure>
+      <svg class="diagram" id="diagram-d" viewBox="0 0 520 318" role="img" aria-label="Esquema: sete faixas regionais horizontais cortadas por uma linha vertical, o meridiano de 1513"></svg>
+      <p class="cap">O princípio em uma imagem. Ler na horizontal acompanha uma região ao longo do tempo. Ler na vertical mostra o mundo num mesmo ano.</p>
+    </figure>
+  </div>
+  <ul class="inherit">
+    <li><b>Do Arquivo Vivo</b><span>As pranchas de objeto, a legenda de museu, a serifa editorial e a calma da página.</span></li>
+    <li><b>Do Observatório</b><span>O sedimento de densidade, os grupos contados e as conexões entre registros.</span></li>
+    <li><b>Do Atlas</b><span>As regiões como estrutura, o vocabulário cartográfico (escala, legenda, terra incógnita) e o planisfério como vista ligada.</span></li>
+  </ul>
+  <div class="cols">
+    <div><h4>Por que esta</h4><ul class="plain">
+      <li><b>A linha do tempo fica no centro,</b> como o briefing pede, e ocupa quase toda a tela.</li>
+      <li><b>A simultaneidade é estrutural.</b> Basta olhar na vertical, sem trocar de modo.</li>
+      <li><b>A periodização europeia deixa de ser moldura.</b> Cada região tem a sua faixa e as suas próprias durações.</li>
+      <li><b>Funciona com 30 ou com 30 mil registros,</b> porque marcas de datação e fichas são camadas separadas.</li>
+      <li><b>O vazio vira desenho.</b> A hachura de trecho sem pesquisa é parte da linguagem.</li>
+    </ul></div>
+    <div><h4>Riscos assumidos</h4><ul class="plain">
+      <li>Sete faixas pedem altura. Em telas baixas, as faixas ficam compactas e uma se abre por vez.</li>
+      <li>Dividir o mundo em regiões é uma decisão editorial. Ela precisa estar explicada na página Sobre e poder mudar.</li>
+      <li>É mais trabalhosa de implementar do que o Arquivo Vivo.</li>
+      <li>A simulação repete o viés das fontes mais acessíveis, com a Europa super-representada. O desenho deixa isso visível, e cabe à pesquisa compensar.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="sec" id="storyboard">
+  <div class="sec__head">
+    <span class="sec__k">Storyboard navegável</span>
+    <h2>Seis cenas, da história inteira a um trecho em branco</h2>
+    <p>As cenas estão desenhadas na direção Meridiano e rodam sobre os dados de demonstração. Se a escolha for A, B ou C, o roteiro continua valendo e a composição muda.</p>
+  </div>
+  <div id="stage" data-skin="day">
+    <div class="sb-tabs" role="tablist" aria-label="Cenas" id="sb-tabs"></div>
+    <div class="screen" data-w="1200" data-h="772" data-min="900"><div class="screen__fit"><div class="screen__in st-screen"></div></div></div>
+    <div class="sb-bar">
+      <p class="hint">Dentro da tela: arraste para percorrer o tempo, use − e + para mudar de nível, clique numa faixa para abri-la e numa ficha ou marca para ver o registro.</p>
+      <div class="sb-ctl">
+        <div class="tog" role="group" aria-label="Volume de dados"><button type="button" id="sim-on" aria-pressed="true">Acervo cheio (simulado)</button><button type="button" id="sim-off" aria-pressed="false">Só os 118 nomeados</button></div>
+        <div class="tog" role="group" aria-label="Modo de cor"><button type="button" id="skin-day" aria-pressed="true">Dia</button><button type="button" id="skin-night" aria-pressed="false">Noite</button></div>
+      </div>
+    </div>
+    <div class="sb-notes">
+      <div class="sb-notes__h"><span class="k" id="sb-k"></span><h3 id="sb-title"></h3>
+        <div class="sb-nav"><button type="button" id="sb-prev">← Anterior</button><button type="button" id="sb-next">Próxima →</button></div>
+      </div>
+      <dl class="sb-fields" id="sb-fields"></dl>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="zoom">
+  <div class="sec__head">
+    <span class="sec__k">Componente principal</span>
+    <h2>Zoom semântico e notação de datas</h2>
+    <p>Aproximar troca a unidade de informação. Os três níveis se sucedem em transição contínua, e nada desaparece: o que não cabe como ficha permanece como marca.</p>
+  </div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th></th><th>Panorama<small>janela acima de 1.500 anos</small></th><th>Era<small>de 170 a 700 anos</small></th><th>Vitrine<small>abaixo de 90 anos</small></th></tr></thead>
+    <tbody>
+      <tr><th>Unidade</th><td>Sociedades e Estados de longa duração</td><td>Grupos de registros e acontecimentos estruturantes</td><td>O registro individual: acontecimento, objeto, obra, documento</td></tr>
+      <tr><th>Eixo</th><td>Milênios e séculos. Pré-história em escala comprimida, sinalizada</td><td>Séculos e décadas</td><td>Décadas e anos</td></tr>
+      <tr><th>Na faixa</th><td>Barras com nome. Marcos do tempo profundo</td><td>Estados viram linhas de contexto no topo. Círculos com contagem e cor da categoria dominante</td><td>Pranchas com imagem e fichas de texto. A faixa aberta ganha altura</td></tr>
+      <tr><th>Rótulos</th><td>Só o que tem largura para o nome</td><td>Só registros de peso máximo</td><td>Por prioridade: peso, depois imagem, depois espaço</td></tr>
+      <tr><th>Tira do acervo</th><td>Bloco de sedimento onde há registros, hachura no resto</td><td>Sedimento em código de barras, intervalos como traços</td><td>Uma marca por registro, com a forma da sua datação</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 style="margin-top:44px;margin-bottom:16px">Como cada tipo de data é desenhado</h3>
+  <ul class="dates">
+    <li><svg width="74" height="18"><circle cx="37" cy="9" r="4.2" fill="currentColor"/></svg><div><b>Data exata</b><span>1513 · um ponto cheio</span></div></li>
+    <li><svg width="74" height="18"><line x1="14" y1="9" x2="60" y2="9" stroke="currentColor" stroke-dasharray="2 2.5"/><circle class="bgf" cx="37" cy="9" r="4" stroke="currentColor" stroke-width="1.5"/></svg><div><b>Data aproximada</b><span>c. 1450 · ponto vazado com margem pontilhada</span></div></li>
+    <li><svg width="74" height="18"><rect x="8" y="6.5" width="58" height="5" fill="currentColor"/></svg><div><b>Intervalo documentado</b><span>1405–1433 · barra cheia</span></div></li>
+    <li><svg width="74" height="18"><rect x="8" y="6.5" width="58" height="5" fill="currentColor" fill-opacity=".3" stroke="currentColor" stroke-dasharray="3 2"/></svg><div><b>Intervalo estimado</b><span>c. 1502–1521 · barra clara, contorno tracejado</span></div></li>
+    <li><svg width="74" height="18"><rect x="2" y="6.5" width="70" height="5" fill="currentColor" fill-opacity=".14" stroke="currentColor" stroke-dasharray="1 2.5"/></svg><div><b>Datação por século</b><span>sécs. XV–XVI · barra larga e tênue</span></div></li>
+    <li><svg width="74" height="18"><rect x="2" y="6.5" width="70" height="5" fill="none" stroke="currentColor" stroke-dasharray="1 3"/></svg><div><b>Data debatida</b><span>entre 1142 e 1451 · só o contorno pontilhado</span></div></li>
+    <li><svg width="74" height="18"><rect x="0" y="6.5" width="74" height="5" fill="currentColor" fill-opacity=".3"/><path d="M4 4l-3 5 3 5M70 4l3 5-3 5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><div><b>Longa duração</b><span>a barra atravessa a janela e o rótulo acompanha a borda</span></div></li>
+  </ul>
+  <div class="cols">
+    <div><h4>Antes da era comum</h4><ul class="plain">
+      <li>No arquivo, os anos são números inteiros. Anos antes da era comum são negativos, em numeração astronômica (ISO 8601), e o cálculo de durações atravessa a virada sem erro.</li>
+      <li>Na tela, a proposta é “AEC” e “EC”, com opção de “a.C.” e “d.C.”. O ano zero nunca aparece.</li>
+      <li>A data no calendário de origem é preservada como nota. Exemplo: 919 AH no Mapa de Piri Reis.</li>
+    </ul></div>
+    <div><h4>Densidade e agrupamento</h4><ul class="plain">
+      <li>A tira do acervo, na base de cada faixa, mostra todos os registros em qualquer nível. É a camada exata.</li>
+      <li>As fichas são a camada editorial. Entram por prioridade e nunca se sobrepõem.</li>
+      <li>Os grupos contados se recalculam com o zoom e com os filtros. Clicar num grupo aproxima até ele se desfazer.</li>
+      <li>Abrir uma faixa dá a ela três vezes mais altura, com pranchas grandes. As outras encolhem e continuam na tela.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="sec" id="interface">
+  <div class="sec__head">
+    <span class="sec__k">Organização da interface</span>
+    <h2>Uma tela principal e um painel que nunca a esconde</h2>
+    <p>A exploração acontece numa única tela. O que seria outra página, como detalhe, corte no tempo e estado do acervo, entra pelo painel lateral, e a linha do tempo continua visível.</p>
+  </div>
+  <div class="ui">
+    <div class="wire" role="img" aria-label="Esquema da tela principal em seis zonas">
+      <div class="w1"><i>1</i>Marca · janela atual · busca · Acervo · Sobre</div>
+      <div class="w2"><i>2</i>Filtros por categoria</div>
+      <div class="w3"><i>3</i>Faixas regionais</div>
+      <div class="w4"><i>4</i>Eixo e minimapa</div>
+      <div class="w5"><i>5</i>Painel</div>
+      <div class="w6"><i>6</i>Nível e legenda</div>
+    </div>
+    <ul class="keylist">
+      <li><i>1</i><span><b>Barra superior.</b> A janela de tempo atual fica sempre legível. A busca abre com a tecla / e aceita nome, lugar ou ano.</span></li>
+      <li><i>2</i><span><b>Filtros.</b> Categorias ligam e desligam na hora. Região e tipo de registro entram no mesmo lugar na Fase 2.</span></li>
+      <li><i>3</i><span><b>Faixas regionais.</b> O centro da experiência. A ordem proposta vai de oeste para leste, como um planisfério desenrolado, e pode ser reordenada.</span></li>
+      <li><i>4</i><span><b>Eixo e minimapa.</b> O minimapa mostra a história inteira, a janela atual e onde o acervo tem registros.</span></li>
+      <li><i>5</i><span><b>Painel.</b> Registro aberto, corte no tempo ou estado do acervo. A linha do tempo se comprime para caber ao lado.</span></li>
+      <li><i>6</i><span><b>Barra de nível.</b> Diz em que nível de zoom a pessoa está e o que cada marca significa.</span></li>
+    </ul>
+  </div>
+
+  <h3 style="margin-top:48px;margin-bottom:8px">No celular, o tempo corre na vertical</h3>
+  <p class="read" style="color:var(--ink2);margin-bottom:22px">Rolar a página já é o gesto de avançar no tempo. As faixas viram filtros de região, a tira do acervo desce pela borda direita e o painel vira uma folha que sobe da base.</p>
+  <div class="phones">
+    <figure class="phone"><div class="phone__f">
+      <div class="ph-top"><i>Atlas</i><span>buscar</span></div>
+      <div class="ph-yr"><b>1513<small>séc. XVI · vitrine</small></b><div class="ph-chips"><span class="on">Todas</span><span>Américas</span><span>África</span><span>Europa</span><span>Ásia Oc.</span></div></div>
+      <div class="ph-list">
+        <div class="ph-it"><span class="y">1508–12</span><span class="d" style="background:var(--c-arte)"></span><span class="t"><small>Europa</small><b>Teto da Capela Sistina</b></span><span class="ph-plate" data-glyph="pintura"></span></div>
+        <div class="ph-it"><span class="y">1510</span><span class="d" style="background:var(--c-poder)"></span><span class="t"><small>Sul da Ásia</small><b>Portugueses tomam Goa</b></span></div>
+        <div class="ph-it"><span class="y">1511</span><span class="d" style="background:var(--c-poder)"></span><span class="t"><small>Leste e Sudeste Asiático</small><b>Portugueses tomam Malaca</b></span></div>
+        <div class="ph-it"><span class="y">1513</span><span class="d" style="background:var(--c-saber)"></span><span class="t"><small>Ásia Ocidental e Central</small><b>Mapa de Piri Reis</b></span><span class="ph-plate" data-glyph="mapa"></span></div>
+        <div class="ph-it"><span class="y">1514</span><span class="d" style="background:var(--c-poder)"></span><span class="t"><small>Ásia Ocidental e Central</small><b>Batalha de Chaldiran</b></span></div>
+        <div class="ph-it"><span class="y">1517</span><span class="d" style="background:var(--c-poder)"></span><span class="t"><small>África</small><b>Otomanos conquistam o Cairo mameluco</b></span></div>
+        <div class="ph-it"><span class="y">1517</span><span class="d" style="background:var(--c-fe)"></span><span class="t"><small>Europa</small><b>Lutero divulga as 95 teses</b></span></div>
+        <div class="ph-it"><span class="y">c. 1502–21</span><span class="d" style="background:var(--c-arte)"></span><span class="t"><small>Américas</small><b>Pedra do Sol</b></span><span class="ph-plate" data-glyph="disco"></span></div>
+      </div>
+      <div class="ph-tabs"><b>Explorar</b><span>Buscar</span><span>Acervo</span></div>
+    </div><figcaption><b>Explorar</b>O ano no topo acompanha a rolagem. Pinçar muda de nível.</figcaption></figure>
+
+    <figure class="phone"><div class="phone__f">
+      <div class="ph-top ph-dim"><i>Atlas</i><span>buscar</span></div>
+      <div class="ph-yr ph-dim"><b>1513</b></div>
+      <div class="ph-sheet">
+        <span class="ph-plate" data-glyph="mapa"></span>
+        <small>Documento · carta náutica</small>
+        <h5>Mapa de Piri Reis</h5>
+        <p>1513 · data exata (919 AH)<br>Galípoli · 40,41° N, 26,67° L</p>
+        <div class="ph-btn"><span>Ver o mundo em 1513</span><span>→</span></div>
+        <small>Conexões</small>
+        <div class="ph-link"><span>1492</span><b>Colombo chega às Antilhas</b></div>
+        <div class="ph-link"><span>1517</span><b>Otomanos conquistam o Cairo</b></div>
+      </div>
+    </div><figcaption><b>Registro aberto</b>Folha que sobe da base. Arrastar para baixo devolve à linha do tempo.</figcaption></figure>
+
+    <figure class="phone"><div class="phone__f">
+      <div class="ph-top"><i>Atlas</i><span>fechar corte</span></div>
+      <div class="ph-yr"><b>1513<small>± 5 anos · enquanto isso</small></b></div>
+      <svg class="ph-map" data-cutmap viewBox="0 0 250 126"></svg>
+      <ul class="ph-cut" data-cutlist></ul>
+      <div class="ph-tabs"><b>Explorar</b><span>Buscar</span><span>Acervo</span></div>
+    </div><figcaption><b>Enquanto isso</b>O meridiano vira uma lista por região, com o planisfério no topo.</figcaption></figure>
+  </div>
+
+  <div class="cols" style="margin-top:44px">
+    <div><h4>Telas do produto</h4><ul class="plain">
+      <li><b>Explorar.</b> A linha do tempo. É a página inicial.</li>
+      <li><b>Registro.</b> Painel sobre a linha do tempo, com endereço próprio para compartilhar.</li>
+      <li><b>Busca e filtros.</b> Uma caixa só. Os resultados aparecem como lista e acendem na linha do tempo.</li>
+      <li><b>Acervo.</b> O que existe, o que está em pesquisa e o que entrou por último.</li>
+      <li><b>Sobre.</b> O projeto autoral, o método, os critérios de datação e a divisão em regiões.</li>
+    </ul></div>
+    <div><h4>Para quem nunca usou uma linha do tempo</h4><ul class="plain">
+      <li>A primeira visita abre na sala mais preenchida, e não no panorama vazio.</li>
+      <li>Três convites na tela, sem tutorial: arrastar, aproximar, abrir uma faixa.</li>
+      <li>Tudo o que é clicável muda de cor ao passar o cursor e tem foco de teclado.</li>
+      <li>O minimapa e a janela atual respondem sempre à pergunta “onde estou?”.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="sec" id="conteudo">
+  <div class="sec__head">
+    <span class="sec__k">Sistema de conteúdo · prévia da Fase 3</span>
+    <h2>Um registro é uma pasta com um arquivo Markdown</h2>
+    <p>Pesquisar um objeto, criar a pasta, colar as imagens e as referências, compilar. O registro aparece na linha do tempo sem passar por um painel administrativo.</p>
+  </div>
+  <div class="ui">
+    <div class="code"><pre><i>content/registros/1513-mapa-de-piri-reis/index.md</i>
+
+---
+<b>titulo</b>: Mapa de Piri Reis
+<b>tipo</b>: documento          <i># acontecimento | processo | objeto | construcao | documento</i>
+<b>categoria</b>: ciencia-e-tecnica
+<b>regiao</b>: asia-ocidental-e-central
+<b>data</b>:
+  inicio: 1513
+  fim: null
+  precisao: exata        <i># exata | aproximada | intervalo | intervalo-estimado | seculo | debatida</i>
+  nota: "919 AH, registrado no próprio mapa"
+<b>lugar</b>:
+  nome: Galípoli
+  lat: 40.41
+  lon: 26.67
+<b>imagens</b>:
+  - arquivo: mapa.jpg
+    credito: ""          <i># instituição e autoria da fotografia</i>
+    licenca: ""          <i># domínio público, CC0, CC BY 4.0…</i>
+<b>fontes</b>: []               <i># sem fonte, o registro não sai de rascunho</i>
+<b>conexoes</b>:
+  - id: 1492-colombo-chega-as-antilhas
+    relacao: fonte citada nas anotações
+<b>peso</b>: 3                  <i># 1 a 3, decide o que ganha rótulo primeiro</i>
+<b>status</b>: rascunho         <i># rascunho | em-revisao | publicado</i>
+---
+
+Texto do registro em Markdown.</pre></div>
+    <div style="display:grid;gap:22px">
+      <ol class="steps">
+        <li><span><b>Escrever.</b> Uma pasta por registro, com o texto e as imagens juntos.</span></li>
+        <li><span><b>Validar.</b> Na compilação, um esquema confere datas, região, licença e fontes. Registro publicado sem fonte ou imagem sem licença interrompe a compilação.</span></li>
+        <li><span><b>Indexar.</b> Os metadados viram um índice único que a linha do tempo carrega. O texto de cada registro só é lido quando o painel abre.</span></li>
+        <li><span><b>Publicar.</b> Só entram no site os registros com status publicado. Rascunhos aparecem apenas em desenvolvimento.</span></li>
+      </ol>
+      <ul class="plain">
+        <li><b>MDX depois.</b> O mesmo arquivo pode virar .mdx quando um registro pedir comparação de imagens, mapa embutido ou linha do tempo interna.</li>
+        <li><b>Banco de dados depois.</b> O índice tem o formato de uma tabela. Migrar para Supabase/PostgreSQL troca a origem dos dados e mantém a interface.</li>
+        <li><b>Acervos abertos depois.</b> Museus com programas de acesso aberto, como Met, Rijksmuseum, Smithsonian e Art Institute of Chicago, podem alimentar imagens e metadados, sempre com crédito e licença gravados no registro.</li>
+      </ul>
+    </div>
+  </div>
+  <h3 style="margin-top:44px;margin-bottom:14px">O que é real e o que é simulado nesta página</h3>
+  <ul class="plain read">
+    <li><b>118 registros nomeados.</b> São fatos históricos conhecidos, escritos de memória como material de demonstração. Datas e descrições não foram conferidas em fontes e nenhuma fonte é citada.</li>
+    <li><b>2.900 pontos simulados.</b> São anônimos e gerados por semente. Servem só para testar densidade entre 1400 e 1600.</li>
+    <li><b>Imagens.</b> Silhuetas ilustrativas. Fotografias reais entram na Fase 2, com crédito e licença.</li>
+    <li><b>No produto,</b> todo registro traz o seu status. Demonstração e rascunho nunca se confundem com conteúdo publicado.</li>
+  </ul>
+</section>
+
+<section class="sec" id="decisoes">
+  <div class="sec__head">
+    <span class="sec__k">Antes da Fase 2</span>
+    <h2>Cinco decisões que são suas</h2>
+  </div>
+  <ul class="decide">
+    <li><b>Direção visual</b><span>A, B, C ou D. <strong>Recomendo D, Meridiano.</strong> Também é possível seguir com D e trazer de A as pranchas em tela cheia.</span></li>
+    <li><b>Notação de era</b><span>“AEC / EC” ou “a.C. / d.C.”. <strong>Recomendo AEC / EC como padrão,</strong> com a outra disponível nas preferências.</span></li>
+    <li><b>Regiões e ordem das faixas</b><span>Proponho sete faixas, de oeste para leste. Vale conferir se a divisão combina com a forma como você pretende estudar. O sistema aceita mudar depois.</span></li>
+    <li><b>Primeira sala</b><span>O protótipo usa 1400–1600 como referência visual. A primeira época que você vai pesquisar de verdade pode ser outra.</span></li>
+    <li><b>Nome do produto</b><span>Os mockups usam “Atlas” como marca provisória.</span></li>
+  </ul>
+</section>
+
+<footer>Fase 1 do Atlas Interativo da História da Humanidade. Protótipo funcional e sistema de conteúdo ficam para as Fases 2 e 3, depois da escolha da direção.</footer>
+
+</div>
